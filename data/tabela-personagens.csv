@@ -1,0 +1,10 @@
+ID,Nome,Velocidade,Manobrabilidade,Poder,Imagem,Pontos
+1,Mario,4,3,3,src/main/resources/characters/marioM.gif,0
+2,Bowser,5,2,5,src/main/resources/characters/bowserM.gif,0
+3,Toad,3,3,2,src/main/resources/characters/toadM.gif,0
+4,Luigi,3,4,4,src/main/resources/characters/luigiM.gif,0
+5,Peach,3,4,2,src/main/resources/characters/peachM.gif,0
+6,Yoshi,2,4,3,src/main/resources/characters/yoshiM.gif,0
+7,Donkey Kong,2,2,5,src/main/resources/characters/dkM.gif,0
+8,Samuel,5,5,5,src/main/resources/characters/samuelM.gif,0
+9,Didi,6,6,6,src/main/resources/characters/didiM.gif,0
