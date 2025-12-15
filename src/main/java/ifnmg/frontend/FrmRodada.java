@@ -62,8 +62,12 @@ public class FrmRodada extends javax.swing.JFrame {
         lblJog2Star8.setVisible(false);
         lblJog2Star9.setVisible(false);
         lblJog2Star10.setVisible(false);
+        btnDado.setHorizontalAlignment(SwingConstants.CENTER);
+        btnDado.setVerticalAlignment(SwingConstants.CENTER);
         btnDado3.setVisible(false);
         btnDado3.setEnabled(false);
+        btnDado3.setHorizontalAlignment(SwingConstants.CENTER);
+        btnDado3.setVerticalAlignment(SwingConstants.CENTER);
         btnProximo.setVisible(false);
         btnProximo.setEnabled(false);
         String[] rodadas = {"5", "6", "7", "8", "9", "10", "Aleatório"};
@@ -116,6 +120,8 @@ public class FrmRodada extends javax.swing.JFrame {
             btnDado.setEnabled(true);
             btnDado3.setVisible(false);
             btnDado3.setEnabled(false);
+            btnProximo.setVisible(false);
+            btnProximo.setEnabled(false);
             lblDado1.setIcon(d0);
             lblDado2.setIcon(d0);
             tipoPista = sorteiaPista();
@@ -176,6 +182,7 @@ public class FrmRodada extends javax.swing.JFrame {
         btnProximo = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnDado3 = new javax.swing.JButton();
+        lblVS = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -192,13 +199,13 @@ public class FrmRodada extends javax.swing.JFrame {
         lblDado2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dado.gif"))); // NOI18N
         pnlRodada.add(lblDado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 210, 190, 160));
 
-        lblJog1Nome.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblJog1Nome.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
         lblJog1Nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog1Nome.setText("Jogador 1 (você): ");
         lblJog1Nome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlRodada.add(lblJog1Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 280, -1));
 
-        lblJog2Nome.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblJog2Nome.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
         lblJog2Nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog2Nome.setText("Jogador 2 (computador): ");
         pnlRodada.add(lblJog2Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 140, 280, -1));
@@ -208,20 +215,22 @@ public class FrmRodada extends javax.swing.JFrame {
         lblRodada.setText("ª Rodada: ");
         pnlRodada.add(lblRodada, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 50, 460, -1));
 
-        btnDado.setText("Parar Dado");
+        btnDado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/playDado.gif"))); // NOI18N
+        btnDado.setBorderPainted(false);
+        btnDado.setContentAreaFilled(false);
         btnDado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDadoActionPerformed(evt);
             }
         });
-        pnlRodada.add(btnDado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, -1));
+        pnlRodada.add(btnDado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 190, 90));
 
-        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
         lblJog1Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog1Atributo.setText("Atributo: ");
         pnlRodada.add(lblJog1Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 280, -1));
 
-        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
         lblJog2Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog2Atributo.setText("Atributo: ");
         pnlRodada.add(lblJog2Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 280, -1));
@@ -286,35 +295,46 @@ public class FrmRodada extends javax.swing.JFrame {
         lblJog2Star10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/star.png"))); // NOI18N
         pnlRodada.add(lblJog2Star10, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 520, -1, -1));
 
-        btnProximo.setText("Continuar");
+        btnProximo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/next.png"))); // NOI18N
+        btnProximo.setBorderPainted(false);
+        btnProximo.setContentAreaFilled(false);
+        btnProximo.setFocusPainted(false);
         btnProximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProximoActionPerformed(evt);
             }
         });
-        pnlRodada.add(btnProximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, -1, -1));
+        pnlRodada.add(btnProximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, -1, -1));
 
-        btnCancelar.setText("Sair da Partida");
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exit.png"))); // NOI18N
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setFocusPainted(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
-        pnlRodada.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        pnlRodada.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        btnDado3.setText("Parar Dado");
+        btnDado3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/playDado.gif"))); // NOI18N
+        btnDado3.setBorderPainted(false);
+        btnDado3.setContentAreaFilled(false);
         btnDado3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDado3ActionPerformed(evt);
             }
         });
-        pnlRodada.add(btnDado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, -1));
+        pnlRodada.add(btnDado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 340, 190, 90));
+
+        lblVS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vs.png"))); // NOI18N
+        pnlRodada.add(lblVS, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlRodada, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
+            .addComponent(pnlRodada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1666,6 +1686,7 @@ public class FrmRodada extends javax.swing.JFrame {
     private javax.swing.JLabel lblJog2Star8;
     private javax.swing.JLabel lblJog2Star9;
     private javax.swing.JLabel lblRodada;
+    private javax.swing.JLabel lblVS;
     private javax.swing.JPanel pnlRodada;
     // End of variables declaration//GEN-END:variables
 }

@@ -185,19 +185,19 @@ public class FrmJogadores extends javax.swing.JFrame {
         pnlSelecionado.setBackground(new java.awt.Color(255, 255, 102));
         pnlSelecionado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblPlayer.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        lblPlayer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         lblPlayer.setText("Jogador 1 (você):");
         pnlSelecionado.add(lblPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        lblVelocidade.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        lblVelocidade.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         lblVelocidade.setText("Velocidade:");
         pnlSelecionado.add(lblVelocidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
-        lblManobrabilidade.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        lblManobrabilidade.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         lblManobrabilidade.setText("Manobrabilidade:");
         pnlSelecionado.add(lblManobrabilidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
 
-        lblPoder.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        lblPoder.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         lblPoder.setText("Poder:");
         pnlSelecionado.add(lblPoder, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
         pnlSelecionado.add(lblImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 340, 310));
