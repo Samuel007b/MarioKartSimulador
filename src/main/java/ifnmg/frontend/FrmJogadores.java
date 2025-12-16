@@ -202,7 +202,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         pnlSelecionado.add(lblPoder, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
         pnlSelecionado.add(lblImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 340, 310));
 
-        lblNome.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        lblNome.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
         pnlSelecionado.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 280, 20));
 
         btnIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/startRoad.png"))); // NOI18N
