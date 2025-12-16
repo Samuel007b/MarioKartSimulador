@@ -12,7 +12,6 @@ import static ifnmg.backend.Api.executaRodadaRetaCurva;
 import static ifnmg.backend.Api.jogaDado;
 import static ifnmg.backend.Api.sorteiaPista;
 import static ifnmg.backend.Api.sorteiaRodadas;
-import ifnmg.backend.Personagem;
 import ifnmg.backend.Rodada;
 import static ifnmg.frontend.FrmJogadores.jog1;
 import static ifnmg.frontend.FrmJogadores.jog2;
@@ -27,6 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class FrmRodada extends javax.swing.JFrame {
+    private static int quantVitorias;
     private static int quantRodadas, dado1, dado2, dado3;
     private static List<Rodada> rodadaList = new ArrayList<>();
     private String tipoPista;
@@ -42,7 +42,8 @@ public class FrmRodada extends javax.swing.JFrame {
     private final ImageIcon reta = new ImageIcon("src/main/resources/PistaReta.png");
     private final ImageIcon curva = new ImageIcon("src/main/resources/PistaCurva.png");
     private final ImageIcon confronto = new ImageIcon("src/main/resources/PistaConfronto.png");
-    public FrmRodada() {
+    public FrmRodada(int quantVitorias) {
+        FrmRodada.quantVitorias=quantVitorias;
         initComponents();
         this.setLocationRelativeTo(null);
         lblJog1Star1.setVisible(false);
@@ -358,7 +359,9 @@ public class FrmRodada extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlRodada, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlRodada, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -1479,7 +1482,7 @@ public class FrmRodada extends javax.swing.JFrame {
         if(numRodada<=quantRodadas)
             iniciaRodada();
         else{
-            new FrmFimJogo().setVisible(true);
+            new FrmFimJogo(FrmRodada.quantVitorias).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnProximoActionPerformed
@@ -1487,7 +1490,7 @@ public class FrmRodada extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo sair (seu progresso nesta partida será perdido, mas você poderá iniciar outra partida)?", "Voltar ao Menu Principal", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
-            new FrmJogadores().setVisible(true);
+            new FrmJogadores(FrmRodada.quantVitorias).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
@@ -1667,7 +1670,7 @@ public class FrmRodada extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmRodada().setVisible(true);
+                new FrmRodada(FrmRodada.quantVitorias).setVisible(true);
             }
         });
     }

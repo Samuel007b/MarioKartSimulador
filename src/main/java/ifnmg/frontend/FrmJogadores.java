@@ -6,34 +6,31 @@ Frame da tela de seleção de personagens
 */
 package ifnmg.frontend;
 import ifnmg.backend.Personagem;
-import ifnmg.backend.Rodada;
-import static ifnmg.backend.Api.criaRodada;
 import static ifnmg.backend.Api.csvToList;
-import static ifnmg.backend.Api.executaRodada;
-import static ifnmg.backend.Api.jogaDado;
 import static ifnmg.backend.Api.sorteiaJogBotA;
 import static ifnmg.backend.Api.sorteiaJogBotB;
 import static ifnmg.backend.Api.sorteiaJogBotC;
-import static ifnmg.backend.Api.sorteiaPista;
-import static ifnmg.backend.Api.sorteiaRodadas;
-import static ifnmg.backend.Api.vencedor;
-import static ifnmg.backend.Api.zeraPontos;
-import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 public class FrmJogadores extends javax.swing.JFrame {
+    private static int quantVitorias;
+    private static ImageIcon samuel = new ImageIcon("src/main/resources/samuel.gif");
+    private static ImageIcon didi = new ImageIcon("src/main/resources/all.gif");
     public static Personagem jog1=null, jog2=null;
     private static List<Personagem> personagemList = new ArrayList<>();
-    public FrmJogadores() {
-        try{
+    public FrmJogadores(int quantVitorias) {
+    FrmJogadores.quantVitorias=quantVitorias;
+    try{
             personagemList = csvToList("data/tabela-personagens.csv");
             initComponents();
+            if(FrmJogadores.quantVitorias>=3){
+                btnP8.setIcon(samuel);
+                if(FrmJogadores.quantVitorias>=4)
+                    btnP9.setIcon(didi);
+            }
             this.setLocationRelativeTo(null);
             lblImagem.setHorizontalAlignment(SwingConstants.CENTER);
             lblImagem.setVerticalAlignment(SwingConstants.CENTER);
@@ -81,8 +78,8 @@ public class FrmJogadores extends javax.swing.JFrame {
         btnP5 = new javax.swing.JButton();
         btnP3 = new javax.swing.JButton();
         btnP6 = new javax.swing.JButton();
-        btnP8lock = new javax.swing.JButton();
-        btnP9lock = new javax.swing.JButton();
+        btnP8 = new javax.swing.JButton();
+        btnP9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -294,27 +291,27 @@ public class FrmJogadores extends javax.swing.JFrame {
         });
         pnlJogadores.add(btnP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 200, -1, -1));
 
-        btnP8lock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cadeado.png"))); // NOI18N
-        btnP8lock.setBorderPainted(false);
-        btnP8lock.setContentAreaFilled(false);
-        btnP8lock.setFocusPainted(false);
-        btnP8lock.addActionListener(new java.awt.event.ActionListener() {
+        btnP8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cadeado.png"))); // NOI18N
+        btnP8.setBorderPainted(false);
+        btnP8.setContentAreaFilled(false);
+        btnP8.setFocusPainted(false);
+        btnP8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnP8lockActionPerformed(evt);
+                btnP8ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnP8lock, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, -1, -1));
+        pnlJogadores.add(btnP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 381, 170, 160));
 
-        btnP9lock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cadeado.png"))); // NOI18N
-        btnP9lock.setBorderPainted(false);
-        btnP9lock.setContentAreaFilled(false);
-        btnP9lock.setFocusPainted(false);
-        btnP9lock.addActionListener(new java.awt.event.ActionListener() {
+        btnP9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cadeado.png"))); // NOI18N
+        btnP9.setBorderPainted(false);
+        btnP9.setContentAreaFilled(false);
+        btnP9.setFocusPainted(false);
+        btnP9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnP9lockActionPerformed(evt);
+                btnP9ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnP9lock, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 410, -1, -1));
+        pnlJogadores.add(btnP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 381, 150, 160));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -336,7 +333,13 @@ public class FrmJogadores extends javax.swing.JFrame {
         if(resposta == JOptionPane.YES_OPTION){
             jog1 = personagemList.get(0);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            jog2 = sorteiaJogBotA(personagemList, jog1);
+            if(FrmJogadores.quantVitorias>=3){
+                jog2 = sorteiaJogBotB(personagemList, jog1);
+                if(FrmJogadores.quantVitorias>=4)
+                    jog2 = sorteiaJogBotC(personagemList, jog1);
+            }
+            else
+                jog2 = sorteiaJogBotA(personagemList, jog1);
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -367,8 +370,8 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP5.setEnabled(false);
             btnP6.setEnabled(false);
             btnP7.setEnabled(false);
-            btnP8lock.setEnabled(false);
-            btnP9lock.setEnabled(false);
+            btnP8.setEnabled(false);
+            btnP9.setEnabled(false);
             btnIniciar.setVisible(true);
             btnIniciar.setEnabled(true);
         }
@@ -383,7 +386,13 @@ public class FrmJogadores extends javax.swing.JFrame {
         if(resposta == JOptionPane.YES_OPTION){
             jog1 = personagemList.get(1);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            jog2 = sorteiaJogBotA(personagemList, jog1);
+            if(FrmJogadores.quantVitorias>=3){
+                jog2 = sorteiaJogBotB(personagemList, jog1);
+                if(FrmJogadores.quantVitorias>=4)
+                    jog2 = sorteiaJogBotC(personagemList, jog1);
+            }
+            else
+                jog2 = sorteiaJogBotA(personagemList, jog1);
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -414,8 +423,8 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP5.setEnabled(false);
             btnP6.setEnabled(false);
             btnP7.setEnabled(false);
-            btnP8lock.setEnabled(false);
-            btnP9lock.setEnabled(false);
+            btnP8.setEnabled(false);
+            btnP9.setEnabled(false);
             btnIniciar.setVisible(true);
             btnIniciar.setEnabled(true);
         }
@@ -430,7 +439,13 @@ public class FrmJogadores extends javax.swing.JFrame {
         if(resposta == JOptionPane.YES_OPTION){
             jog1 = personagemList.get(2);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            jog2 = sorteiaJogBotA(personagemList, jog1);
+            if(FrmJogadores.quantVitorias>=3){
+                jog2 = sorteiaJogBotB(personagemList, jog1);
+                if(FrmJogadores.quantVitorias>=4)
+                    jog2 = sorteiaJogBotC(personagemList, jog1);
+            }
+            else
+                jog2 = sorteiaJogBotA(personagemList, jog1);
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -461,8 +476,8 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP5.setEnabled(false);
             btnP6.setEnabled(false);
             btnP7.setEnabled(false);
-            btnP8lock.setEnabled(false);
-            btnP9lock.setEnabled(false);
+            btnP8.setEnabled(false);
+            btnP9.setEnabled(false);
             btnIniciar.setVisible(true);
             btnIniciar.setEnabled(true);
         }
@@ -477,7 +492,13 @@ public class FrmJogadores extends javax.swing.JFrame {
         if(resposta == JOptionPane.YES_OPTION){
             jog1 = personagemList.get(3);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            jog2 = sorteiaJogBotA(personagemList, jog1);
+            if(FrmJogadores.quantVitorias>=3){
+                jog2 = sorteiaJogBotB(personagemList, jog1);
+                if(FrmJogadores.quantVitorias>=4)
+                    jog2 = sorteiaJogBotC(personagemList, jog1);
+            }
+            else
+                jog2 = sorteiaJogBotA(personagemList, jog1);
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -508,8 +529,8 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP5.setEnabled(false);
             btnP6.setEnabled(false);
             btnP7.setEnabled(false);
-            btnP8lock.setEnabled(false);
-            btnP9lock.setEnabled(false);
+            btnP8.setEnabled(false);
+            btnP9.setEnabled(false);
             btnIniciar.setVisible(true);
             btnIniciar.setEnabled(true);
         }
@@ -524,7 +545,13 @@ public class FrmJogadores extends javax.swing.JFrame {
         if(resposta == JOptionPane.YES_OPTION){
             jog1 = personagemList.get(4);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            jog2 = sorteiaJogBotA(personagemList, jog1);
+            if(FrmJogadores.quantVitorias>=3){
+                jog2 = sorteiaJogBotB(personagemList, jog1);
+                if(FrmJogadores.quantVitorias>=4)
+                    jog2 = sorteiaJogBotC(personagemList, jog1);
+            }
+            else
+                jog2 = sorteiaJogBotA(personagemList, jog1);
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -555,8 +582,8 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP5.setEnabled(false);
             btnP6.setEnabled(false);
             btnP7.setEnabled(false);
-            btnP8lock.setEnabled(false);
-            btnP9lock.setEnabled(false);
+            btnP8.setEnabled(false);
+            btnP9.setEnabled(false);
             btnIniciar.setVisible(true);
             btnIniciar.setEnabled(true);
         }
@@ -571,7 +598,13 @@ public class FrmJogadores extends javax.swing.JFrame {
         if(resposta == JOptionPane.YES_OPTION){
             jog1 = personagemList.get(5);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            jog2 = sorteiaJogBotA(personagemList, jog1);
+            if(FrmJogadores.quantVitorias>=3){
+                jog2 = sorteiaJogBotB(personagemList, jog1);
+                if(FrmJogadores.quantVitorias>=4)
+                    jog2 = sorteiaJogBotC(personagemList, jog1);
+            }
+            else
+                jog2 = sorteiaJogBotA(personagemList, jog1);
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -602,8 +635,8 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP5.setEnabled(false);
             btnP6.setEnabled(false);
             btnP7.setEnabled(false);
-            btnP8lock.setEnabled(false);
-            btnP9lock.setEnabled(false);
+            btnP8.setEnabled(false);
+            btnP9.setEnabled(false);
             btnIniciar.setVisible(true);
             btnIniciar.setEnabled(true);
         }
@@ -618,7 +651,13 @@ public class FrmJogadores extends javax.swing.JFrame {
         if(resposta == JOptionPane.YES_OPTION){
             jog1 = personagemList.get(6);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            jog2 = sorteiaJogBotA(personagemList, jog1);
+            if(FrmJogadores.quantVitorias>=3){
+                jog2 = sorteiaJogBotB(personagemList, jog1);
+                if(FrmJogadores.quantVitorias>=4)
+                    jog2 = sorteiaJogBotC(personagemList, jog1);
+            }
+            else
+                jog2 = sorteiaJogBotA(personagemList, jog1);
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -649,8 +688,8 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP5.setEnabled(false);
             btnP6.setEnabled(false);
             btnP7.setEnabled(false);
-            btnP8lock.setEnabled(false);
-            btnP9lock.setEnabled(false);
+            btnP8.setEnabled(false);
+            btnP9.setEnabled(false);
             btnIniciar.setVisible(true);
             btnIniciar.setEnabled(true);
         }
@@ -750,44 +789,162 @@ public class FrmJogadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnP5ActionPerformed
 
     private void btnSelectP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP8ActionPerformed
-        btnP8lockActionPerformed(evt);
-        JOptionPane.showMessageDialog(null,"Personagem bloqueado, ganhe três partidas para desbloqueá-lo!");
+        btnP8ActionPerformed(evt);
+        if(FrmJogadores.quantVitorias>=3){
+            int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(7).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(resposta == JOptionPane.YES_OPTION){
+                jog1 = personagemList.get(7);
+                JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
+                if(FrmJogadores.quantVitorias>=4)
+                    jog2 = sorteiaJogBotC(personagemList, jog1);
+                else
+                    jog2 = sorteiaJogBotB(personagemList, jog1);
+                ImageIcon icon = new ImageIcon(jog2.getImagem());
+                lblPlayer.setVisible(true);
+                lblNome.setVisible(true);
+                lblImagem.setVisible(true);
+                lblVelocidade.setVisible(true);
+                lblManobrabilidade.setVisible(true);
+                lblPoder.setVisible(true);
+                lblImagem.setIcon(icon);
+                lblPlayer.setText("Jogador 2 (computador):");
+                lblNome.setText(jog2.getNome());
+                lblVelocidade.setText("Velocidade: "+jog2.getVelocidade());
+                lblManobrabilidade.setText("Manobrabilidade: "+jog2.getManobrabilidade());
+                lblPoder.setText("Poder: "+jog2.getPoder());
+                JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
+                btnSelectP1.setEnabled(false);
+                btnSelectP2.setEnabled(false);
+                btnSelectP3.setEnabled(false);
+                btnSelectP4.setEnabled(false);
+                btnSelectP5.setEnabled(false);
+                btnSelectP6.setEnabled(false);
+                btnSelectP7.setEnabled(false);
+                btnSelectP8.setEnabled(false);
+                btnSelectP9.setEnabled(false);
+                btnP1.setEnabled(false);
+                btnP2.setEnabled(false);
+                btnP3.setEnabled(false);
+                btnP4.setEnabled(false);
+                btnP5.setEnabled(false);
+                btnP6.setEnabled(false);
+                btnP7.setEnabled(false);
+                btnP8.setEnabled(false);
+                btnP9.setEnabled(false);
+                btnIniciar.setVisible(true);
+                btnIniciar.setEnabled(true);
+            }
+            else if(resposta == JOptionPane.NO_OPTION){
+                JOptionPane.showMessageDialog(null,"Escolha novamente.");
+            }
+        }
+        else
+            JOptionPane.showMessageDialog(null,"Personagem bloqueado, ganhe três partidas para desbloqueá-lo!");
     }//GEN-LAST:event_btnSelectP8ActionPerformed
 
     private void btnSelectP9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP9ActionPerformed
-        btnP9lockActionPerformed(evt);
-        JOptionPane.showMessageDialog(null,"Personagem bloqueado!");
+        btnP9ActionPerformed(evt);
+        if(FrmJogadores.quantVitorias>=4){
+            int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(8).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(resposta == JOptionPane.YES_OPTION){
+                jog1 = personagemList.get(8);
+                JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
+                jog2 = sorteiaJogBotC(personagemList, jog1);
+                ImageIcon icon = new ImageIcon(jog2.getImagem());
+                lblPlayer.setVisible(true);
+                lblNome.setVisible(true);
+                lblImagem.setVisible(true);
+                lblVelocidade.setVisible(true);
+                lblManobrabilidade.setVisible(true);
+                lblPoder.setVisible(true);
+                lblImagem.setIcon(icon);
+                lblPlayer.setText("Jogador 2 (computador):");
+                lblNome.setText(jog2.getNome());
+                lblVelocidade.setText("Velocidade: "+jog2.getVelocidade());
+                lblManobrabilidade.setText("Manobrabilidade: "+jog2.getManobrabilidade());
+                lblPoder.setText("Poder: "+jog2.getPoder());
+                JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
+                btnSelectP1.setEnabled(false);
+                btnSelectP2.setEnabled(false);
+                btnSelectP3.setEnabled(false);
+                btnSelectP4.setEnabled(false);
+                btnSelectP5.setEnabled(false);
+                btnSelectP6.setEnabled(false);
+                btnSelectP7.setEnabled(false);
+                btnSelectP8.setEnabled(false);
+                btnSelectP9.setEnabled(false);
+                btnP1.setEnabled(false);
+                btnP2.setEnabled(false);
+                btnP3.setEnabled(false);
+                btnP4.setEnabled(false);
+                btnP5.setEnabled(false);
+                btnP6.setEnabled(false);
+                btnP7.setEnabled(false);
+                btnP8.setEnabled(false);
+                btnP9.setEnabled(false);
+                btnIniciar.setVisible(true);
+                btnIniciar.setEnabled(true);
+            }
+            else if(resposta == JOptionPane.NO_OPTION){
+                JOptionPane.showMessageDialog(null,"Escolha novamente.");
+            }
+        }
+        else if(FrmJogadores.quantVitorias==3){
+            JOptionPane.showMessageDialog(null,"Personagem bloqueado, ganhe uma partida com Samuel para desbloqueá-lo!");
+        }
+        else
+            JOptionPane.showMessageDialog(null,"Personagem bloqueado!");
     }//GEN-LAST:event_btnSelectP9ActionPerformed
 
-    private void btnP8lockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP8lockActionPerformed
+    private void btnP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP8ActionPerformed
         lblImagem.setVisible(true);
-        ImageIcon icon = new ImageIcon("src/main/resources/characters/bloqueado.png");
-        lblImagem.setIcon(icon);
+        if(FrmJogadores.quantVitorias>=3){
+            ImageIcon icon = new ImageIcon("src/main/resources/characters/samuelM.gif");
+            lblImagem.setIcon(icon);
+            lblNome.setText(personagemList.get(7).getNome());
+            lblVelocidade.setText("Velocidade: "+personagemList.get(7).getVelocidade());
+            lblManobrabilidade.setText("Manobrabilidade: "+personagemList.get(7).getManobrabilidade());
+            lblPoder.setText("Poder: "+personagemList.get(7).getPoder());
+        }
+        else{
+            ImageIcon icon = new ImageIcon("src/main/resources/characters/bloqueado.png");
+            lblImagem.setIcon(icon);
+            lblNome.setText("?");
+            lblVelocidade.setText("Velocidade: ?");
+            lblManobrabilidade.setText("Manobrabilidade: ?");
+            lblPoder.setText("Poder: ?");
+        }
         lblPlayer.setVisible(true);
         lblNome.setVisible(true);
         lblVelocidade.setVisible(true);
         lblManobrabilidade.setVisible(true);
         lblPoder.setVisible(true);
-        lblNome.setText("?");
-        lblVelocidade.setText("Velocidade: ?");
-        lblManobrabilidade.setText("Manobrabilidade: ?");
-        lblPoder.setText("Poder: ?");
-    }//GEN-LAST:event_btnP8lockActionPerformed
+    }//GEN-LAST:event_btnP8ActionPerformed
 
-    private void btnP9lockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP9lockActionPerformed
+    private void btnP9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP9ActionPerformed
         lblImagem.setVisible(true);
-        ImageIcon icon = new ImageIcon("src/main/resources/characters/bloqueado.png");
-        lblImagem.setIcon(icon);
+        if(FrmJogadores.quantVitorias>=4){
+            ImageIcon icon = new ImageIcon("src/main/resources/characters/didiM.gif"); //Ainda não temos
+            lblImagem.setIcon(icon);
+            lblNome.setText(personagemList.get(8).getNome());
+            lblVelocidade.setText("Velocidade: "+personagemList.get(8).getVelocidade());
+            lblManobrabilidade.setText("Manobrabilidade: "+personagemList.get(8).getManobrabilidade());
+            lblPoder.setText("Poder: "+personagemList.get(8).getPoder());
+        }
+        else{
+            ImageIcon icon = new ImageIcon("src/main/resources/characters/bloqueado.png");
+            lblImagem.setIcon(icon);
+            lblNome.setText("?");
+            lblVelocidade.setText("Velocidade: ?");
+            lblManobrabilidade.setText("Manobrabilidade: ?");
+            lblPoder.setText("Poder: ?");
+        }
         lblPlayer.setVisible(true);
         lblNome.setVisible(true);
         lblVelocidade.setVisible(true);
         lblManobrabilidade.setVisible(true);
         lblPoder.setVisible(true);
-        lblNome.setText("?");
-        lblVelocidade.setText("Velocidade: ?");
-        lblManobrabilidade.setText("Manobrabilidade: ?");
-        lblPoder.setText("Poder: ?");
-    }//GEN-LAST:event_btnP9lockActionPerformed
+    }//GEN-LAST:event_btnP9ActionPerformed
 
     private void btnP3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP3ActionPerformed
         lblImagem.setVisible(true);
@@ -805,14 +962,14 @@ public class FrmJogadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnP3ActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        new FrmRodada().setVisible(true);
+        new FrmRodada(FrmJogadores.quantVitorias).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnIniciarActionPerformed
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmJogadores().setVisible(true);
+                new FrmJogadores(FrmJogadores.quantVitorias).setVisible(true);
                 
             }
             
@@ -828,8 +985,8 @@ public class FrmJogadores extends javax.swing.JFrame {
     private javax.swing.JButton btnP5;
     private javax.swing.JButton btnP6;
     private javax.swing.JButton btnP7;
-    private javax.swing.JButton btnP8lock;
-    private javax.swing.JButton btnP9lock;
+    private javax.swing.JButton btnP8;
+    private javax.swing.JButton btnP9;
     private javax.swing.JButton btnSelectP1;
     private javax.swing.JButton btnSelectP2;
     private javax.swing.JButton btnSelectP3;

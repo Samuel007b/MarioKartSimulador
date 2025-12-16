@@ -85,7 +85,7 @@ public class FrmIdioma extends javax.swing.JFrame {
     private void btnPortuguesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPortuguesActionPerformed
         int resposta = JOptionPane.showConfirmDialog(null, "Você confirma o português como o idioma do jogo (não será possível mudar depois)?", "Confirmar Idioma", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta==JOptionPane.YES_OPTION){
-            new FrmJogadores().setVisible(true);
+            new FrmJogadores(0).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnPortuguesActionPerformed
@@ -93,7 +93,7 @@ public class FrmIdioma extends javax.swing.JFrame {
     private void btnEspañolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEspañolActionPerformed
         int resposta = JOptionPane.showConfirmDialog(null, "¿Puedes confirmar que el español es el idioma del juego (no será posible cambiarlo más adelante)?", "Confirmar Idioma", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta==JOptionPane.YES_OPTION){
-            new FrmJogadores().setVisible(true);
+            new FrmJogadores(0).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnEspañolActionPerformed
@@ -101,7 +101,7 @@ public class FrmIdioma extends javax.swing.JFrame {
     private void btnEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnglishActionPerformed
         int resposta = JOptionPane.showConfirmDialog(null, "Can you confirm English as the game's language (it won't be possible to change it later)?", "Confirm Language", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta==JOptionPane.YES_OPTION){
-            new FrmJogadores().setVisible(true);
+            new FrmJogadores(0).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnEnglishActionPerformed
