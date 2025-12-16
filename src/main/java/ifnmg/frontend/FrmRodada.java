@@ -218,6 +218,8 @@ public class FrmRodada extends javax.swing.JFrame {
         btnDado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/playDado.gif"))); // NOI18N
         btnDado.setBorderPainted(false);
         btnDado.setContentAreaFilled(false);
+        btnDado.setFocusPainted(false);
+        btnDado.setFocusTraversalPolicyProvider(true);
         btnDado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDadoActionPerformed(evt);
