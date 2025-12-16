@@ -5,41 +5,137 @@ Frame da tela final do jogo
 @author samuelmiranda
 */
 package ifnmg.frontend;
-public class FrmFimJogo extends javax.swing.JFrame {
 
-    public FrmFimJogo() {
+import static ifnmg.backend.Api.vencedor;
+import ifnmg.backend.Personagem;
+import static ifnmg.frontend.FrmJogadores.jog1;
+import static ifnmg.frontend.FrmJogadores.jog2;
+import javax.swing.JOptionPane;
+
+public class FrmFimJogo extends javax.swing.JFrame {
+    private static int quantVitorias;
+    private static Personagem vencedor = null;
+    public FrmFimJogo(int quantVitorias) {
+        FrmFimJogo.quantVitorias=quantVitorias;
         initComponents();
         this.setLocationRelativeTo(null);
+        vencedor = vencedor(jog1, jog2);
+        if(vencedor == jog1){
+            lblVencedor.setText("O grande vencedor foi "+jog1.getNome()+"!!!");
+            if(FrmFimJogo.quantVitorias<3){
+                FrmFimJogo.quantVitorias++;
+                if(FrmFimJogo.quantVitorias==3)
+                    JOptionPane.showMessageDialog(null, "Você desbloqueou o personagem SAMUEL!!!");
+            }
+            else if(quantVitorias==3 && jog1.getNome()=="Samuel"){
+                FrmFimJogo.quantVitorias++;
+                JOptionPane.showMessageDialog(null, "Você desbloqueou o personagem DIDI!!!");
+            }
+            else if(quantVitorias==4 && jog1.getNome()=="Didi"){
+                JOptionPane.showMessageDialog(null, "Você zerou o jogo!!!");
+                btnPlayAgain.setEnabled(false);
+                btnPlayAgain.setVisible(false);
+                FrmFimJogo.quantVitorias++;
+            }
+        }
+        else if(vencedor == jog2){
+            lblVencedor.setText("Infelizmente o vencedor foi "+jog2.getNome()+" ...");
+            if(jog1.getNome()=="Didi"){
+                JOptionPane.showMessageDialog(null, "Você fracassou...");
+                btnPlayAgain.setEnabled(false);
+                btnPlayAgain.setVisible(false);
+            }
+        }
+        else{
+            lblVencedor.setText("Houve um empate, "+jog1.getNome()+" e "+jog2.getNome()+" ficaram ambos com "+jog1.getPontos()+" ponto(s)!");
+        }
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlFimJogo = new javax.swing.JPanel();
+        btnPlayAgain = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
+        lblVencedor = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        pnlFimJogo.setBackground(new java.awt.Color(101, 178, 255));
+        pnlFimJogo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnPlayAgain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/playAgain.png"))); // NOI18N
+        btnPlayAgain.setBorderPainted(false);
+        btnPlayAgain.setContentAreaFilled(false);
+        btnPlayAgain.setFocusPainted(false);
+        btnPlayAgain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlayAgainActionPerformed(evt);
+            }
+        });
+        pnlFimJogo.add(btnPlayAgain, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exit.png"))); // NOI18N
+        btnSair.setBorderPainted(false);
+        btnSair.setContentAreaFilled(false);
+        btnSair.setFocusPainted(false);
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+        pnlFimJogo.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, -1, -1));
+
+        lblVencedor.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        lblVencedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVencedor.setText("O vencedor foi ...");
+        pnlFimJogo.add(lblVencedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 260, 1020, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
+            .addComponent(pnlFimJogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
+            .addComponent(pnlFimJogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPlayAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayAgainActionPerformed
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja jogar novamente?", "Voltar ao Menu Principal", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(resposta == JOptionPane.YES_OPTION){
+            new FrmJogadores(FrmFimJogo.quantVitorias).setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnPlayAgainActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        int resposta = JOptionPane.showConfirmDialog(null, "Você quer sair do jogo?", "Encerrar Jogo", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(resposta == JOptionPane.YES_OPTION){
+            if(FrmFimJogo.quantVitorias==5)
+                new FrmCreditos().setVisible(true);
+            else
+                this.dispose();
+        }
+    }//GEN-LAST:event_btnSairActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmFimJogo().setVisible(true);
+                new FrmFimJogo(FrmFimJogo.quantVitorias).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPlayAgain;
+    private javax.swing.JButton btnSair;
+    private javax.swing.JLabel lblVencedor;
+    private javax.swing.JPanel pnlFimJogo;
     // End of variables declaration//GEN-END:variables
 }
