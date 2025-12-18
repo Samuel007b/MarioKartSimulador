@@ -209,13 +209,13 @@ public class FrmRodada extends javax.swing.JFrame {
         lblDado2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dado.gif"))); // NOI18N
         pnlRodada.add(lblDado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 170, 190, 160));
 
-        lblJog1Nome.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        lblJog1Nome.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblJog1Nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog1Nome.setText("Jogador 1 (você): ");
         lblJog1Nome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlRodada.add(lblJog1Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 280, -1));
 
-        lblJog2Nome.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        lblJog2Nome.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblJog2Nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog2Nome.setText("Jogador 2 (computador): ");
         pnlRodada.add(lblJog2Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 280, -1));
@@ -237,12 +237,12 @@ public class FrmRodada extends javax.swing.JFrame {
         });
         pnlRodada.add(btnDado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 190, 90));
 
-        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblJog1Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog1Atributo.setText("Atributo: ");
         pnlRodada.add(lblJog1Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 280, -1));
 
-        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblJog2Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog2Atributo.setText("Atributo: ");
         pnlRodada.add(lblJog2Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 280, -1));
@@ -1490,7 +1490,7 @@ public class FrmRodada extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo sair (seu progresso nesta partida será perdido, mas você poderá iniciar outra partida)?", "Voltar ao Menu Principal", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
-            new FrmJogadores(FrmRodada.quantVitorias).setVisible(true);
+            new FrmJogadores(FrmRodada.quantVitorias, null, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnCancelarActionPerformed

@@ -10,6 +10,7 @@ import static ifnmg.backend.Api.csvToList;
 import static ifnmg.backend.Api.sorteiaJogBotA;
 import static ifnmg.backend.Api.sorteiaJogBotB;
 import static ifnmg.backend.Api.sorteiaJogBotC;
+import static ifnmg.backend.Api.vencedor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -17,13 +18,13 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 public class FrmJogadores extends javax.swing.JFrame {
     private static int quantVitorias;
-    private static ImageIcon samuel = new ImageIcon("src/main/resources/samuel.gif");
-    private static ImageIcon didi = new ImageIcon("src/main/resources/all.gif");
-    public static Personagem jog1=null, jog2=null;
+    private static final ImageIcon samuel = new ImageIcon("src/main/resources/samuel.gif");
+    private static final ImageIcon didi = new ImageIcon("src/main/resources/all.gif");
+    public static Personagem jog1, jog2;
     private static List<Personagem> personagemList = new ArrayList<>();
-    public FrmJogadores(int quantVitorias) {
-    FrmJogadores.quantVitorias=quantVitorias;
-    try{
+    public FrmJogadores(int quantVitorias, Personagem jog1, Personagem jog2) {
+        FrmJogadores.quantVitorias=quantVitorias;
+        try{
             personagemList = csvToList("data/tabela-personagens.csv");
             initComponents();
             if(FrmJogadores.quantVitorias>=3){
@@ -42,11 +43,16 @@ public class FrmJogadores extends javax.swing.JFrame {
             lblPoder.setVisible(false);
             btnIniciar.setVisible(false);
             btnIniciar.setEnabled(false);
+            if(FrmJogadores.quantVitorias==3 && vencedor(jog1, jog2)==jog1)
+                JOptionPane.showMessageDialog(null, "Você desbloqueou o personagem SAMUEL !!!");
+            else if(FrmJogadores.quantVitorias==4 && vencedor(jog1, jog2)==jog1)
+                JOptionPane.showMessageDialog(null, "Você desbloqueou o personagem DIDI !!!");
+            jog1=null;
+            jog2=null;
         }
         catch(Exception e){
             System.out.println(e.getMessage());
         }
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -163,43 +169,49 @@ public class FrmJogadores extends javax.swing.JFrame {
         });
         pnlJogadores.add(btnSelectP7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, -1, -1));
 
-        btnSelectP8.setText("Selecionar");
+        btnSelectP8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Samuel-por.gif"))); // NOI18N
+        btnSelectP8.setBorderPainted(false);
+        btnSelectP8.setContentAreaFilled(false);
+        btnSelectP8.setFocusPainted(false);
         btnSelectP8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelectP8ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnSelectP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 530, -1, -1));
+        pnlJogadores.add(btnSelectP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 530, -1, -1));
 
-        btnSelectP9.setText("Selecionar");
+        btnSelectP9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Didi-por.gif"))); // NOI18N
+        btnSelectP9.setBorderPainted(false);
+        btnSelectP9.setContentAreaFilled(false);
+        btnSelectP9.setFocusPainted(false);
         btnSelectP9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelectP9ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnSelectP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 530, -1, -1));
+        pnlJogadores.add(btnSelectP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 530, -1, -1));
 
         pnlSelecionado.setBackground(new java.awt.Color(255, 255, 102));
         pnlSelecionado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblPlayer.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        lblPlayer.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblPlayer.setText("Jogador 1 (você):");
         pnlSelecionado.add(lblPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        lblVelocidade.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        lblVelocidade.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblVelocidade.setText("Velocidade:");
         pnlSelecionado.add(lblVelocidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
-        lblManobrabilidade.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        lblManobrabilidade.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblManobrabilidade.setText("Manobrabilidade:");
         pnlSelecionado.add(lblManobrabilidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
 
-        lblPoder.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        lblPoder.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblPoder.setText("Poder:");
         pnlSelecionado.add(lblPoder, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
         pnlSelecionado.add(lblImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 340, 310));
 
-        lblNome.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
+        lblNome.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         pnlSelecionado.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 280, 20));
 
         btnIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/startRoad.png"))); // NOI18N
@@ -300,7 +312,7 @@ public class FrmJogadores extends javax.swing.JFrame {
                 btnP8ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 381, 170, 160));
+        pnlJogadores.add(btnP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 170, 160));
 
         btnP9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cadeado.png"))); // NOI18N
         btnP9.setBorderPainted(false);
@@ -311,7 +323,7 @@ public class FrmJogadores extends javax.swing.JFrame {
                 btnP9ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 381, 150, 160));
+        pnlJogadores.add(btnP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 380, 150, 160));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -969,7 +981,7 @@ public class FrmJogadores extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmJogadores(FrmJogadores.quantVitorias).setVisible(true);
+                new FrmJogadores(FrmJogadores.quantVitorias, jog1, jog2).setVisible(true);
                 
             }
             

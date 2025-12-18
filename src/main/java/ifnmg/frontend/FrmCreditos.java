@@ -12,6 +12,7 @@ public class FrmCreditos extends javax.swing.JFrame {
 
     public FrmCreditos() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
