@@ -5,6 +5,11 @@ Frame da tela de seleção de personagens
 @author samuelmiranda
 */
 package ifnmg.frontend;
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 import ifnmg.backend.Personagem;
 import static ifnmg.backend.Api.csvToList;
 import static ifnmg.backend.Api.sorteiaJogBotA;
@@ -45,12 +50,33 @@ public class FrmJogadores extends javax.swing.JFrame {
             lblPoder.setVisible(false);
             btnIniciar.setVisible(false);
             btnIniciar.setEnabled(false);
-            if(FrmJogadores.quantVitorias==3 && vencedor(jog1, jog2)==jog1)
+            if(FrmJogadores.quantVitorias==3 && vencedor(jog1, jog2)==jog1){
                 JOptionPane.showMessageDialog(null, "Você desbloqueou o personagem SAMUEL !!!");
+                try{
+                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-siu.wav"));
+                    Clip samuelsiu = AudioSystem.getClip();
+                    samuelsiu.open(audio);
+                    samuelsiu.start();
+                    Thread.sleep(3000);
+                    samuelsiu.close();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
+            }
             else if(FrmJogadores.quantVitorias==4 && vencedor(jog1, jog2)==jog1)
                 JOptionPane.showMessageDialog(null, "Você desbloqueou o personagem DIDI !!!");
             jog1=null;
             jog2=null;
+            try{
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/escolherJog.wav"));
+                Clip escolherJog = AudioSystem.getClip();
+                escolherJog.open(audio);
+                escolherJog.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
         }
         catch(Exception e){
             System.out.println(e.getMessage());
@@ -345,6 +371,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         btnP1ActionPerformed(evt);
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(0).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
+            btnP1ActionPerformed(evt);
             jog1 = personagemList.get(0);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
             if(FrmJogadores.quantVitorias>=3){
@@ -368,6 +395,33 @@ public class FrmJogadores extends javax.swing.JFrame {
             lblManobrabilidade.setText("Manobrabilidade: "+jog2.getManobrabilidade());
             lblPoder.setText("Poder: "+jog2.getPoder());
             JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
+            try{
+                AudioInputStream audio;
+                if("Mario".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
+                else if("Bowser".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                else if("Toad".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
+                else if("Luigi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
+                else if("Peach".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
+                else if("Yoshi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
+                else if("Donkey Kong".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
+                else if("Samuel".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/melhor.wav"));
+                else
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/melhor.wav"));//mudar
+                Clip player2 = AudioSystem.getClip();
+                player2.open(audio);
+                player2.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             btnSelectP1.setEnabled(false);
             btnSelectP2.setEnabled(false);
             btnSelectP3.setEnabled(false);
@@ -398,6 +452,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         btnP2ActionPerformed(evt);
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(1).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
+            btnP2ActionPerformed(evt);
             jog1 = personagemList.get(1);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
             if(FrmJogadores.quantVitorias>=3){
@@ -451,6 +506,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         btnP3ActionPerformed(evt);
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(2).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
+            btnP3ActionPerformed(evt);
             jog1 = personagemList.get(2);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
             if(FrmJogadores.quantVitorias>=3){
@@ -504,6 +560,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         btnP4ActionPerformed(evt);
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(3).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
+            btnP4ActionPerformed(evt);
             jog1 = personagemList.get(3);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
             if(FrmJogadores.quantVitorias>=3){
@@ -557,6 +614,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         btnP5ActionPerformed(evt);
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(4).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
+            btnP5ActionPerformed(evt);
             jog1 = personagemList.get(4);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
             if(FrmJogadores.quantVitorias>=3){
@@ -610,6 +668,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         btnP6ActionPerformed(evt);
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(5).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
+            btnP6ActionPerformed(evt);
             jog1 = personagemList.get(5);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
             if(FrmJogadores.quantVitorias>=3){
@@ -663,6 +722,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         btnP7ActionPerformed(evt);
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(6).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
+            btnP7ActionPerformed(evt);
             jog1 = personagemList.get(6);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
             if(FrmJogadores.quantVitorias>=3){
@@ -713,6 +773,15 @@ public class FrmJogadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelectP7ActionPerformed
 
     private void btnP7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP7ActionPerformed
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
+            Clip dk1 = AudioSystem.getClip();
+            dk1.open(audio);
+            dk1.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         lblImagem.setVisible(true);
         ImageIcon icon = new ImageIcon(personagemList.get(6).getImagem());
         lblImagem.setIcon(icon);
@@ -728,6 +797,15 @@ public class FrmJogadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnP7ActionPerformed
 
     private void btnP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP6ActionPerformed
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
+            Clip yoshi1 = AudioSystem.getClip();
+            yoshi1.open(audio);
+            yoshi1.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         lblImagem.setVisible(true);
         ImageIcon icon = new ImageIcon(personagemList.get(5).getImagem());
         lblImagem.setIcon(icon);
@@ -743,6 +821,15 @@ public class FrmJogadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnP6ActionPerformed
 
     private void btnP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP1ActionPerformed
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
+            Clip mario1 = AudioSystem.getClip();
+            mario1.open(audio);
+            mario1.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         lblImagem.setVisible(true);
         ImageIcon icon = new ImageIcon(personagemList.get(0).getImagem());
         lblImagem.setIcon(icon);
@@ -758,6 +845,15 @@ public class FrmJogadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnP1ActionPerformed
 
     private void btnP4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP4ActionPerformed
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
+            Clip luigi1 = AudioSystem.getClip();
+            luigi1.open(audio);
+            luigi1.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         lblImagem.setVisible(true);
         ImageIcon icon = new ImageIcon(personagemList.get(3).getImagem());
         lblImagem.setIcon(icon);
@@ -773,6 +869,15 @@ public class FrmJogadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnP4ActionPerformed
 
     private void btnP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP2ActionPerformed
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+            Clip bowser = AudioSystem.getClip();
+            bowser.open(audio);
+            bowser.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         lblImagem.setVisible(true);
         ImageIcon icon = new ImageIcon(personagemList.get(1).getImagem());
         lblImagem.setIcon(icon);
@@ -788,6 +893,15 @@ public class FrmJogadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnP2ActionPerformed
 
     private void btnP5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP5ActionPerformed
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
+            Clip peach1 = AudioSystem.getClip();
+            peach1.open(audio);
+            peach1.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         lblImagem.setVisible(true);
         ImageIcon icon = new ImageIcon(personagemList.get(4).getImagem());
         lblImagem.setIcon(icon);
@@ -807,6 +921,15 @@ public class FrmJogadores extends javax.swing.JFrame {
         if(FrmJogadores.quantVitorias>=3){
             int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(7).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(resposta == JOptionPane.YES_OPTION){
+                try{
+                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/escolha.wav"));
+                    Clip escolha = AudioSystem.getClip();
+                    escolha.open(audio);
+                    escolha.start();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
                 jog1 = personagemList.get(7);
                 JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
                 if(FrmJogadores.quantVitorias>=4)
@@ -861,6 +984,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         if(FrmJogadores.quantVitorias>=4){
             int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(8).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(resposta == JOptionPane.YES_OPTION){
+                btnP9ActionPerformed(evt);
                 jog1 = personagemList.get(8);
                 JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
                 jog2 = sorteiaJogBotC(personagemList, jog1);
@@ -913,6 +1037,15 @@ public class FrmJogadores extends javax.swing.JFrame {
     private void btnP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP8ActionPerformed
         lblImagem.setVisible(true);
         if(FrmJogadores.quantVitorias>=3){
+            try{
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/melhor.wav"));
+                Clip melhor = AudioSystem.getClip();
+                melhor.open(audio);
+                melhor.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             ImageIcon icon = new ImageIcon("src/main/resources/characters/samuelM.gif");
             lblImagem.setIcon(icon);
             lblNome.setText(personagemList.get(7).getNome());
@@ -961,6 +1094,15 @@ public class FrmJogadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnP9ActionPerformed
 
     private void btnP3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP3ActionPerformed
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
+            Clip toad1 = AudioSystem.getClip();
+            toad1.open(audio);
+            toad1.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         lblImagem.setVisible(true);
         ImageIcon icon = new ImageIcon(personagemList.get(2).getImagem());
         lblImagem.setIcon(icon);

@@ -5,8 +5,11 @@ Frame da tela final do jogo
 @author samuelmiranda
 */
 package ifnmg.frontend;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
+
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import static ifnmg.backend.Api.vencedor;
 import ifnmg.backend.Partida;
 import ifnmg.backend.Personagem;
@@ -65,6 +68,15 @@ public class FrmFimJogo extends javax.swing.JFrame {
         else if("Didi".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(didi);
         if(vencedor == jog1){
+            try{
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/vitoria1.wav"));
+                Clip vitoria1 = AudioSystem.getClip();
+                vitoria1.open(audio);
+                vitoria1.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             lblVencedor.setText("O grande vencedor foi "+jog1.getNome()+" (você) !!!");
             lblPerdedor.setText(jog2.getNome()+" (computador) ficou em 2º lugar.");
             if(FrmFimJogo.quantVitorias<3){
@@ -80,6 +92,15 @@ public class FrmFimJogo extends javax.swing.JFrame {
             }
         }
         else if(vencedor == jog2){
+            try{
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/derrota.wav"));
+                Clip derrota = AudioSystem.getClip();
+                derrota.open(audio);
+                derrota.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             lblVencedor.setText("Infelizmente o vencedor foi "+jog2.getNome()+" (computador) ...");
             lblPerdedor.setText(jog1.getNome()+" (você) ficou em 2º lugar.");
             if("Didi".equals(jog1.getNome())){
@@ -192,10 +213,28 @@ public class FrmFimJogo extends javax.swing.JFrame {
         if(resposta == JOptionPane.YES_OPTION){
             if(FrmFimJogo.quantVitorias==4 && "Didi".equals(jog1.getNome())){
                 JOptionPane.showMessageDialog(null, "Você fracassou...");
+                try{
+                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/gameOver.wav"));
+                    Clip gameOver = AudioSystem.getClip();
+                    gameOver.open(audio);
+                    gameOver.start();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
             }
             else if(FrmFimJogo.quantVitorias==5){
                 new FrmCreditos().setVisible(true);
                 JOptionPane.showMessageDialog(null, "Você zerou o jogo!!!");
+                try{
+                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/vitoria2.wav"));
+                    Clip vitoria2 = AudioSystem.getClip();
+                    vitoria2.open(audio);
+                    vitoria2.start();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
             }
             else
                 this.dispose();

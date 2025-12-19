@@ -69,6 +69,15 @@ public class FrmInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/welcome.wav"));
+            Clip welcome = AudioSystem.getClip();
+            welcome.open(audio);
+            welcome.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         new FrmIdioma().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnStartActionPerformed

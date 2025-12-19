@@ -6,6 +6,10 @@ Frame da tela de execução de rodada
 */
 package ifnmg.frontend;
 
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import static ifnmg.backend.Api.criaRodada;
 import static ifnmg.backend.Api.executaRodadaConfronto;
 import static ifnmg.backend.Api.executaRodadaRetaCurva;
@@ -120,6 +124,15 @@ public class FrmRodada extends javax.swing.JFrame {
         lblDado1.setVerticalAlignment(SwingConstants.CENTER);
         lblDado2.setHorizontalAlignment(SwingConstants.CENTER);
         lblDado2.setVerticalAlignment(SwingConstants.CENTER);
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/iniciar.wav"));
+            Clip iniciar = AudioSystem.getClip();
+            iniciar.open(audio);
+            iniciar.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         iniciaRodada();
     }
     private void iniciaRodada() {
@@ -372,6 +385,15 @@ public class FrmRodada extends javax.swing.JFrame {
 
     private void btnDadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDadoActionPerformed
         btnDado.setEnabled(false);
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dado.wav"));
+            Clip dado = AudioSystem.getClip();
+            dado.open(audio);
+            dado.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         dado1 = jogaDado();
         switch(dado1){
             case 1:
@@ -410,6 +432,15 @@ public class FrmRodada extends javax.swing.JFrame {
             rod.setUpgradeJog1(jog1.getPoder()+dado1);
             JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado e obteve "+dado1+". Agora seu poder é "+rod.getUpgradeJog1()+"!");
             lblJog1Atributo.setText("Poder: "+rod.getUpgradeJog1());
+        }
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dado.wav"));
+            Clip dado = AudioSystem.getClip();
+            dado.open(audio);
+            dado.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
         }
         dado2 = jogaDado();
         switch(dado2){
@@ -1306,6 +1337,15 @@ public class FrmRodada extends javax.swing.JFrame {
                 }
                 lblDado2.setIcon(d0);
                 JOptionPane.showMessageDialog(null,"Como o poder de "+jog2.getNome()+" é maior, "+jog2.getNome()+" pode jogar o dado novamente para tentar ganhar um ponto.");
+                try{
+                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dado.wav"));
+                    Clip dado = AudioSystem.getClip();
+                    dado.open(audio);
+                    dado.start();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
                 dado3 = jogaDado();
                 switch(dado3){
                     case 1:
@@ -1482,8 +1522,18 @@ public class FrmRodada extends javax.swing.JFrame {
         rod = criaRodada(numRodada, tipoPista, jog1, jog2, dado1, dado2);
         rodadaList.add(rod);
         numRodada++;
-        if(numRodada<=quantRodadas)
+        if(numRodada<=quantRodadas){
             iniciaRodada();
+            try{
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/rodada.wav"));
+                Clip rodada = AudioSystem.getClip();
+                rodada.open(audio);
+                rodada.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
+        } 
         else{
             new FrmFimJogo(FrmRodada.quantVitorias, FrmRodada.idPartida, FrmRodada.rodadaList).setVisible(true);
             this.dispose();
@@ -1501,6 +1551,15 @@ public class FrmRodada extends javax.swing.JFrame {
     private void btnDado3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDado3ActionPerformed
         btnDado3.setEnabled(false);
         btnDado3.setVisible(false);
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dado.wav"));
+            Clip dado = AudioSystem.getClip();
+            dado.open(audio);
+            dado.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         dado3 = jogaDado();
         switch(dado3){
             case 1:

@@ -6,6 +6,11 @@ Frame da tela especial de créditos
 */
 package ifnmg.frontend;
 
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 public class FrmCreditos extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmCreditos.class.getName());
