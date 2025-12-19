@@ -43,7 +43,8 @@ public class FrmFimJogo extends javax.swing.JFrame {
         vencedor = vencedor(jog1, jog2);
         if(vencedor==null){
             lblImagemVencedor.setIcon(empate);
-            lblVencedor.setText("Houve um empate, "+jog1.getNome()+" e "+jog2.getNome()+" ficaram ambos com "+jog1.getPontos()+" ponto(s)!");
+            lblVencedor.setText("Houve um empate entre "+jog1.getNome()+" e "+jog2.getNome()+".");
+            lblPerdedor.setText("Ambos ficaram ambos com "+jog1.getPontos()+" ponto(s).");
         }
         else if("Mario".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(mario);
@@ -64,7 +65,8 @@ public class FrmFimJogo extends javax.swing.JFrame {
         else if("Didi".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(didi);
         if(vencedor == jog1){
-            lblVencedor.setText("O grande vencedor foi "+jog1.getNome()+"!!!");
+            lblVencedor.setText("O grande vencedor foi "+jog1.getNome()+" (você) !!!");
+            lblPerdedor.setText(jog2.getNome()+" (computador) ficou em 2º lugar.");
             if(FrmFimJogo.quantVitorias<3){
                 FrmFimJogo.quantVitorias++;
             }
@@ -78,7 +80,8 @@ public class FrmFimJogo extends javax.swing.JFrame {
             }
         }
         else if(vencedor == jog2){
-            lblVencedor.setText("Infelizmente o vencedor foi "+jog2.getNome()+" ...");
+            lblVencedor.setText("Infelizmente o vencedor foi "+jog2.getNome()+" (computador) ...");
+            lblPerdedor.setText(jog1.getNome()+" (você) ficou em 2º lugar.");
             if("Didi".equals(jog1.getNome())){
                 btnPlayAgain.setEnabled(false);
                 btnPlayAgain.setVisible(false);
@@ -99,6 +102,8 @@ public class FrmFimJogo extends javax.swing.JFrame {
         btnHistorico1 = new javax.swing.JButton();
         btnHistorico2 = new javax.swing.JButton();
         lblImagemVencedor = new javax.swing.JLabel();
+        lblTrofeu = new javax.swing.JLabel();
+        lblPerdedor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,7 +138,6 @@ public class FrmFimJogo extends javax.swing.JFrame {
         pnlFimJogo.add(lblVencedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 1020, -1));
 
         btnHistorico1.setText("Histórico desta Partida");
-        btnHistorico1.setActionCommand("Histórico desta Partida");
         btnHistorico1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHistorico1ActionPerformed(evt);
@@ -150,7 +154,16 @@ public class FrmFimJogo extends javax.swing.JFrame {
         pnlFimJogo.add(btnHistorico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 540, -1, -1));
 
         lblImagemVencedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pnlFimJogo.add(lblImagemVencedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 320, 290));
+        pnlFimJogo.add(lblImagemVencedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 320, 290));
+
+        lblTrofeu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTrofeu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trofeu.gif"))); // NOI18N
+        pnlFimJogo.add(lblTrofeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, -1, -1));
+
+        lblPerdedor.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        lblPerdedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPerdedor.setText("Perdedor");
+        pnlFimJogo.add(lblPerdedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 480, 1020, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,7 +212,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHistorico1ActionPerformed
 
     private void btnHistorico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorico2ActionPerformed
-        JOptionPane.showMessageDialog(null, partidaList+"\n----- Resumo ----\nVocê está com "+FrmFimJogo.quantVitorias+" vitórias e "+(FrmFimJogo.idPartida-FrmFimJogo.quantVitorias)+" em "+FrmFimJogo.quantVitorias+" partidas.");
+        JOptionPane.showMessageDialog(null, partidaList+"\n----- Resumo ----\nVocê está com "+FrmFimJogo.quantVitorias+" vitórias e "+(FrmFimJogo.idPartida-FrmFimJogo.quantVitorias)+" derrotas em "+FrmFimJogo.quantVitorias+" partidas.");
     }//GEN-LAST:event_btnHistorico2ActionPerformed
 
     public static void main(String args[]) {
@@ -216,6 +229,8 @@ public class FrmFimJogo extends javax.swing.JFrame {
     private javax.swing.JButton btnPlayAgain;
     private javax.swing.JButton btnSair;
     private javax.swing.JLabel lblImagemVencedor;
+    private javax.swing.JLabel lblPerdedor;
+    private javax.swing.JLabel lblTrofeu;
     private javax.swing.JLabel lblVencedor;
     private javax.swing.JPanel pnlFimJogo;
     // End of variables declaration//GEN-END:variables
