@@ -97,7 +97,6 @@
         <Component class="javax.swing.JButton" name="btnHistorico1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hist&#xf3;rico desta Partida"/>
-            <Property name="actionCommand" type="java.lang.String" value="Hist&#xf3;rico desta Partida"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHistorico1ActionPerformed"/>

@@ -27,6 +27,7 @@ import javax.swing.SwingConstants;
 
 public class FrmRodada extends javax.swing.JFrame {
     private static int quantVitorias;
+    private static int idPartida;
     private static int quantRodadas, dado1, dado2, dado3;
     private static List<Rodada> rodadaList = new ArrayList<>();
     private String tipoPista;
@@ -42,7 +43,9 @@ public class FrmRodada extends javax.swing.JFrame {
     private final ImageIcon reta = new ImageIcon("src/main/resources/PistaReta.png");
     private final ImageIcon curva = new ImageIcon("src/main/resources/PistaCurva.png");
     private final ImageIcon confronto = new ImageIcon("src/main/resources/PistaConfronto.png");
-    public FrmRodada(int quantVitorias) {
+    public FrmRodada(int quantVitorias, int idPartida) {
+        rodadaList.clear();
+        FrmRodada.idPartida=idPartida;
         FrmRodada.quantVitorias=quantVitorias;
         initComponents();
         this.setLocationRelativeTo(null);
@@ -1482,7 +1485,7 @@ public class FrmRodada extends javax.swing.JFrame {
         if(numRodada<=quantRodadas)
             iniciaRodada();
         else{
-            new FrmFimJogo(FrmRodada.quantVitorias).setVisible(true);
+            new FrmFimJogo(FrmRodada.quantVitorias, FrmRodada.idPartida, FrmRodada.rodadaList).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnProximoActionPerformed
@@ -1490,7 +1493,7 @@ public class FrmRodada extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo sair (seu progresso nesta partida será perdido, mas você poderá iniciar outra partida)?", "Voltar ao Menu Principal", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
-            new FrmJogadores(FrmRodada.quantVitorias, null, null).setVisible(true);
+            new FrmJogadores(FrmRodada.quantVitorias, FrmRodada.idPartida, null, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
@@ -1670,7 +1673,7 @@ public class FrmRodada extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmRodada(FrmRodada.quantVitorias).setVisible(true);
+                new FrmRodada(FrmRodada.quantVitorias, FrmRodada.idPartida).setVisible(true);
             }
         });
     }

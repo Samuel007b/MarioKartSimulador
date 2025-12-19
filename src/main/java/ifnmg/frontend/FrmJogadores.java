@@ -18,11 +18,13 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 public class FrmJogadores extends javax.swing.JFrame {
     private static int quantVitorias;
+    private static int idPartida;
     private static final ImageIcon samuel = new ImageIcon("src/main/resources/samuel.gif");
     private static final ImageIcon didi = new ImageIcon("src/main/resources/all.gif");
     public static Personagem jog1, jog2;
     private static List<Personagem> personagemList = new ArrayList<>();
-    public FrmJogadores(int quantVitorias, Personagem jog1, Personagem jog2) {
+    public FrmJogadores(int quantVitorias, int idPartida, Personagem jog1, Personagem jog2) {
+        FrmJogadores.idPartida=idPartida+1;
         FrmJogadores.quantVitorias=quantVitorias;
         try{
             personagemList = csvToList("data/tabela-personagens.csv");
@@ -974,14 +976,14 @@ public class FrmJogadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnP3ActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        new FrmRodada(FrmJogadores.quantVitorias).setVisible(true);
+        new FrmRodada(FrmJogadores.quantVitorias, FrmJogadores.idPartida).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnIniciarActionPerformed
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmJogadores(FrmJogadores.quantVitorias, jog1, jog2).setVisible(true);
+                new FrmJogadores(FrmJogadores.quantVitorias, FrmJogadores.idPartida, jog1, jog2).setVisible(true);
                 
             }
             

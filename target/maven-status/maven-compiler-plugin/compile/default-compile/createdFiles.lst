@@ -9,6 +9,7 @@ ifnmg\frontend\FrmJogadores$7.class
 ifnmg\frontend\FrmRodada$4.class
 ifnmg\frontend\FrmJogadores$4.class
 ifnmg\frontend\FrmFimJogo$1.class
+ifnmg\frontend\FrmFimJogo$4.class
 ifnmg\frontend\FrmRodada.class
 ifnmg\frontend\FrmFimJogo$3.class
 ifnmg\frontend\FrmJogadores$16.class
@@ -25,6 +26,7 @@ ifnmg\frontend\FrmCarregando.class
 ifnmg\frontend\FrmJogadores$3.class
 ifnmg\frontend\FrmRodada$3.class
 ifnmg\backend\Personagem.class
+ifnmg\frontend\FrmFimJogo$5.class
 ifnmg\backend\Api.class
 ifnmg\frontend\FrmFimJogo.class
 ifnmg\frontend\FrmIdioma.class

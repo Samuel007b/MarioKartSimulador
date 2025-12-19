@@ -5,16 +5,25 @@ Frame da tela final do jogo
 @author samuelmiranda
 */
 package ifnmg.frontend;
-
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import static ifnmg.backend.Api.vencedor;
+import ifnmg.backend.Partida;
 import ifnmg.backend.Personagem;
+import ifnmg.backend.Rodada;
 import static ifnmg.frontend.FrmJogadores.jog1;
 import static ifnmg.frontend.FrmJogadores.jog2;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class FrmFimJogo extends javax.swing.JFrame {
     private static int quantVitorias;
+    private static int idPartida;
+    private static List<Rodada> rodadaList = new ArrayList<>();
+    private static List<Partida> partidaList = new ArrayList<>();
+    private static final ImageIcon empate = new ImageIcon("src/main/resources/characters/empate.png");
     private static final ImageIcon mario = new ImageIcon("src/main/resources/characters/marioM.gif");
     private static final ImageIcon bowser = new ImageIcon("src/main/resources/characters/bowserM.gif");
     private static final ImageIcon toad = new ImageIcon("src/main/resources/characters/toadM.gif");
@@ -24,29 +33,35 @@ public class FrmFimJogo extends javax.swing.JFrame {
     private static final ImageIcon dk = new ImageIcon("src/main/resources/characters/dkM.gif");
     private static final ImageIcon samuel = new ImageIcon("src/main/resources/characters/samuelM.gif");
     private static final ImageIcon didi = new ImageIcon("src/main/resources/characters/didiM.gif");
-    private static Personagem vencedor = null;
-    public FrmFimJogo(int quantVitorias) {
+    private static Personagem vencedor=null;
+    public FrmFimJogo(int quantVitorias, int idPartida, List<Rodada> rodadaList) {
+        this.idPartida=idPartida;
+        this.rodadaList = rodadaList;
         FrmFimJogo.quantVitorias=quantVitorias;
         initComponents();
         this.setLocationRelativeTo(null);
         vencedor = vencedor(jog1, jog2);
-        if("Mario".equals(vencedor.getNome()))
+        if(vencedor==null){
+            lblImagemVencedor.setIcon(empate);
+            lblVencedor.setText("Houve um empate, "+jog1.getNome()+" e "+jog2.getNome()+" ficaram ambos com "+jog1.getPontos()+" ponto(s)!");
+        }
+        else if("Mario".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(mario);
-        if("Bowser".equals(vencedor.getNome()))
+        else if("Bowser".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(bowser);
-        if("Toad".equals(vencedor.getNome()))
+        else if("Toad".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(toad);
-        if("Luigi".equals(vencedor.getNome()))
+        else if("Luigi".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(luigi);
-        if("Peach".equals(vencedor.getNome()))
+        else if("Peach".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(peach);
-        if("Yoshi".equals(vencedor.getNome()))
+        else if("Yoshi".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(yoshi);
-        if("Donkey Kong".equals(vencedor.getNome()))
+        else if("Donkey Kong".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(dk);
-        if("Samuel".equals(vencedor.getNome()))
+        else if("Samuel".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(samuel);
-        if("Didi".equals(vencedor.getNome()))
+        else if("Didi".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(didi);
         if(vencedor == jog1){
             lblVencedor.setText("O grande vencedor foi "+jog1.getNome()+"!!!");
@@ -57,7 +72,6 @@ public class FrmFimJogo extends javax.swing.JFrame {
                 FrmFimJogo.quantVitorias++;
             }
             else if(quantVitorias==4 && "Didi".equals(jog1.getNome())){
-                JOptionPane.showMessageDialog(null, "Você zerou o jogo!!!");
                 btnPlayAgain.setEnabled(false);
                 btnPlayAgain.setVisible(false);
                 FrmFimJogo.quantVitorias++;
@@ -65,15 +79,13 @@ public class FrmFimJogo extends javax.swing.JFrame {
         }
         else if(vencedor == jog2){
             lblVencedor.setText("Infelizmente o vencedor foi "+jog2.getNome()+" ...");
-            if(jog1.getNome()=="Didi"){
-                JOptionPane.showMessageDialog(null, "Você fracassou...");
+            if("Didi".equals(jog1.getNome())){
                 btnPlayAgain.setEnabled(false);
                 btnPlayAgain.setVisible(false);
             }
         }
-        else{
-            lblVencedor.setText("Houve um empate, "+jog1.getNome()+" e "+jog2.getNome()+" ficaram ambos com "+jog1.getPontos()+" ponto(s)!");
-        }
+        Partida p = new Partida(idPartida, jog1.getNome(), jog2.getNome(), jog1.getPontos(), jog2.getPontos());
+        partidaList.add(p);
     }
 
     @SuppressWarnings("unchecked")
@@ -157,7 +169,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
     private void btnPlayAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayAgainActionPerformed
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja jogar novamente?", "Voltar ao Menu Principal", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
-            new FrmJogadores(FrmFimJogo.quantVitorias, jog1, jog2).setVisible(true);
+            new FrmJogadores(FrmFimJogo.quantVitorias, FrmFimJogo.idPartida, jog1, jog2).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnPlayAgainActionPerformed
@@ -165,25 +177,35 @@ public class FrmFimJogo extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer sair do jogo?", "Encerrar Jogo", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
-            if(FrmFimJogo.quantVitorias==5)
+            if(FrmFimJogo.quantVitorias==4 && "Didi".equals(jog1.getNome())){
+                JOptionPane.showMessageDialog(null, "Você fracassou...");
+            }
+            else if(FrmFimJogo.quantVitorias==5){
                 new FrmCreditos().setVisible(true);
+                JOptionPane.showMessageDialog(null, "Você zerou o jogo!!!");
+            }
             else
                 this.dispose();
         }
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnHistorico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorico1ActionPerformed
-        // TODO add your handling code here:
+        if(vencedor == jog1)
+            JOptionPane.showMessageDialog(null, this.rodadaList+"\n----- Fim de Jogo -----\n"+jog1.getNome()+" venceu o jogo com "+jog1.getPontos()+" pontos!\nJá "+jog2.getNome()+" perdeu e ficou com "+jog2.getPontos()+" pontos.");
+        else if(vencedor == jog2)
+            JOptionPane.showMessageDialog(null, this.rodadaList+"\n----- Fim de Jogo -----\n"+jog2.getNome()+" venceu o jogo com "+jog2.getPontos()+" pontos!\nJá "+jog1.getNome()+" perdeu e ficou com "+jog1.getPontos()+" pontos.");
+        else
+            JOptionPane.showMessageDialog(null, this.rodadaList+"\n----- Fim de Jogo -----\n"+jog1.getNome()+" e "+jog2.getNome()+" empataram com "+jog1.getPontos()+" pontos cada.");
     }//GEN-LAST:event_btnHistorico1ActionPerformed
 
     private void btnHistorico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorico2ActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, partidaList+"\n----- Resumo ----\nVocê está com "+FrmFimJogo.quantVitorias+" vitórias e "+(FrmFimJogo.idPartida-FrmFimJogo.quantVitorias)+" em "+FrmFimJogo.quantVitorias+" partidas.");
     }//GEN-LAST:event_btnHistorico2ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmFimJogo(FrmFimJogo.quantVitorias).setVisible(true);
+                new FrmFimJogo(FrmFimJogo.quantVitorias, FrmFimJogo.idPartida, rodadaList).setVisible(true);
             }
         });
     }
