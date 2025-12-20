@@ -21,7 +21,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
-public class FrmJogadores extends javax.swing.JFrame {
+public class FrmPlayers extends javax.swing.JFrame {
     private static int quantVitorias;
     private static int idPartida;
     private static int pts;
@@ -29,16 +29,16 @@ public class FrmJogadores extends javax.swing.JFrame {
     private static final ImageIcon didi = new ImageIcon("src/main/resources/didi.gif");
     public static Personagem jog1, jog2;
     private static List<Personagem> personagemList = new ArrayList<>();
-    public FrmJogadores(int quantVitorias, int idPartida, int pts, Personagem jog1, Personagem jog2) {
-        FrmJogadores.idPartida=idPartida+1;
-        FrmJogadores.quantVitorias=quantVitorias;
-        FrmJogadores.pts=pts;
+    public FrmPlayers(int quantVitorias, int idPartida, int pts, Personagem jog1, Personagem jog2) {
+        FrmPlayers.idPartida=idPartida+1;
+        FrmPlayers.quantVitorias=quantVitorias;
+        FrmPlayers.pts=pts;
         try{
             personagemList = csvToList("data/tabela-personagens.csv");
             initComponents();
-            if(FrmJogadores.pts>=3){
+            if(FrmPlayers.pts>=3){
                 btnP8.setIcon(samuel);
-                if(FrmJogadores.pts>=4)
+                if(FrmPlayers.pts>=4)
                     btnP9.setIcon(didi);
             }
             this.setLocationRelativeTo(null);
@@ -52,8 +52,8 @@ public class FrmJogadores extends javax.swing.JFrame {
             lblPoder.setVisible(false);
             btnIniciar.setVisible(false);
             btnIniciar.setEnabled(false);
-            if(FrmJogadores.pts==3 && vencedor(jog1, jog2)==jog1){
-                JOptionPane.showMessageDialog(null, "Você desbloqueou o personagem SAMUEL !!!");
+            if(FrmPlayers.pts==3 && vencedor(jog1, jog2)==jog1){
+                JOptionPane.showMessageDialog(null, "You have unlocked the character SAMUEL !!!");
                 try{
                     AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-siu.wav"));
                     Clip samuelsiu = AudioSystem.getClip();
@@ -63,13 +63,13 @@ public class FrmJogadores extends javax.swing.JFrame {
                     samuelsiu.close();
                 }
                 catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                    JOptionPane.showMessageDialog(null, "Error reading the file.");
                 }
             }
-            else if(FrmJogadores.pts==4 && vencedor(jog1, jog2)==jog1){
-                JOptionPane.showMessageDialog(null, "Você desbloqueou o personagem DIDI SHOW !!!");
+            else if(FrmPlayers.pts==4 && vencedor(jog1, jog2)==jog1){
+                JOptionPane.showMessageDialog(null, "You have unlocked the character DIDI SHOW !!!");
                 try{
-                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-ing.wav"));
                     Clip didimer = AudioSystem.getClip();
                     didimer.open(audio);
                     didimer.start();
@@ -77,7 +77,7 @@ public class FrmJogadores extends javax.swing.JFrame {
                     didimer.close();
                 }
                 catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                    JOptionPane.showMessageDialog(null, "Error reading the file.");
                 }
             }
             jog1=null;
@@ -89,7 +89,7 @@ public class FrmJogadores extends javax.swing.JFrame {
                 escolherJog.start();
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                JOptionPane.showMessageDialog(null, "Error reading the file.");
             }
         }
         catch(Exception e){
@@ -134,7 +134,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         pnlJogadores.setBackground(new java.awt.Color(101, 178, 255));
         pnlJogadores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSelectP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Mario-por.gif"))); // NOI18N
+        btnSelectP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Mario-ing.gif"))); // NOI18N
         btnSelectP1.setBorderPainted(false);
         btnSelectP1.setContentAreaFilled(false);
         btnSelectP1.setFocusPainted(false);
@@ -143,9 +143,9 @@ public class FrmJogadores extends javax.swing.JFrame {
                 btnSelectP1ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnSelectP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
+        pnlJogadores.add(btnSelectP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
 
-        btnSelectP2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Bowser-por.gif"))); // NOI18N
+        btnSelectP2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Bowser-ing.gif"))); // NOI18N
         btnSelectP2.setBorderPainted(false);
         btnSelectP2.setContentAreaFilled(false);
         btnSelectP2.setFocusPainted(false);
@@ -154,9 +154,9 @@ public class FrmJogadores extends javax.swing.JFrame {
                 btnSelectP2ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnSelectP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, -1, -1));
+        pnlJogadores.add(btnSelectP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, -1, -1));
 
-        btnSelectP3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Toad-por.gif"))); // NOI18N
+        btnSelectP3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Toad-ing.gif"))); // NOI18N
         btnSelectP3.setBorderPainted(false);
         btnSelectP3.setContentAreaFilled(false);
         btnSelectP3.setFocusPainted(false);
@@ -165,9 +165,9 @@ public class FrmJogadores extends javax.swing.JFrame {
                 btnSelectP3ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnSelectP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 170, -1, -1));
+        pnlJogadores.add(btnSelectP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 170, -1, -1));
 
-        btnSelectP4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Luigi-por.gif"))); // NOI18N
+        btnSelectP4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Luigi-ing.gif"))); // NOI18N
         btnSelectP4.setBorderPainted(false);
         btnSelectP4.setContentAreaFilled(false);
         btnSelectP4.setFocusPainted(false);
@@ -176,9 +176,9 @@ public class FrmJogadores extends javax.swing.JFrame {
                 btnSelectP4ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnSelectP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, -1, -1));
+        pnlJogadores.add(btnSelectP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, -1, -1));
 
-        btnSelectP5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Peach-por.gif"))); // NOI18N
+        btnSelectP5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Peach-ing.gif"))); // NOI18N
         btnSelectP5.setBorderPainted(false);
         btnSelectP5.setContentAreaFilled(false);
         btnSelectP5.setFocusPainted(false);
@@ -187,9 +187,9 @@ public class FrmJogadores extends javax.swing.JFrame {
                 btnSelectP5ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnSelectP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, -1, -1));
+        pnlJogadores.add(btnSelectP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, -1));
 
-        btnSelectP6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Yoshi-por.gif"))); // NOI18N
+        btnSelectP6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Yoshi-ing.gif"))); // NOI18N
         btnSelectP6.setBorderPainted(false);
         btnSelectP6.setContentAreaFilled(false);
         btnSelectP6.setFocusPainted(false);
@@ -198,9 +198,9 @@ public class FrmJogadores extends javax.swing.JFrame {
                 btnSelectP6ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnSelectP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 350, -1, -1));
+        pnlJogadores.add(btnSelectP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 350, -1, -1));
 
-        btnSelectP7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Dk-por.gif"))); // NOI18N
+        btnSelectP7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Dk-ing.gif"))); // NOI18N
         btnSelectP7.setBorderPainted(false);
         btnSelectP7.setContentAreaFilled(false);
         btnSelectP7.setFocusPainted(false);
@@ -209,9 +209,9 @@ public class FrmJogadores extends javax.swing.JFrame {
                 btnSelectP7ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnSelectP7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, -1, -1));
+        pnlJogadores.add(btnSelectP7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 530, -1, -1));
 
-        btnSelectP8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Samuel-por.gif"))); // NOI18N
+        btnSelectP8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Samuel-ing.gif"))); // NOI18N
         btnSelectP8.setBorderPainted(false);
         btnSelectP8.setContentAreaFilled(false);
         btnSelectP8.setFocusPainted(false);
@@ -220,9 +220,9 @@ public class FrmJogadores extends javax.swing.JFrame {
                 btnSelectP8ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnSelectP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 530, -1, -1));
+        pnlJogadores.add(btnSelectP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 530, -1, -1));
 
-        btnSelectP9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Didi-por.gif"))); // NOI18N
+        btnSelectP9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Didi-ing.gif"))); // NOI18N
         btnSelectP9.setBorderPainted(false);
         btnSelectP9.setContentAreaFilled(false);
         btnSelectP9.setFocusPainted(false);
@@ -231,25 +231,25 @@ public class FrmJogadores extends javax.swing.JFrame {
                 btnSelectP9ActionPerformed(evt);
             }
         });
-        pnlJogadores.add(btnSelectP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 530, -1, -1));
+        pnlJogadores.add(btnSelectP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 530, -1, -1));
 
         pnlSelecionado.setBackground(new java.awt.Color(255, 255, 102));
         pnlSelecionado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPlayer.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        lblPlayer.setText("Jogador 1 (você):");
+        lblPlayer.setText("PLAYER 1 (YOU):");
         pnlSelecionado.add(lblPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         lblVelocidade.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        lblVelocidade.setText("Velocidade:");
+        lblVelocidade.setText("SPEED:");
         pnlSelecionado.add(lblVelocidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
         lblManobrabilidade.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        lblManobrabilidade.setText("Manobrabilidade:");
+        lblManobrabilidade.setText("Maneuverability:");
         pnlSelecionado.add(lblManobrabilidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
 
         lblPoder.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        lblPoder.setText("Poder:");
+        lblPoder.setText("PoWer:");
         pnlSelecionado.add(lblPoder, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
         pnlSelecionado.add(lblImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 340, 310));
 
@@ -383,176 +383,176 @@ public class FrmJogadores extends javax.swing.JFrame {
 
     private void btnSelectP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP1ActionPerformed
         btnP1ActionPerformed(evt);
-        int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(0).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int resposta = JOptionPane.showConfirmDialog(null, "Do you really want to play with "+personagemList.get(0).getNome()+"?", "Confirm Player", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             btnP1ActionPerformed(evt);
             jog1 = personagemList.get(0);
-            JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.pts>=3){
+            JOptionPane.showMessageDialog(null,"Character "+jog1.getNome()+" was chosen!");
+            if(FrmPlayers.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.pts>=4)
+                if(FrmPlayers.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jogador 2 (computador):");
+            lblPlayer.setText("Player 2 (computer):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"The computer will play as "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
-            JOptionPane.showMessageDialog(null,"Escolha novamente.");
+            JOptionPane.showMessageDialog(null,"Choose again.");
         }
     }//GEN-LAST:event_btnSelectP1ActionPerformed
 
     private void btnSelectP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP2ActionPerformed
         btnP2ActionPerformed(evt);
-        int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(1).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int resposta = JOptionPane.showConfirmDialog(null, "Do you really want to play with "+personagemList.get(1).getNome()+"?", "Confirm Player", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             btnP2ActionPerformed(evt);
             jog1 = personagemList.get(1);
-            JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.pts>=3){
+            JOptionPane.showMessageDialog(null,"Character "+jog1.getNome()+" was chosen!");
+            if(FrmPlayers.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.pts>=4)
+                if(FrmPlayers.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jogador 2 (computador):");
+            lblPlayer.setText("Player 2 (computer):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"The computer will play as "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
-            JOptionPane.showMessageDialog(null,"Escolha novamente.");
+            JOptionPane.showMessageDialog(null,"Choose again.");
         }
     }//GEN-LAST:event_btnSelectP2ActionPerformed
 
     private void btnSelectP3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP3ActionPerformed
         btnP3ActionPerformed(evt);
-        int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(2).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int resposta = JOptionPane.showConfirmDialog(null, "Do you really want to play with "+personagemList.get(2).getNome()+"?", "Confirm Player", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             btnP3ActionPerformed(evt);
             jog1 = personagemList.get(2);
-            JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.pts>=3){
+            JOptionPane.showMessageDialog(null,"Character "+jog1.getNome()+" was chosen!");
+            if(FrmPlayers.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.pts>=4)
+                if(FrmPlayers.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jogador 2 (computador):");
+            lblPlayer.setText("Player 2 (computer):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"The computer will play as "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
-            JOptionPane.showMessageDialog(null,"Escolha novamente.");
+            JOptionPane.showMessageDialog(null,"Choose again.");
         }
     }//GEN-LAST:event_btnSelectP3ActionPerformed
 
     private void btnSelectP4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP4ActionPerformed
         btnP4ActionPerformed(evt);
-        int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(3).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int resposta = JOptionPane.showConfirmDialog(null, "Do you really want to play with "+personagemList.get(3).getNome()+"?", "Confirm Player", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             btnP4ActionPerformed(evt);
             jog1 = personagemList.get(3);
-            JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.pts>=3){
+            JOptionPane.showMessageDialog(null,"Character "+jog1.getNome()+" was chosen!");
+            if(FrmPlayers.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.pts>=4)
+                if(FrmPlayers.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jogador 2 (computador):");
+            lblPlayer.setText("Player 2 (computer):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"The computer will play as "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
-            JOptionPane.showMessageDialog(null,"Escolha novamente.");
+            JOptionPane.showMessageDialog(null,"Choose again.");
         }
     }//GEN-LAST:event_btnSelectP4ActionPerformed
 
     private void btnSelectP5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP5ActionPerformed
         btnP5ActionPerformed(evt);
-        int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(4).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int resposta = JOptionPane.showConfirmDialog(null, "Do you really want to play with "+personagemList.get(4).getNome()+"?", "Confirm Player", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             btnP5ActionPerformed(evt);
             jog1 = personagemList.get(4);
-            JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.pts>=3){
+            JOptionPane.showMessageDialog(null,"Character "+jog1.getNome()+" was chosen!");
+            if(FrmPlayers.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.pts>=4)
+                if(FrmPlayers.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jogador 2 (computador):");
+            lblPlayer.setText("Player 2 (computer):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"The computer will play as "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
-            JOptionPane.showMessageDialog(null,"Escolha novamente.");
+            JOptionPane.showMessageDialog(null,"Choose again.");
         }
     }//GEN-LAST:event_btnSelectP5ActionPerformed
 
     private void btnSelectP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP6ActionPerformed
         btnP6ActionPerformed(evt);
-        int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(5).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int resposta = JOptionPane.showConfirmDialog(null, "Do you really want to play with "+personagemList.get(5).getNome()+"?", "Confirm Player", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             btnP6ActionPerformed(evt);
             jog1 = personagemList.get(5);
-            JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.pts>=3){
+            JOptionPane.showMessageDialog(null,"Character "+jog1.getNome()+" was chosen!");
+            if(FrmPlayers.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.pts>=4)
+                if(FrmPlayers.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jogador 2 (computador):");
+            lblPlayer.setText("Player 2 (computer):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"The computer will play as "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
-            JOptionPane.showMessageDialog(null,"Escolha novamente.");
+            JOptionPane.showMessageDialog(null,"Choose again.");
         }
     }//GEN-LAST:event_btnSelectP6ActionPerformed
 
     private void btnSelectP7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP7ActionPerformed
         btnP7ActionPerformed(evt);
-        int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(6).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int resposta = JOptionPane.showConfirmDialog(null, "Do you really want to play with "+personagemList.get(6).getNome()+"?", "Confirm Player", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             btnP7ActionPerformed(evt);
             jog1 = personagemList.get(6);
-            JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.pts>=3){
+            JOptionPane.showMessageDialog(null,"Character "+jog1.getNome()+" was chosen!");
+            if(FrmPlayers.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.pts>=4)
+                if(FrmPlayers.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jogador 2 (computador):");
+            lblPlayer.setText("Player 2 (computer):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"The computer will play as "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
-            JOptionPane.showMessageDialog(null,"Escolha novamente.");
+            JOptionPane.showMessageDialog(null,"Choose again.");
         }
     }//GEN-LAST:event_btnSelectP7ActionPerformed
 
@@ -564,7 +564,7 @@ public class FrmJogadores extends javax.swing.JFrame {
             dk1.start();
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            JOptionPane.showMessageDialog(null, "Error reading the file.");
         }
         visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 6);
     }//GEN-LAST:event_btnP7ActionPerformed
@@ -577,7 +577,7 @@ public class FrmJogadores extends javax.swing.JFrame {
             yoshi1.start();
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            JOptionPane.showMessageDialog(null, "Error reading the file.");
         }
         visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 5);
     }//GEN-LAST:event_btnP6ActionPerformed
@@ -590,7 +590,7 @@ public class FrmJogadores extends javax.swing.JFrame {
             mario1.start();
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            JOptionPane.showMessageDialog(null, "Error reading the file.");
         }
         visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 0);
         
@@ -604,7 +604,7 @@ public class FrmJogadores extends javax.swing.JFrame {
             luigi1.start();
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            JOptionPane.showMessageDialog(null, "Error reading the file.");
         }
         visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 3);
     }//GEN-LAST:event_btnP4ActionPerformed
@@ -617,7 +617,7 @@ public class FrmJogadores extends javax.swing.JFrame {
             bowser.start();
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            JOptionPane.showMessageDialog(null, "Error reading the file.");
         }
         visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 1);
     }//GEN-LAST:event_btnP2ActionPerformed
@@ -630,90 +630,90 @@ public class FrmJogadores extends javax.swing.JFrame {
             peach1.start();
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            JOptionPane.showMessageDialog(null, "Error reading the file.");
         }
         visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 4);
     }//GEN-LAST:event_btnP5ActionPerformed
 
     private void btnSelectP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP8ActionPerformed
         btnP8ActionPerformed(evt);
-        if(FrmJogadores.pts>=3){
-            int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(7).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(FrmPlayers.pts>=3){
+            int resposta = JOptionPane.showConfirmDialog(null, "Do you really want to play with "+personagemList.get(7).getNome()+"?", "Confirm Player", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(resposta == JOptionPane.YES_OPTION){
                 try{
-                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/escolha.wav"));
+                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-ing/escolha.wav"));
                     Clip escolha = AudioSystem.getClip();
                     escolha.open(audio);
                     escolha.start();
                 }
                 catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                    JOptionPane.showMessageDialog(null, "Error reading the file.");
                 }
                 jog1 = personagemList.get(7);
-                JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-                if(FrmJogadores.pts>=4)
+                JOptionPane.showMessageDialog(null,"Character "+jog1.getNome()+" was chosen!");
+                if(FrmPlayers.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
                 else
                     jog2 = sorteiaJogBotB(personagemList, jog1);
                 somPlayer2(jog2);
-                lblPlayer.setText("Jogador 2 (computador):");
+                lblPlayer.setText("Player 2 (computer):");
                 visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-                JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
+                JOptionPane.showMessageDialog(null,"The computer will play as "+jog2.getNome()+"!");
                 desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
             }
             else if(resposta == JOptionPane.NO_OPTION){
-                JOptionPane.showMessageDialog(null,"Escolha novamente.");
+                JOptionPane.showMessageDialog(null,"Choose again.");
             }
         }
         else
-            JOptionPane.showMessageDialog(null,"Personagem bloqueado, ganhe três partidas para desbloqueá-lo!");
+            JOptionPane.showMessageDialog(null,"Character locked, win three matches to unlock it!");
     }//GEN-LAST:event_btnSelectP8ActionPerformed
 
     private void btnSelectP9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP9ActionPerformed
         btnP9ActionPerformed(evt);
-        if(FrmJogadores.pts>=4){
-            int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(8).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(FrmPlayers.pts>=4){
+            int resposta = JOptionPane.showConfirmDialog(null, "Do you really want to play with "+personagemList.get(8).getNome()+"?", "Confirm Player", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(resposta == JOptionPane.YES_OPTION){
                 try{
-                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-ing.wav"));
                     Clip didiins = AudioSystem.getClip();
                     didiins.open(audio);
                     didiins.start();
                 }
                 catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                    JOptionPane.showMessageDialog(null, "Error reading the file.");
                 }
                 jog1 = personagemList.get(8);
-                JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
+                JOptionPane.showMessageDialog(null,"Character "+jog1.getNome()+" was chosen!");
                 jog2 = sorteiaJogBotC(personagemList, jog1);
                 somPlayer2(jog2);
-                lblPlayer.setText("Jogador 2 (computador):");
+                lblPlayer.setText("Player 2 (computer):");
                 visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-                JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
+                JOptionPane.showMessageDialog(null,"The computer will play as "+jog2.getNome()+"!");
                 desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
             }
             else if(resposta == JOptionPane.NO_OPTION){
-                JOptionPane.showMessageDialog(null,"Escolha novamente.");
+                JOptionPane.showMessageDialog(null,"Choose again.");
             }
         }
-        else if(FrmJogadores.pts==3){
-            JOptionPane.showMessageDialog(null,"Personagem bloqueado, ganhe uma partida com Samuel para desbloqueá-lo!");
+        else if(FrmPlayers.pts==3){
+            JOptionPane.showMessageDialog(null,"Character locked, win a match with Samuel to unlock him!");
         }
         else
-            JOptionPane.showMessageDialog(null,"Personagem bloqueado!");
+            JOptionPane.showMessageDialog(null,"Character blocked!");
     }//GEN-LAST:event_btnSelectP9ActionPerformed
 
     private void btnP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP8ActionPerformed
         lblImagem.setVisible(true);
-        if(FrmJogadores.pts>=3){
+        if(FrmPlayers.pts>=3){
             try{
-                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/melhor.wav"));
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-ing/melhor.wav"));
                 Clip melhor = AudioSystem.getClip();
                 melhor.open(audio);
                 melhor.start();
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                JOptionPane.showMessageDialog(null, "Error reading the file.");
             }
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 7);
         }
@@ -721,9 +721,9 @@ public class FrmJogadores extends javax.swing.JFrame {
             ImageIcon icon = new ImageIcon("src/main/resources/characters/bloqueado.png");
             lblImagem.setIcon(icon);
             lblNome.setText("?");
-            lblVelocidade.setText("Velocidade: ?");
-            lblManobrabilidade.setText("Manobrabilidade: ?");
-            lblPoder.setText("Poder: ?");
+            lblVelocidade.setText("Speed: ?");
+            lblManobrabilidade.setText("Maneuverability: ?");
+            lblPoder.setText("Power: ?");
         }
         lblPlayer.setVisible(true);
         lblNome.setVisible(true);
@@ -734,15 +734,15 @@ public class FrmJogadores extends javax.swing.JFrame {
 
     private void btnP9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP9ActionPerformed
         lblImagem.setVisible(true);
-        if(FrmJogadores.pts>=4){
+        if(FrmPlayers.pts>=4){
             try{
-                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-ing.wav"));
                 Clip didiins = AudioSystem.getClip();
                 didiins.open(audio);
                 didiins.start();
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                JOptionPane.showMessageDialog(null, "Error reading the file.");
             }
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 8);
         }
@@ -750,9 +750,9 @@ public class FrmJogadores extends javax.swing.JFrame {
             ImageIcon icon = new ImageIcon("src/main/resources/characters/bloqueado.png");
             lblImagem.setIcon(icon);
             lblNome.setText("?");
-            lblVelocidade.setText("Velocidade: ?");
-            lblManobrabilidade.setText("Manobrabilidade: ?");
-            lblPoder.setText("Poder: ?");
+            lblVelocidade.setText("Speed: ?");
+            lblManobrabilidade.setText("Maneuverability: ?");
+            lblPoder.setText("Power: ?");
         }
         lblPlayer.setVisible(true);
         lblNome.setVisible(true);
@@ -769,20 +769,20 @@ public class FrmJogadores extends javax.swing.JFrame {
             toad1.start();
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            JOptionPane.showMessageDialog(null, "Error reading the file.");
         }
         visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 2);
     }//GEN-LAST:event_btnP3ActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        new FrmRodada(FrmJogadores.quantVitorias, FrmJogadores.idPartida, FrmJogadores.pts).setVisible(true);
+        new FrmRound(FrmPlayers.quantVitorias, FrmPlayers.idPartida, FrmPlayers.pts).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnIniciarActionPerformed
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmJogadores(FrmJogadores.quantVitorias, FrmJogadores.idPartida, FrmJogadores.pts, jog1, jog2).setVisible(true);
+                new FrmPlayers(FrmPlayers.quantVitorias, FrmPlayers.idPartida, FrmPlayers.pts, jog1, jog2).setVisible(true);
             }
         });
     }
@@ -804,15 +804,15 @@ public class FrmJogadores extends javax.swing.JFrame {
             else if("Donkey Kong".equals(jog2.getNome()))
                 audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
             else if("Samuel".equals(jog2.getNome()))
-                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-ing/estouaqui.wav"));
             else
-                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-ing.wav"));
             Clip player2 = AudioSystem.getClip();
             player2.open(audio);
             player2.start();
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            JOptionPane.showMessageDialog(null, "Error reading the file.");
         }
     }
     private static void visualizarPlayer(javax.swing.JLabel lblPlayer, javax.swing.JLabel lblImagem, javax.swing.JLabel lblNome, javax.swing.JLabel lblVelocidade, javax.swing.JLabel lblManobrabilidade, javax.swing.JLabel lblPoder, int id){
@@ -825,9 +825,9 @@ public class FrmJogadores extends javax.swing.JFrame {
         lblManobrabilidade.setVisible(true);
         lblPoder.setVisible(true);
         lblNome.setText(personagemList.get(id).getNome());
-        lblVelocidade.setText("Velocidade: "+personagemList.get(id).getVelocidade());
-        lblManobrabilidade.setText("Manobrabilidade: "+personagemList.get(id).getManobrabilidade());
-        lblPoder.setText("Poder: "+personagemList.get(id).getPoder());
+        lblVelocidade.setText("Speed: "+personagemList.get(id).getVelocidade());
+        lblManobrabilidade.setText("Maneuverability: "+personagemList.get(id).getManobrabilidade());
+        lblPoder.setText("Power: "+personagemList.get(id).getPoder());
     }
     private static void desabilitaBotoes(javax.swing.JButton btnIniciar, javax.swing.JButton btnP1, javax.swing.JButton btnP2, javax.swing.JButton btnP3, javax.swing.JButton btnP4, javax.swing.JButton btnP5, javax.swing.JButton btnP6, javax.swing.JButton btnP7, javax.swing.JButton btnP8, javax.swing.JButton btnP9, javax.swing.JButton btnSelectP1, javax.swing.JButton btnSelectP2, javax.swing.JButton btnSelectP3, javax.swing.JButton btnSelectP4, javax.swing.JButton btnSelectP5, javax.swing.JButton btnSelectP6, javax.swing.JButton btnSelectP7, javax.swing.JButton btnSelectP8, javax.swing.JButton btnSelectP9){
         btnSelectP1.setEnabled(false);

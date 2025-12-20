@@ -107,12 +107,12 @@ public class Api {
         rod.setTipo(tipoPista);
         rod.setJog1(jog1);
         rod.setJog2(jog2);
-        if(rod.getTipo()=="RETA")
+        if(rod.getTipo()=="RETA" || rod.getTipo()=="STRAIGHT")
         {
             rod.setUpgradeJog1(jog1.getVelocidade()+dado1);
             rod.setUpgradeJog2(jog2.getVelocidade()+dado2);
         }
-        else if(rod.getTipo()=="CURVA")
+        else if(rod.getTipo()=="CURVA" || rod.getTipo()=="CURVE")
         {
             rod.setUpgradeJog1(jog1.getManobrabilidade()+dado1);
             rod.setUpgradeJog2(jog2.getManobrabilidade()+dado2);
@@ -137,7 +137,7 @@ public class Api {
             rod.getJog2().setPontos(rod.getJog2().getPontos()-1);
     }
     public static void executaRodada(Rodada rod, int dado3){
-        if((rod.getTipo()=="RETA")||(rod.getTipo()=="CURVA"))
+        if((rod.getTipo()=="RETA")||(rod.getTipo()=="CURVA")||(rod.getTipo()=="STRAIGHT")||(rod.getTipo()=="CURVE"))
         {
             if(rod.getUpgradeJog1()>rod.getUpgradeJog2())
                 rod.getJog1().setPontos(rod.getJog1().getPontos()+1);
