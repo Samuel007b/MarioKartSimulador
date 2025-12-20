@@ -71,25 +71,25 @@ public class Rodada {
     public String toString() {
         if("RETA".equals(tipo)){
             if(upgradeJog1>upgradeJog2)
-                return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog1.getNome()+" ganhou com "+upgradeJog1+" de velocidade.\n"+jog2.getNome()+ " ficou com "+upgradeJog2+" de velocidade";
+                return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog1.getNome()+" ganhou com "+upgradeJog1+" de velocidade, enquanto "+jog2.getNome()+ " ficou com "+upgradeJog2+" de velocidade";
             else if(upgradeJog2>upgradeJog1)
-                return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog2.getNome()+" ganhou com "+upgradeJog2+" de velocidade.\n"+jog1.getNome()+ " ficou com "+upgradeJog1+" de velocidade";
+                return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog2.getNome()+" ganhou com "+upgradeJog2+" de velocidade, enquanto "+jog1.getNome()+ " ficou com "+upgradeJog1+" de velocidade";
             else
                 return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog1.getNome()+" e "+jog2.getNome()+" empataram com "+upgradeJog1+" de velocidade";
         }
         else if("CURVA".equals(tipo)){
             if(upgradeJog1>upgradeJog2)
-                return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog1.getNome()+" ganhou com "+upgradeJog1+" de manobrabilidade.\n"+jog2.getNome()+ " ficou com "+upgradeJog2+" de manobrabilidade";
+                return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog1.getNome()+" ganhou com "+upgradeJog1+" de manobrabilidade, enquanto "+jog2.getNome()+ " ficou com "+upgradeJog2+" de manobrabilidade";
             else if(upgradeJog2>upgradeJog1)
-                return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog2.getNome()+" ganhou com "+upgradeJog2+" de manobrabilidade.\n"+jog1.getNome()+ " ficou com "+upgradeJog1+" de manobrabilidade";
+                return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog2.getNome()+" ganhou com "+upgradeJog2+" de manobrabilidade, enquanto "+jog1.getNome()+ " ficou com "+upgradeJog1+" de manobrabilidade";
             else
                 return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog1.getNome()+" e "+jog2.getNome()+" empataram com "+upgradeJog1+" de manobrabilidade";
         }
         else{
             if(upgradeJog1>upgradeJog2)
-                return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog1.getNome()+" ganhou com "+upgradeJog1+" de poder.\n"+jog2.getNome()+ " ficou com "+upgradeJog2+" de poder";
+                return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog1.getNome()+" ganhou com "+upgradeJog1+" de poder, enquanto "+jog2.getNome()+ " ficou com "+upgradeJog2+" de poder";
             else if(upgradeJog2>upgradeJog1)
-                return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog2.getNome()+" ganhou com "+upgradeJog2+" de poder.\n"+jog1.getNome()+ " ficou com "+upgradeJog1+" de poder";
+                return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog2.getNome()+" ganhou com "+upgradeJog2+" de poder, enquanto "+jog1.getNome()+ " ficou com "+upgradeJog1+" de poder";
             else
                 return "\n----- "+id+"º Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog1.getNome()+" e "+jog2.getNome()+" empataram com "+upgradeJog1+" de poder";
         }

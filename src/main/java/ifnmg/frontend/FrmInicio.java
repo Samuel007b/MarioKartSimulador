@@ -5,13 +5,14 @@ Frame da tela inicial do jogo
 @author samuelmiranda
 */
 package ifnmg.frontend;
+
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
-public class FrmInicio extends javax.swing.JFrame {
 
+public class FrmInicio extends javax.swing.JFrame {
     public FrmInicio(){
         initComponents();
         this.setLocationRelativeTo(null);
@@ -88,6 +89,7 @@ public class FrmInicio extends javax.swing.JFrame {
             }
         });
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnStart;
     private javax.swing.JLabel lblInicio;

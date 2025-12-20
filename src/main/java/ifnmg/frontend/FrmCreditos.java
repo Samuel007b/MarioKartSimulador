@@ -13,9 +13,7 @@ import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
 public class FrmCreditos extends javax.swing.JFrame {
-    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmCreditos.class.getName());
-
     public FrmCreditos() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -136,11 +134,11 @@ public class FrmCreditos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSairActionPerformed
+        JOptionPane.showMessageDialog(null, "Obrigado por ter jogado Mario Kart Simulador, volte sempre!");
         this.dispose();
     }//GEN-LAST:event_lblSairActionPerformed
 
     public static void main(String args[]) {
-        
         java.awt.EventQueue.invokeLater(() -> new FrmCreditos().setVisible(true));
     }
 
