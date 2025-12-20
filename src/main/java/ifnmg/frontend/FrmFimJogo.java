@@ -258,12 +258,32 @@ public class FrmFimJogo extends javax.swing.JFrame {
     private void btnPlayAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayAgainActionPerformed
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja jogar novamente?", "Voltar ao Menu Principal", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
+            try{
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/duvide.wav"));
+                Clip duvide = AudioSystem.getClip();
+                duvide.open(audio);
+                duvide.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             new FrmJogadores(FrmFimJogo.quantVitorias, FrmFimJogo.idPartida, jog1, jog2).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnPlayAgainActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        if(vencedor!=jog1){
+            try{
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/desistir.wav"));
+                Clip desistir = AudioSystem.getClip();
+                desistir.open(audio);
+                desistir.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
+        }
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer sair do jogo?", "Encerrar Jogo", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             if(FrmFimJogo.quantVitorias==4 && "Didi Show".equals(jog1.getNome())){
