@@ -11,7 +11,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 public class FrmInicio extends javax.swing.JFrame {
-
     public FrmInicio(){
         initComponents();
         this.setLocationRelativeTo(null);
@@ -88,6 +87,7 @@ public class FrmInicio extends javax.swing.JFrame {
             }
         });
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnStart;
     private javax.swing.JLabel lblInicio;
