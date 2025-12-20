@@ -273,7 +273,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPlayAgainActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        if(vencedor!=jog1){
+        if(vencedor!=jog1 && "Samuel".equals(jog1.getNome())){
             try{
                 AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/desistir.wav"));
                 Clip desistir = AudioSystem.getClip();
@@ -296,10 +296,12 @@ public class FrmFimJogo extends javax.swing.JFrame {
                 catch(Exception e){
                     JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
                 }
+                this.dispose();
                 JOptionPane.showMessageDialog(null, "Você fracassou...");
             }
             else if(FrmFimJogo.quantVitorias==5){
                 new FrmCreditos().setVisible(true);
+                this.dispose();
                 try{
                     AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/vitoria2.wav"));
                     Clip vitoria2 = AudioSystem.getClip();

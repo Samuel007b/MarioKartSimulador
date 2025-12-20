@@ -41,6 +41,7 @@ ifnmg\backend\Api.class
 ifnmg\frontend\FrmFimJogo.class
 ifnmg\frontend\FrmIdioma.class
 ifnmg\frontend\FrmJogadores$17.class
+ifnmg\frontend\FrmCreditos$1.class
 ifnmg\frontend\FrmJogadores$8.class
 ifnmg\frontend\FrmJogadores$9.class
 ifnmg\frontend\FrmJogadores$19.class

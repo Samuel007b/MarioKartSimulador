@@ -49,6 +49,7 @@ public class FrmCreditos extends javax.swing.JFrame {
         lblDk = new javax.swing.JLabel();
         lblDidi = new javax.swing.JLabel();
         lblAgradecimentos = new javax.swing.JLabel();
+        lblSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,7 +64,7 @@ public class FrmCreditos extends javax.swing.JFrame {
 
         lblLeo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLeo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/leo.png"))); // NOI18N
-        lblCreditos.add(lblLeo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
+        lblCreditos.add(lblLeo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, -1, -1));
 
         lblSamuel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/samumaquina.png"))); // NOI18N
         lblCreditos.add(lblSamuel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, -1, -1));
@@ -85,19 +86,19 @@ public class FrmCreditos extends javax.swing.JFrame {
         lblCreditos.add(lblLuigi, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
 
         lblPeach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/peach.gif"))); // NOI18N
-        lblCreditos.add(lblPeach, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
+        lblCreditos.add(lblPeach, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, -1));
 
         lblBowser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bowser.gif"))); // NOI18N
-        lblCreditos.add(lblBowser, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, -1, -1));
+        lblCreditos.add(lblBowser, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, -1, -1));
 
         lblToad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/toad.gif"))); // NOI18N
-        lblCreditos.add(lblToad, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 180, -1, -1));
+        lblCreditos.add(lblToad, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, -1, -1));
 
         lblYoshi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/yoshi.gif"))); // NOI18N
-        lblCreditos.add(lblYoshi, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 180, -1, -1));
+        lblCreditos.add(lblYoshi, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 180, -1, -1));
 
         lblDk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dk.gif"))); // NOI18N
-        lblCreditos.add(lblDk, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 180, -1, -1));
+        lblCreditos.add(lblDk, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 180, -1, -1));
 
         lblDidi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/didiShow.png"))); // NOI18N
         lblCreditos.add(lblDidi, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, -1, -1));
@@ -107,7 +108,15 @@ public class FrmCreditos extends javax.swing.JFrame {
         lblAgradecimentos.setForeground(new java.awt.Color(255, 255, 255));
         lblAgradecimentos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAgradecimentos.setText("Agradecimentos especiais: Leonardo Humberto, Caio Henriques, Caio da Silva, Gustavo Santos, Ryanderson Henzyo & Sara Augusta");
-        lblCreditos.add(lblAgradecimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 1190, -1));
+        lblCreditos.add(lblAgradecimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 1190, -1));
+
+        lblSair.setText("Sair");
+        lblSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblSairActionPerformed(evt);
+            }
+        });
+        lblCreditos.add(lblSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 570, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,6 +131,10 @@ public class FrmCreditos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_lblSairActionPerformed
 
     public static void main(String args[]) {
         
@@ -141,6 +154,7 @@ public class FrmCreditos extends javax.swing.JFrame {
     private javax.swing.JLabel lblMario;
     private javax.swing.JLabel lblParabens;
     private javax.swing.JLabel lblPeach;
+    private javax.swing.JButton lblSair;
     private javax.swing.JLabel lblSamuel;
     private javax.swing.JLabel lblToad;
     private javax.swing.JLabel lblYoshi;
