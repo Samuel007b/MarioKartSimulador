@@ -16,6 +16,7 @@ import static ifnmg.backend.Api.executaRodadaRetaCurva;
 import static ifnmg.backend.Api.jogaDado;
 import static ifnmg.backend.Api.sorteiaPista;
 import static ifnmg.backend.Api.sorteiaRodadas;
+import ifnmg.backend.Personagem;
 import ifnmg.backend.Rodada;
 import static ifnmg.frontend.FrmJogadores.jog1;
 import static ifnmg.frontend.FrmJogadores.jog2;
@@ -39,12 +40,6 @@ public class FrmRodada extends javax.swing.JFrame {
     private Rodada rod;
     private int numRodada = 1;
     private final ImageIcon d0 = new ImageIcon("src/main/resources/dado.gif");
-    private final ImageIcon d1 = new ImageIcon("src/main/resources/dado1.png");
-    private final ImageIcon d2 = new ImageIcon("src/main/resources/dado2.png");
-    private final ImageIcon d3 = new ImageIcon("src/main/resources/dado3.png");
-    private final ImageIcon d4 = new ImageIcon("src/main/resources/dado4.png");
-    private final ImageIcon d5 = new ImageIcon("src/main/resources/dado5.png");
-    private final ImageIcon d6 = new ImageIcon("src/main/resources/dado6.png");
     private final ImageIcon reta = new ImageIcon("src/main/resources/PistaReta.png");
     private final ImageIcon curva = new ImageIcon("src/main/resources/PistaCurva.png");
     private final ImageIcon confronto = new ImageIcon("src/main/resources/PistaConfronto.png");
@@ -55,26 +50,8 @@ public class FrmRodada extends javax.swing.JFrame {
         FrmRodada.pts=pts;
         initComponents();
         this.setLocationRelativeTo(null);
-        lblJog1Star1.setVisible(false);
-        lblJog1Star2.setVisible(false);
-        lblJog1Star3.setVisible(false);
-        lblJog1Star4.setVisible(false);
-        lblJog1Star5.setVisible(false);
-        lblJog1Star6.setVisible(false);
-        lblJog1Star7.setVisible(false);
-        lblJog1Star8.setVisible(false);
-        lblJog1Star9.setVisible(false);
-        lblJog1Star10.setVisible(false);
-        lblJog2Star1.setVisible(false);
-        lblJog2Star2.setVisible(false);
-        lblJog2Star3.setVisible(false);
-        lblJog2Star4.setVisible(false);
-        lblJog2Star5.setVisible(false);
-        lblJog2Star6.setVisible(false);
-        lblJog2Star7.setVisible(false);
-        lblJog2Star8.setVisible(false);
-        lblJog2Star9.setVisible(false);
-        lblJog2Star10.setVisible(false);
+        mostraEstrelas(0, lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
+        mostraEstrelas(0, lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
         btnDado.setHorizontalAlignment(SwingConstants.CENTER);
         btnDado.setVerticalAlignment(SwingConstants.CENTER);
         btnDado3.setVisible(false);
@@ -83,6 +60,15 @@ public class FrmRodada extends javax.swing.JFrame {
         btnDado3.setVerticalAlignment(SwingConstants.CENTER);
         btnProximo.setVisible(false);
         btnProximo.setEnabled(false);
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/iniciar.wav"));
+            Clip iniciar = AudioSystem.getClip();
+            iniciar.open(audio);
+            iniciar.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         String[] rodadas = {"5", "6", "7", "8", "9", "10", "Aleatório"};
         JComboBox<String> comboBox = new JComboBox<>(rodadas);
         JPanel painel = new JPanel(new GridLayout(0, 1));
@@ -126,15 +112,6 @@ public class FrmRodada extends javax.swing.JFrame {
         lblDado1.setVerticalAlignment(SwingConstants.CENTER);
         lblDado2.setHorizontalAlignment(SwingConstants.CENTER);
         lblDado2.setVerticalAlignment(SwingConstants.CENTER);
-        try{
-            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/iniciar.wav"));
-            Clip iniciar = AudioSystem.getClip();
-            iniciar.open(audio);
-            iniciar.start();
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-        }
         iniciaRodada();
     }
     private void iniciaRodada() {
@@ -387,38 +364,8 @@ public class FrmRodada extends javax.swing.JFrame {
 
     private void btnDadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDadoActionPerformed
         btnDado.setEnabled(false);
-        try{
-            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dado.wav"));
-            Clip dado = AudioSystem.getClip();
-            dado.open(audio);
-            dado.start();
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-        }
         dado1 = jogaDado();
-        switch(dado1){
-            case 1:
-                lblDado1.setIcon(d1);
-                break;
-            case 2:
-                lblDado1.setIcon(d2);
-                break;
-            case 3:
-                lblDado1.setIcon(d3);
-                break;
-            case 4:
-                lblDado1.setIcon(d4);
-                break;
-            case 5:
-                lblDado1.setIcon(d5);
-                break;
-            case 6:
-                lblDado1.setIcon(d6);
-                break;
-            default:
-                break;
-        }
+        trocaDado(dado1, lblDado1);
         if(tipoPista=="RETA"){
             
             rod.setUpgradeJog1(jog1.getVelocidade()+dado1);
@@ -435,38 +382,8 @@ public class FrmRodada extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado e obteve "+dado1+". Agora seu poder é "+rod.getUpgradeJog1()+"!");
             lblJog1Atributo.setText("Poder: "+rod.getUpgradeJog1());
         }
-        try{
-            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dado.wav"));
-            Clip dado = AudioSystem.getClip();
-            dado.open(audio);
-            dado.start();
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-        }
         dado2 = jogaDado();
-        switch(dado2){
-            case 1:
-                lblDado2.setIcon(d1);
-                break;
-            case 2:
-                lblDado2.setIcon(d2);
-                break;
-            case 3:
-                lblDado2.setIcon(d3);
-                break;
-            case 4:
-                lblDado2.setIcon(d4);
-                break;
-            case 5:
-                lblDado2.setIcon(d5);
-                break;
-            case 6:
-                lblDado2.setIcon(d6);
-                break;
-            default:
-                break;
-        }
+        trocaDado(dado2, lblDado2);
         if(tipoPista=="RETA"){
             
             rod.setUpgradeJog2(jog2.getVelocidade()+dado2);
@@ -487,335 +404,13 @@ public class FrmRodada extends javax.swing.JFrame {
             executaRodadaRetaCurva(rod);
             if(rod.getUpgradeJog1()>rod.getUpgradeJog2()){
                 JOptionPane.showMessageDialog(null,"A velocidade de "+jog1.getNome()+" é maior, então "+jog1.getNome()+" venceu a rodada e ganhou um ponto!");
-                try{
-                    AudioInputStream audio;
-                    if("Mario".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario2.wav"));
-                    else if("Bowser".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                    else if("Toad".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad2.wav"));
-                    else if("Luigi".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi2.wav"));
-                    else if("Peach".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach2.wav"));
-                    else if("Yoshi".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi2.wav"));
-                    else if("Donkey Kong".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
-                    else if("Samuel".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                    else
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
-                    Clip player1 = AudioSystem.getClip();
-                    player1.open(audio);
-                    player1.start();
-                }
-                catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-                }
-                switch(jog1.getPontos()){
-                    case 0:
-                        lblJog1Star1.setVisible(false);
-                        lblJog1Star2.setVisible(false);
-                        lblJog1Star3.setVisible(false);
-                        lblJog1Star4.setVisible(false);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 1:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(false);
-                        lblJog1Star3.setVisible(false);
-                        lblJog1Star4.setVisible(false);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 2:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(false);
-                        lblJog1Star4.setVisible(false);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 3:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(false);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 4:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 5:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 6:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 7:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(true);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 8:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(true);
-                        lblJog1Star8.setVisible(true);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 9:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(true);
-                        lblJog1Star8.setVisible(true);
-                        lblJog1Star9.setVisible(true);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 10:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(true);
-                        lblJog1Star8.setVisible(true);
-                        lblJog1Star9.setVisible(true);
-                        lblJog1Star10.setVisible(true);
-                        break;
-                    default:
-                        break;
-                }
+                somVitoria(jog1);
+                mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
             }
             else if(rod.getUpgradeJog1()<rod.getUpgradeJog2()){
                 JOptionPane.showMessageDialog(null,"A velocidade de "+jog2.getNome()+" é maior, então "+jog2.getNome()+" venceu a rodada e ganhou um ponto!");
-                try{
-                    AudioInputStream audio;
-                    if("Mario".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario2.wav"));
-                    else if("Bowser".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                    else if("Toad".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad2.wav"));
-                    else if("Luigi".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi2.wav"));
-                    else if("Peach".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach2.wav"));
-                    else if("Yoshi".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi2.wav"));
-                    else if("Donkey Kong".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
-                    else if("Samuel".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                    else
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
-                    Clip player2 = AudioSystem.getClip();
-                    player2.open(audio);
-                    player2.start();
-                }
-                catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-                }
-                switch(jog2.getPontos()){
-                    case 0:
-                        lblJog2Star1.setVisible(false);
-                        lblJog2Star2.setVisible(false);
-                        lblJog2Star3.setVisible(false);
-                        lblJog2Star4.setVisible(false);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 1:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(false);
-                        lblJog2Star3.setVisible(false);
-                        lblJog2Star4.setVisible(false);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 2:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(false);
-                        lblJog2Star4.setVisible(false);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 3:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(false);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 4:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 5:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 6:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 7:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(true);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 8:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(true);
-                        lblJog2Star8.setVisible(true);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 9:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(true);
-                        lblJog2Star8.setVisible(true);
-                        lblJog2Star9.setVisible(true);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 10:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(true);
-                        lblJog2Star8.setVisible(true);
-                        lblJog2Star9.setVisible(true);
-                        lblJog2Star10.setVisible(true);
-                        break;
-                    default:
-                        break;
-                }
+                somVitoria(jog2);
+                mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
             }
             else
                 JOptionPane.showMessageDialog(null,"As velocidades de "+jog1.getNome()+" e "+jog2.getNome()+" são iguais, então ninguém somou pontos.");
@@ -826,335 +421,13 @@ public class FrmRodada extends javax.swing.JFrame {
             executaRodadaRetaCurva(rod);
             if(rod.getUpgradeJog1()>rod.getUpgradeJog2()){
                 JOptionPane.showMessageDialog(null,"A manobrabilidade de "+jog1.getNome()+" é maior, então "+jog1.getNome()+" venceu a rodada e ganhou um ponto!");
-                try{
-                    AudioInputStream audio;
-                    if("Mario".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario2.wav"));
-                    else if("Bowser".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                    else if("Toad".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad2.wav"));
-                    else if("Luigi".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi2.wav"));
-                    else if("Peach".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach2.wav"));
-                    else if("Yoshi".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi2.wav"));
-                    else if("Donkey Kong".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
-                    else if("Samuel".equals(jog1.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                    else
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
-                    Clip player1 = AudioSystem.getClip();
-                    player1.open(audio);
-                    player1.start();
-                }
-                catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-                }
-                switch(jog1.getPontos()){
-                    case 0:
-                        lblJog1Star1.setVisible(false);
-                        lblJog1Star2.setVisible(false);
-                        lblJog1Star3.setVisible(false);
-                        lblJog1Star4.setVisible(false);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 1:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(false);
-                        lblJog1Star3.setVisible(false);
-                        lblJog1Star4.setVisible(false);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 2:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(false);
-                        lblJog1Star4.setVisible(false);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 3:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(false);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 4:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 5:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 6:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 7:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(true);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 8:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(true);
-                        lblJog1Star8.setVisible(true);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 9:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(true);
-                        lblJog1Star8.setVisible(true);
-                        lblJog1Star9.setVisible(true);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 10:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(true);
-                        lblJog1Star8.setVisible(true);
-                        lblJog1Star9.setVisible(true);
-                        lblJog1Star10.setVisible(true);
-                        break;
-                    default:
-                        break;
-                }
+                somVitoria(jog1);
+                mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
             }
             else if(rod.getUpgradeJog1()<rod.getUpgradeJog2()){
                 JOptionPane.showMessageDialog(null,"A manobrabilidade de "+jog2.getNome()+" é maior, então "+jog2.getNome()+" venceu a rodada e ganhou um ponto!");
-                try{
-                    AudioInputStream audio;
-                    if("Mario".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario2.wav"));
-                    else if("Bowser".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                    else if("Toad".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad2.wav"));
-                    else if("Luigi".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi2.wav"));
-                    else if("Peach".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach2.wav"));
-                    else if("Yoshi".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi2.wav"));
-                    else if("Donkey Kong".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
-                    else if("Samuel".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                    else
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
-                    Clip player2 = AudioSystem.getClip();
-                    player2.open(audio);
-                    player2.start();
-                }
-                catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-                }
-                switch(jog2.getPontos()){
-                    case 0:
-                        lblJog2Star1.setVisible(false);
-                        lblJog2Star2.setVisible(false);
-                        lblJog2Star3.setVisible(false);
-                        lblJog2Star4.setVisible(false);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 1:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(false);
-                        lblJog2Star3.setVisible(false);
-                        lblJog2Star4.setVisible(false);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 2:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(false);
-                        lblJog2Star4.setVisible(false);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 3:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(false);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 4:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 5:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 6:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 7:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(true);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 8:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(true);
-                        lblJog2Star8.setVisible(true);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 9:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(true);
-                        lblJog2Star8.setVisible(true);
-                        lblJog2Star9.setVisible(true);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 10:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(true);
-                        lblJog2Star8.setVisible(true);
-                        lblJog2Star9.setVisible(true);
-                        lblJog2Star10.setVisible(true);
-                        break;
-                    default:
-                        break;
-                }
+                somVitoria(jog2);
+                mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
             }
             else
                 JOptionPane.showMessageDialog(null,"As manobrabilidades de "+jog1.getNome()+" e "+jog2.getNome()+" são iguais, então ninguém somou pontos.");
@@ -1165,142 +438,7 @@ public class FrmRodada extends javax.swing.JFrame {
             executaRodadaConfronto(rod);
             if(rod.getUpgradeJog1()>rod.getUpgradeJog2()){
                 JOptionPane.showMessageDialog(null,"O poder de "+jog2.getNome()+" é menor, então "+jog2.getNome()+" perdeu a rodada e perdeu um ponto.");
-                switch(jog2.getPontos()){
-                    case 0:
-                        lblJog2Star1.setVisible(false);
-                        lblJog2Star2.setVisible(false);
-                        lblJog2Star3.setVisible(false);
-                        lblJog2Star4.setVisible(false);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 1:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(false);
-                        lblJog2Star3.setVisible(false);
-                        lblJog2Star4.setVisible(false);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 2:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(false);
-                        lblJog2Star4.setVisible(false);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 3:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(false);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 4:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(false);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 5:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(false);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 6:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(false);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 7:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(true);
-                        lblJog2Star8.setVisible(false);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 8:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(true);
-                        lblJog2Star8.setVisible(true);
-                        lblJog2Star9.setVisible(false);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 9:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(true);
-                        lblJog2Star8.setVisible(true);
-                        lblJog2Star9.setVisible(true);
-                        lblJog2Star10.setVisible(false);
-                        break;
-                    case 10:
-                        lblJog2Star1.setVisible(true);
-                        lblJog2Star2.setVisible(true);
-                        lblJog2Star3.setVisible(true);
-                        lblJog2Star4.setVisible(true);
-                        lblJog2Star5.setVisible(true);
-                        lblJog2Star6.setVisible(true);
-                        lblJog2Star7.setVisible(true);
-                        lblJog2Star8.setVisible(true);
-                        lblJog2Star9.setVisible(true);
-                        lblJog2Star10.setVisible(true);
-                        break;
-                    default:
-                        break;
-                }
+                mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
                 lblDado1.setIcon(d0);
                 JOptionPane.showMessageDialog(null,"Como o poder de "+jog1.getNome()+" é maior, "+jog1.getNome()+" pode jogar o dado novamente para tentar ganhar um ponto.");
                 btnDado.setVisible(false);
@@ -1309,338 +447,16 @@ public class FrmRodada extends javax.swing.JFrame {
             }
             else if(rod.getUpgradeJog1()<rod.getUpgradeJog2()){
                 JOptionPane.showMessageDialog(null,"O poder de "+jog1.getNome()+" é menor, então "+jog1.getNome()+" perdeu a rodada e perdeu um ponto.");
-                switch(jog1.getPontos()){
-                    case 0:
-                        lblJog1Star1.setVisible(false);
-                        lblJog1Star2.setVisible(false);
-                        lblJog1Star3.setVisible(false);
-                        lblJog1Star4.setVisible(false);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 1:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(false);
-                        lblJog1Star3.setVisible(false);
-                        lblJog1Star4.setVisible(false);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 2:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(false);
-                        lblJog1Star4.setVisible(false);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 3:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(false);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 4:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(false);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 5:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(false);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 6:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(false);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 7:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(true);
-                        lblJog1Star8.setVisible(false);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 8:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(true);
-                        lblJog1Star8.setVisible(true);
-                        lblJog1Star9.setVisible(false);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 9:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(true);
-                        lblJog1Star8.setVisible(true);
-                        lblJog1Star9.setVisible(true);
-                        lblJog1Star10.setVisible(false);
-                        break;
-                    case 10:
-                        lblJog1Star1.setVisible(true);
-                        lblJog1Star2.setVisible(true);
-                        lblJog1Star3.setVisible(true);
-                        lblJog1Star4.setVisible(true);
-                        lblJog1Star5.setVisible(true);
-                        lblJog1Star6.setVisible(true);
-                        lblJog1Star7.setVisible(true);
-                        lblJog1Star8.setVisible(true);
-                        lblJog1Star9.setVisible(true);
-                        lblJog1Star10.setVisible(true);
-                        break;
-                    default:
-                        break;
-                }
+                mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
                 lblDado2.setIcon(d0);
                 JOptionPane.showMessageDialog(null,"Como o poder de "+jog2.getNome()+" é maior, "+jog2.getNome()+" pode jogar o dado novamente para tentar ganhar um ponto.");
-                try{
-                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dado.wav"));
-                    Clip dado = AudioSystem.getClip();
-                    dado.open(audio);
-                    dado.start();
-                }
-                catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-                }
                 dado3 = jogaDado();
-                switch(dado3){
-                    case 1:
-                        lblDado2.setIcon(d1);
-                        break;
-                    case 2:
-                        lblDado2.setIcon(d2);
-                        break;
-                    case 3:
-                        lblDado2.setIcon(d3);
-                        break;
-                    case 4:
-                        lblDado2.setIcon(d4);
-                        break;
-                    case 5:
-                        lblDado2.setIcon(d5);
-                        break;
-                    case 6:
-                        lblDado2.setIcon(d6);
-                        break;
-                    default:
-                        break;
-                }
+                trocaDado(dado3, lblDado2);
                 if(dado3%2==0){
                     rod.getJog2().setPontos(rod.getJog2().getPontos()+1);
                     JOptionPane.showMessageDialog(null,jog2.getNome()+" jogou o dado novamente e obteve "+dado3+". Como "+dado3+" é par, "+jog2.getNome()+" ganhou um ponto!");
-                    try{
-                        AudioInputStream audio;
-                        if("Mario".equals(jog2.getNome()))
-                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario2.wav"));
-                        else if("Bowser".equals(jog2.getNome()))
-                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                        else if("Toad".equals(jog2.getNome()))
-                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad2.wav"));
-                        else if("Luigi".equals(jog2.getNome()))
-                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi2.wav"));
-                        else if("Peach".equals(jog2.getNome()))
-                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach2.wav"));
-                        else if("Yoshi".equals(jog2.getNome()))
-                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi2.wav"));
-                        else if("Donkey Kong".equals(jog2.getNome()))
-                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
-                        else if("Samuel".equals(jog2.getNome()))
-                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                        else
-                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
-                        Clip player2 = AudioSystem.getClip();
-                        player2.open(audio);
-                        player2.start();
-                    }
-                    catch(Exception e){
-                        JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-                    }
-                    switch(jog2.getPontos()){
-                        case 0:
-                            lblJog2Star1.setVisible(false);
-                            lblJog2Star2.setVisible(false);
-                            lblJog2Star3.setVisible(false);
-                            lblJog2Star4.setVisible(false);
-                            lblJog2Star5.setVisible(false);
-                            lblJog2Star6.setVisible(false);
-                            lblJog2Star7.setVisible(false);
-                            lblJog2Star8.setVisible(false);
-                            lblJog2Star9.setVisible(false);
-                            lblJog2Star10.setVisible(false);
-                            break;
-                        case 1:
-                            lblJog2Star1.setVisible(true);
-                            lblJog2Star2.setVisible(false);
-                            lblJog2Star3.setVisible(false);
-                            lblJog2Star4.setVisible(false);
-                            lblJog2Star5.setVisible(false);
-                            lblJog2Star6.setVisible(false);
-                            lblJog2Star7.setVisible(false);
-                            lblJog2Star8.setVisible(false);
-                            lblJog2Star9.setVisible(false);
-                            lblJog2Star10.setVisible(false);
-                            break;
-                        case 2:
-                            lblJog2Star1.setVisible(true);
-                            lblJog2Star2.setVisible(true);
-                            lblJog2Star3.setVisible(false);
-                            lblJog2Star4.setVisible(false);
-                            lblJog2Star5.setVisible(false);
-                            lblJog2Star6.setVisible(false);
-                            lblJog2Star7.setVisible(false);
-                            lblJog2Star8.setVisible(false);
-                            lblJog2Star9.setVisible(false);
-                            lblJog2Star10.setVisible(false);
-                            break;
-                        case 3:
-                            lblJog2Star1.setVisible(true);
-                            lblJog2Star2.setVisible(true);
-                            lblJog2Star3.setVisible(true);
-                            lblJog2Star4.setVisible(false);
-                            lblJog2Star5.setVisible(false);
-                            lblJog2Star6.setVisible(false);
-                            lblJog2Star7.setVisible(false);
-                            lblJog2Star8.setVisible(false);
-                            lblJog2Star9.setVisible(false);
-                            lblJog2Star10.setVisible(false);
-                            break;
-                        case 4:
-                            lblJog2Star1.setVisible(true);
-                            lblJog2Star2.setVisible(true);
-                            lblJog2Star3.setVisible(true);
-                            lblJog2Star4.setVisible(true);
-                            lblJog2Star5.setVisible(false);
-                            lblJog2Star6.setVisible(false);
-                            lblJog2Star7.setVisible(false);
-                            lblJog2Star8.setVisible(false);
-                            lblJog2Star9.setVisible(false);
-                            lblJog2Star10.setVisible(false);
-                            break;
-                        case 5:
-                            lblJog2Star1.setVisible(true);
-                            lblJog2Star2.setVisible(true);
-                            lblJog2Star3.setVisible(true);
-                            lblJog2Star4.setVisible(true);
-                            lblJog2Star5.setVisible(true);
-                            lblJog2Star6.setVisible(false);
-                            lblJog2Star7.setVisible(false);
-                            lblJog2Star8.setVisible(false);
-                            lblJog2Star9.setVisible(false);
-                            lblJog2Star10.setVisible(false);
-                            break;
-                        case 6:
-                            lblJog2Star1.setVisible(true);
-                            lblJog2Star2.setVisible(true);
-                            lblJog2Star3.setVisible(true);
-                            lblJog2Star4.setVisible(true);
-                            lblJog2Star5.setVisible(true);
-                            lblJog2Star6.setVisible(true);
-                            lblJog2Star7.setVisible(false);
-                            lblJog2Star8.setVisible(false);
-                            lblJog2Star9.setVisible(false);
-                            lblJog2Star10.setVisible(false);
-                            break;
-                        case 7:
-                            lblJog2Star1.setVisible(true);
-                            lblJog2Star2.setVisible(true);
-                            lblJog2Star3.setVisible(true);
-                            lblJog2Star4.setVisible(true);
-                            lblJog2Star5.setVisible(true);
-                            lblJog2Star6.setVisible(true);
-                            lblJog2Star7.setVisible(true);
-                            lblJog2Star8.setVisible(false);
-                            lblJog2Star9.setVisible(false);
-                            lblJog2Star10.setVisible(false);
-                        case 8:
-                            lblJog2Star1.setVisible(true);
-                            lblJog2Star2.setVisible(true);
-                            lblJog2Star3.setVisible(true);
-                            lblJog2Star4.setVisible(true);
-                            lblJog2Star5.setVisible(true);
-                            lblJog2Star6.setVisible(true);
-                            lblJog2Star7.setVisible(true);
-                            lblJog2Star8.setVisible(true);
-                            lblJog2Star9.setVisible(false);
-                            lblJog2Star10.setVisible(false);
-                        case 9:
-                            lblJog2Star1.setVisible(true);
-                            lblJog2Star2.setVisible(true);
-                            lblJog2Star3.setVisible(true);
-                            lblJog2Star4.setVisible(true);
-                            lblJog2Star5.setVisible(true);
-                            lblJog2Star6.setVisible(true);
-                            lblJog2Star7.setVisible(true);
-                            lblJog2Star8.setVisible(true);
-                            lblJog2Star9.setVisible(true);
-                            lblJog2Star10.setVisible(false);
-                        case 10:
-                            lblJog2Star1.setVisible(true);
-                            lblJog2Star2.setVisible(true);
-                            lblJog2Star3.setVisible(true);
-                            lblJog2Star4.setVisible(true);
-                            lblJog2Star5.setVisible(true);
-                            lblJog2Star6.setVisible(true);
-                            lblJog2Star7.setVisible(true);
-                            lblJog2Star8.setVisible(true);
-                            lblJog2Star9.setVisible(true);
-                            lblJog2Star10.setVisible(true);
-                        default:
-                            break;
-                    }
+                    somVitoria(jog2);
+                    mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
                 }
                 else
                     JOptionPane.showMessageDialog(null,jog2.getNome()+" jogou o dado novamente e obteve "+dado3+". Como "+dado3+" é ímpar, "+jog2.getNome()+" não somou pontos.");
@@ -1688,204 +504,13 @@ public class FrmRodada extends javax.swing.JFrame {
     private void btnDado3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDado3ActionPerformed
         btnDado3.setEnabled(false);
         btnDado3.setVisible(false);
-        try{
-            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dado.wav"));
-            Clip dado = AudioSystem.getClip();
-            dado.open(audio);
-            dado.start();
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-        }
         dado3 = jogaDado();
-        switch(dado3){
-            case 1:
-                lblDado1.setIcon(d1);
-                break;
-            case 2:
-                lblDado1.setIcon(d2);
-                break;
-            case 3:
-                lblDado1.setIcon(d3);
-                break;
-            case 4:
-                lblDado1.setIcon(d4);
-                break;
-            case 5:
-                lblDado1.setIcon(d5);
-                break;
-            case 6:
-                lblDado1.setIcon(d6);
-                break;
-            default:
-                break;
-        }
+        trocaDado(dado3, lblDado1);
         if(dado3%2==0){
             rod.getJog1().setPontos(rod.getJog1().getPontos()+1);
             JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado novamente e obteve "+dado3+". Como "+dado3+" é par, "+jog1.getNome()+" ganhou um ponto!");
-            try{
-                AudioInputStream audio;
-                if("Mario".equals(jog1.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
-                else if("Bowser".equals(jog1.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                else if("Toad".equals(jog1.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
-                else if("Luigi".equals(jog1.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
-                else if("Peach".equals(jog1.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
-                else if("Yoshi".equals(jog1.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
-                else if("Donkey Kong".equals(jog1.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
-                else if("Samuel".equals(jog1.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                else
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
-                Clip player1 = AudioSystem.getClip();
-                player1.open(audio);
-                player1.start();
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-            }
-            switch(jog1.getPontos()){
-                case 0:
-                    lblJog1Star1.setVisible(false);
-                    lblJog1Star2.setVisible(false);
-                    lblJog1Star3.setVisible(false);
-                    lblJog1Star4.setVisible(false);
-                    lblJog1Star5.setVisible(false);
-                    lblJog1Star6.setVisible(false);
-                    lblJog1Star7.setVisible(false);
-                    lblJog1Star8.setVisible(false);
-                    lblJog1Star9.setVisible(false);
-                    lblJog1Star10.setVisible(false);
-                    break;
-                case 1:
-                    lblJog1Star1.setVisible(true);
-                    lblJog1Star2.setVisible(false);
-                    lblJog1Star3.setVisible(false);
-                    lblJog1Star4.setVisible(false);
-                    lblJog1Star5.setVisible(false);
-                    lblJog1Star6.setVisible(false);
-                    lblJog1Star7.setVisible(false);
-                    lblJog1Star8.setVisible(false);
-                    lblJog1Star9.setVisible(false);
-                    lblJog1Star10.setVisible(false);
-                    break;
-                case 2:
-                    lblJog1Star1.setVisible(true);
-                    lblJog1Star2.setVisible(true);
-                    lblJog1Star3.setVisible(false);
-                    lblJog1Star4.setVisible(false);
-                    lblJog1Star5.setVisible(false);
-                    lblJog1Star6.setVisible(false);
-                    lblJog1Star7.setVisible(false);
-                    lblJog1Star8.setVisible(false);
-                    lblJog1Star9.setVisible(false);
-                    lblJog1Star10.setVisible(false);
-                    break;
-                case 3:
-                    lblJog1Star1.setVisible(true);
-                    lblJog1Star2.setVisible(true);
-                    lblJog1Star3.setVisible(true);
-                    lblJog1Star4.setVisible(false);
-                    lblJog1Star5.setVisible(false);
-                    lblJog1Star6.setVisible(false);
-                    lblJog1Star7.setVisible(false);
-                    lblJog1Star8.setVisible(false);
-                    lblJog1Star9.setVisible(false);
-                    lblJog1Star10.setVisible(false);
-                    break;
-                case 4:
-                    lblJog1Star1.setVisible(true);
-                    lblJog1Star2.setVisible(true);
-                    lblJog1Star3.setVisible(true);
-                    lblJog1Star4.setVisible(true);
-                    lblJog1Star5.setVisible(false);
-                    lblJog1Star6.setVisible(false);
-                    lblJog1Star7.setVisible(false);
-                    lblJog1Star8.setVisible(false);
-                    lblJog1Star9.setVisible(false);
-                    lblJog1Star10.setVisible(false);
-                    break;
-                case 5:
-                    lblJog1Star1.setVisible(true);
-                    lblJog1Star2.setVisible(true);
-                    lblJog1Star3.setVisible(true);
-                    lblJog1Star4.setVisible(true);
-                    lblJog1Star5.setVisible(true);
-                    lblJog1Star6.setVisible(false);
-                    lblJog1Star7.setVisible(false);
-                    lblJog1Star8.setVisible(false);
-                    lblJog1Star9.setVisible(false);
-                    lblJog1Star10.setVisible(false);
-                    break;
-                case 6:
-                    lblJog1Star1.setVisible(true);
-                    lblJog1Star2.setVisible(true);
-                    lblJog1Star3.setVisible(true);
-                    lblJog1Star4.setVisible(true);
-                    lblJog1Star5.setVisible(true);
-                    lblJog1Star6.setVisible(true);
-                    lblJog1Star7.setVisible(false);
-                    lblJog1Star8.setVisible(false);
-                    lblJog1Star9.setVisible(false);
-                    lblJog1Star10.setVisible(false);
-                    break;
-                case 7:
-                    lblJog1Star1.setVisible(true);
-                    lblJog1Star2.setVisible(true);
-                    lblJog1Star3.setVisible(true);
-                    lblJog1Star4.setVisible(true);
-                    lblJog1Star5.setVisible(true);
-                    lblJog1Star6.setVisible(true);
-                    lblJog1Star7.setVisible(true);
-                    lblJog1Star8.setVisible(false);
-                    lblJog1Star9.setVisible(false);
-                    lblJog1Star10.setVisible(false);
-                    break;
-                case 8:
-                    lblJog1Star1.setVisible(true);
-                    lblJog1Star2.setVisible(true);
-                    lblJog1Star3.setVisible(true);
-                    lblJog1Star4.setVisible(true);
-                    lblJog1Star5.setVisible(true);
-                    lblJog1Star6.setVisible(true);
-                    lblJog1Star7.setVisible(true);
-                    lblJog1Star8.setVisible(true);
-                    lblJog1Star9.setVisible(false);
-                    lblJog1Star10.setVisible(false);
-                    break;
-                case 9:
-                    lblJog1Star1.setVisible(true);
-                    lblJog1Star2.setVisible(true);
-                    lblJog1Star3.setVisible(true);
-                    lblJog1Star4.setVisible(true);
-                    lblJog1Star5.setVisible(true);
-                    lblJog1Star6.setVisible(true);
-                    lblJog1Star7.setVisible(true);
-                    lblJog1Star8.setVisible(true);
-                    lblJog1Star9.setVisible(true);
-                    lblJog1Star10.setVisible(false);
-                    break;
-                case 10:
-                    lblJog1Star1.setVisible(true);
-                    lblJog1Star2.setVisible(true);
-                    lblJog1Star3.setVisible(true);
-                    lblJog1Star4.setVisible(true);
-                    lblJog1Star5.setVisible(true);
-                    lblJog1Star6.setVisible(true);
-                    lblJog1Star7.setVisible(true);
-                    lblJog1Star8.setVisible(true);
-                    lblJog1Star9.setVisible(true);
-                    lblJog1Star10.setVisible(false);
-                    break;
-                default:
-                    break;
-            }
+            somVitoria(jog1);
+            mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
         }
         else
             JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado novamente e obteve "+dado3+". Como "+dado3+" é ímpar, "+jog1.getNome()+" não somou pontos.");
@@ -1899,6 +524,203 @@ public class FrmRodada extends javax.swing.JFrame {
                 new FrmRodada(FrmRodada.quantVitorias, FrmRodada.idPartida, FrmRodada.pts).setVisible(true);
             }
         });
+    }
+    private static void mostraEstrelas(int pts, javax.swing.JLabel lblStar1, javax.swing.JLabel lblStar2, javax.swing.JLabel lblStar3, javax.swing.JLabel lblStar4, javax.swing.JLabel lblStar5, javax.swing.JLabel lblStar6, javax.swing.JLabel lblStar7, javax.swing.JLabel lblStar8, javax.swing.JLabel lblStar9, javax.swing.JLabel lblStar10){
+        switch(pts){
+            case 0:
+                lblStar1.setVisible(false);
+                lblStar2.setVisible(false);
+                lblStar3.setVisible(false);
+                lblStar4.setVisible(false);
+                lblStar5.setVisible(false);
+                lblStar6.setVisible(false);
+                lblStar7.setVisible(false);
+                lblStar8.setVisible(false);
+                lblStar9.setVisible(false);
+                lblStar10.setVisible(false);
+                break;
+            case 1:
+                lblStar1.setVisible(true);
+                lblStar2.setVisible(false);
+                lblStar3.setVisible(false);
+                lblStar4.setVisible(false);
+                lblStar5.setVisible(false);
+                lblStar6.setVisible(false);
+                lblStar7.setVisible(false);
+                lblStar8.setVisible(false);
+                lblStar9.setVisible(false);
+                lblStar10.setVisible(false);
+                break;
+            case 2:
+                lblStar1.setVisible(true);
+                lblStar2.setVisible(true);
+                lblStar3.setVisible(false);
+                lblStar4.setVisible(false);
+                lblStar5.setVisible(false);
+                lblStar6.setVisible(false);
+                lblStar7.setVisible(false);
+                lblStar8.setVisible(false);
+                lblStar9.setVisible(false);
+                lblStar10.setVisible(false);
+                break;
+            case 3:
+                lblStar1.setVisible(true);
+                lblStar2.setVisible(true);
+                lblStar3.setVisible(true);
+                lblStar4.setVisible(false);
+                lblStar5.setVisible(false);
+                lblStar6.setVisible(false);
+                lblStar7.setVisible(false);
+                lblStar8.setVisible(false);
+                lblStar9.setVisible(false);
+                lblStar10.setVisible(false);
+                break;
+            case 4:
+                lblStar1.setVisible(true);
+                lblStar2.setVisible(true);
+                lblStar3.setVisible(true);
+                lblStar4.setVisible(true);
+                lblStar5.setVisible(false);
+                lblStar6.setVisible(false);
+                lblStar7.setVisible(false);
+                lblStar8.setVisible(false);
+                lblStar9.setVisible(false);
+                lblStar10.setVisible(false);
+                break;
+            case 5:
+                lblStar1.setVisible(true);
+                lblStar2.setVisible(true);
+                lblStar3.setVisible(true);
+                lblStar4.setVisible(true);
+                lblStar5.setVisible(true);
+                lblStar6.setVisible(false);
+                lblStar7.setVisible(false);
+                lblStar8.setVisible(false);
+                lblStar9.setVisible(false);
+                lblStar10.setVisible(false);
+                break;
+            case 6:
+                lblStar1.setVisible(true);
+                lblStar2.setVisible(true);
+                lblStar3.setVisible(true);
+                lblStar4.setVisible(true);
+                lblStar5.setVisible(true);
+                lblStar6.setVisible(true);
+                lblStar7.setVisible(false);
+                lblStar8.setVisible(false);
+                lblStar9.setVisible(false);
+                lblStar10.setVisible(false);
+                break;
+            case 7:
+                lblStar1.setVisible(true);
+                lblStar2.setVisible(true);
+                lblStar3.setVisible(true);
+                lblStar4.setVisible(true);
+                lblStar5.setVisible(true);
+                lblStar6.setVisible(true);
+                lblStar7.setVisible(true);
+                lblStar8.setVisible(false);
+                lblStar9.setVisible(false);
+                lblStar10.setVisible(false);
+                break;
+            case 8:
+                lblStar1.setVisible(true);
+                lblStar2.setVisible(true);
+                lblStar3.setVisible(true);
+                lblStar4.setVisible(true);
+                lblStar5.setVisible(true);
+                lblStar6.setVisible(true);
+                lblStar7.setVisible(true);
+                lblStar8.setVisible(true);
+                lblStar9.setVisible(false);
+                lblStar10.setVisible(false);
+                break;
+            case 9:
+                lblStar1.setVisible(true);
+                lblStar2.setVisible(true);
+                lblStar3.setVisible(true);
+                lblStar4.setVisible(true);
+                lblStar5.setVisible(true);
+                lblStar6.setVisible(true);
+                lblStar7.setVisible(true);
+                lblStar8.setVisible(true);
+                lblStar9.setVisible(true);
+                lblStar10.setVisible(false);
+                break;
+            case 10:
+                lblStar1.setVisible(true);
+                lblStar2.setVisible(true);
+                lblStar3.setVisible(true);
+                lblStar4.setVisible(true);
+                lblStar5.setVisible(true);
+                lblStar6.setVisible(true);
+                lblStar7.setVisible(true);
+                lblStar8.setVisible(true);
+                lblStar9.setVisible(true);
+                lblStar10.setVisible(true);
+                break;
+            default:
+                break;
+        }
+    }
+    private static void trocaDado(int dado, javax.swing.JLabel lblDado){
+        ImageIcon d1 = new ImageIcon("src/main/resources/dado1.png");
+        ImageIcon d2 = new ImageIcon("src/main/resources/dado2.png");
+        ImageIcon d3 = new ImageIcon("src/main/resources/dado3.png");
+        ImageIcon d4 = new ImageIcon("src/main/resources/dado4.png");
+        ImageIcon d5 = new ImageIcon("src/main/resources/dado5.png");
+        ImageIcon d6 = new ImageIcon("src/main/resources/dado6.png");
+        switch(dado){
+            case 1:
+                lblDado.setIcon(d1);
+                break;
+            case 2:
+                lblDado.setIcon(d2);
+                break;
+            case 3:
+                lblDado.setIcon(d3);
+                break;
+            case 4:
+                lblDado.setIcon(d4);
+                break;
+            case 5:
+                lblDado.setIcon(d5);
+                break;
+            case 6:
+                lblDado.setIcon(d6);
+                break;
+            default:
+                break;
+        }
+    }
+    private static void somVitoria(Personagem jog){
+        try{
+            AudioInputStream audio;
+            if("Mario".equals(jog.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario2.wav"));
+            else if("Bowser".equals(jog.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+            else if("Toad".equals(jog.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad2.wav"));
+            else if("Luigi".equals(jog.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi2.wav"));
+            else if("Peach".equals(jog.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach2.wav"));
+            else if("Yoshi".equals(jog.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi2.wav"));
+            else if("Donkey Kong".equals(jog.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
+            else if("Samuel".equals(jog.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+            else
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
+            Clip player = AudioSystem.getClip();
+            player.open(audio);
+            player.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

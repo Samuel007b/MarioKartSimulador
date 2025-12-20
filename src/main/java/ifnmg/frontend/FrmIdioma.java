@@ -14,7 +14,6 @@ import javax.sound.sampled.Clip;
 
 public class FrmIdioma extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmIdioma.class.getName());
-
     public FrmIdioma() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -87,51 +86,51 @@ public class FrmIdioma extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPortuguesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPortuguesActionPerformed
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/brasil.wav"));
+            Clip brasil = AudioSystem.getClip();
+            brasil.open(audio);
+            brasil.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         int resposta = JOptionPane.showConfirmDialog(null, "Você confirma o português como o idioma do jogo (não será possível mudar depois)?", "Confirmar Idioma", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta==JOptionPane.YES_OPTION){
-            try{
-                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/brasil.wav"));
-                Clip brasil = AudioSystem.getClip();
-                brasil.open(audio);
-                brasil.start();
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-            }
             new FrmJogadores(0, 0, 0, null, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnPortuguesActionPerformed
 
     private void btnEspañolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEspañolActionPerformed
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/espanha.wav"));
+            Clip espanha = AudioSystem.getClip();
+            espanha.open(audio);
+            espanha.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         int resposta = JOptionPane.showConfirmDialog(null, "¿Puedes confirmar que el español es el idioma del juego (no será posible cambiarlo más adelante)?", "Confirmar Idioma", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta==JOptionPane.YES_OPTION){
-            try{
-                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/espanha.wav"));
-                Clip espanha = AudioSystem.getClip();
-                espanha.open(audio);
-                espanha.start();
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-            }
             new FrmJogadores(0, 0, 0, null, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnEspañolActionPerformed
 
     private void btnEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnglishActionPerformed
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/inglaterra.wav"));
+            Clip inglaterra = AudioSystem.getClip();
+            inglaterra.open(audio);
+            inglaterra.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         int resposta = JOptionPane.showConfirmDialog(null, "Can you confirm English as the game's language (it won't be possible to change it later)?", "Confirm Language", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta==JOptionPane.YES_OPTION){
-            try{
-                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/inglaterra.wav"));
-                Clip inglaterra = AudioSystem.getClip();
-                inglaterra.open(audio);
-                inglaterra.start();
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-            }
             new FrmJogadores(0, 0, 0, null, null).setVisible(true);
             this.dispose();
         }
@@ -139,7 +138,6 @@ public class FrmIdioma extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new FrmIdioma().setVisible(true));
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

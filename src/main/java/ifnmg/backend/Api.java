@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.JOptionPane;
 
 public class Api {
     public static List<Personagem> csvToList(String csvFileName) throws FileNotFoundException{
@@ -86,6 +90,15 @@ public class Api {
         return jog2;
     }
     public static int jogaDado(){
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dado.wav"));
+            Clip dado = AudioSystem.getClip();
+            dado.open(audio);
+            dado.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         Random aleatorio = new Random();
         return aleatorio.nextInt(6)+1;
     }

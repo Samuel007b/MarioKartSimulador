@@ -13,9 +13,7 @@ import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
 public class FrmCreditos extends javax.swing.JFrame {
-    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmCreditos.class.getName());
-
     public FrmCreditos() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -141,7 +139,6 @@ public class FrmCreditos extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSairActionPerformed
 
     public static void main(String args[]) {
-        
         java.awt.EventQueue.invokeLater(() -> new FrmCreditos().setVisible(true));
     }
 

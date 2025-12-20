@@ -395,94 +395,11 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
-            try{
-                AudioInputStream audio;
-                if("Mario".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
-                else if("Bowser".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                else if("Toad".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
-                else if("Luigi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
-                else if("Peach".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
-                else if("Yoshi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
-                else if("Donkey Kong".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
-                else if("Samuel".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                else
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
-                Clip player2 = AudioSystem.getClip();
-                player2.open(audio);
-                player2.start();
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-            }
-            ImageIcon icon = new ImageIcon(jog2.getImagem());
-            lblPlayer.setVisible(true);
-            lblNome.setVisible(true);
-            lblImagem.setVisible(true);
-            lblVelocidade.setVisible(true);
-            lblManobrabilidade.setVisible(true);
-            lblPoder.setVisible(true);
-            lblImagem.setIcon(icon);
+            somPlayer2(jog2);
             lblPlayer.setText("Jogador 2 (computador):");
-            lblNome.setText(jog2.getNome());
-            lblVelocidade.setText("Velocidade: "+jog2.getVelocidade());
-            lblManobrabilidade.setText("Manobrabilidade: "+jog2.getManobrabilidade());
-            lblPoder.setText("Poder: "+jog2.getPoder());
+            visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
             JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
-            try{
-                AudioInputStream audio;
-                if("Mario".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
-                else if("Bowser".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                else if("Toad".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
-                else if("Luigi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
-                else if("Peach".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
-                else if("Yoshi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
-                else if("Donkey Kong".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
-                else if("Samuel".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/melhor.wav"));
-                else
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/melhor.wav"));//mudar
-                Clip player2 = AudioSystem.getClip();
-                player2.open(audio);
-                player2.start();
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-            }
-            btnSelectP1.setEnabled(false);
-            btnSelectP2.setEnabled(false);
-            btnSelectP3.setEnabled(false);
-            btnSelectP4.setEnabled(false);
-            btnSelectP5.setEnabled(false);
-            btnSelectP6.setEnabled(false);
-            btnSelectP7.setEnabled(false);
-            btnSelectP8.setEnabled(false);
-            btnSelectP9.setEnabled(false);
-            btnP1.setEnabled(false);
-            btnP2.setEnabled(false);
-            btnP3.setEnabled(false);
-            btnP4.setEnabled(false);
-            btnP5.setEnabled(false);
-            btnP6.setEnabled(false);
-            btnP7.setEnabled(false);
-            btnP8.setEnabled(false);
-            btnP9.setEnabled(false);
-            btnIniciar.setVisible(true);
-            btnIniciar.setEnabled(true);
+            desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
             JOptionPane.showMessageDialog(null,"Escolha novamente.");
@@ -503,67 +420,11 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
-            try{
-                AudioInputStream audio;
-                if("Mario".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
-                else if("Bowser".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                else if("Toad".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
-                else if("Luigi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
-                else if("Peach".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
-                else if("Yoshi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
-                else if("Donkey Kong".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
-                else if("Samuel".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                else
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
-                Clip player2 = AudioSystem.getClip();
-                player2.open(audio);
-                player2.start();
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-            }
-            ImageIcon icon = new ImageIcon(jog2.getImagem());
-            lblPlayer.setVisible(true);
-            lblNome.setVisible(true);
-            lblImagem.setVisible(true);
-            lblVelocidade.setVisible(true);
-            lblManobrabilidade.setVisible(true);
-            lblPoder.setVisible(true);
-            lblImagem.setIcon(icon);
+            somPlayer2(jog2);
             lblPlayer.setText("Jogador 2 (computador):");
-            lblNome.setText(jog2.getNome());
-            lblVelocidade.setText("Velocidade: "+jog2.getVelocidade());
-            lblManobrabilidade.setText("Manobrabilidade: "+jog2.getManobrabilidade());
-            lblPoder.setText("Poder: "+jog2.getPoder());
+            visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
             JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
-            btnSelectP1.setEnabled(false);
-            btnSelectP2.setEnabled(false);
-            btnSelectP3.setEnabled(false);
-            btnSelectP4.setEnabled(false);
-            btnSelectP5.setEnabled(false);
-            btnSelectP6.setEnabled(false);
-            btnSelectP7.setEnabled(false);
-            btnSelectP8.setEnabled(false);
-            btnSelectP9.setEnabled(false);
-            btnP1.setEnabled(false);
-            btnP2.setEnabled(false);
-            btnP3.setEnabled(false);
-            btnP4.setEnabled(false);
-            btnP5.setEnabled(false);
-            btnP6.setEnabled(false);
-            btnP7.setEnabled(false);
-            btnP8.setEnabled(false);
-            btnP9.setEnabled(false);
-            btnIniciar.setVisible(true);
-            btnIniciar.setEnabled(true);
+            desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
             JOptionPane.showMessageDialog(null,"Escolha novamente.");
@@ -584,67 +445,11 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
-            try{
-                AudioInputStream audio;
-                if("Mario".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
-                else if("Bowser".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                else if("Toad".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
-                else if("Luigi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
-                else if("Peach".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
-                else if("Yoshi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
-                else if("Donkey Kong".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
-                else if("Samuel".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                else
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
-                Clip player2 = AudioSystem.getClip();
-                player2.open(audio);
-                player2.start();
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-            }
-            ImageIcon icon = new ImageIcon(jog2.getImagem());
-            lblPlayer.setVisible(true);
-            lblNome.setVisible(true);
-            lblImagem.setVisible(true);
-            lblVelocidade.setVisible(true);
-            lblManobrabilidade.setVisible(true);
-            lblPoder.setVisible(true);
-            lblImagem.setIcon(icon);
+            somPlayer2(jog2);
             lblPlayer.setText("Jogador 2 (computador):");
-            lblNome.setText(jog2.getNome());
-            lblVelocidade.setText("Velocidade: "+jog2.getVelocidade());
-            lblManobrabilidade.setText("Manobrabilidade: "+jog2.getManobrabilidade());
-            lblPoder.setText("Poder: "+jog2.getPoder());
+            visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
             JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
-            btnSelectP1.setEnabled(false);
-            btnSelectP2.setEnabled(false);
-            btnSelectP3.setEnabled(false);
-            btnSelectP4.setEnabled(false);
-            btnSelectP5.setEnabled(false);
-            btnSelectP6.setEnabled(false);
-            btnSelectP7.setEnabled(false);
-            btnSelectP8.setEnabled(false);
-            btnSelectP9.setEnabled(false);
-            btnP1.setEnabled(false);
-            btnP2.setEnabled(false);
-            btnP3.setEnabled(false);
-            btnP4.setEnabled(false);
-            btnP5.setEnabled(false);
-            btnP6.setEnabled(false);
-            btnP7.setEnabled(false);
-            btnP8.setEnabled(false);
-            btnP9.setEnabled(false);
-            btnIniciar.setVisible(true);
-            btnIniciar.setEnabled(true);
+            desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
             JOptionPane.showMessageDialog(null,"Escolha novamente.");
@@ -665,67 +470,11 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
-            try{
-                AudioInputStream audio;
-                if("Mario".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
-                else if("Bowser".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                else if("Toad".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
-                else if("Luigi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
-                else if("Peach".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
-                else if("Yoshi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
-                else if("Donkey Kong".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
-                else if("Samuel".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                else
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
-                Clip player2 = AudioSystem.getClip();
-                player2.open(audio);
-                player2.start();
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-            }
-            ImageIcon icon = new ImageIcon(jog2.getImagem());
-            lblPlayer.setVisible(true);
-            lblNome.setVisible(true);
-            lblImagem.setVisible(true);
-            lblVelocidade.setVisible(true);
-            lblManobrabilidade.setVisible(true);
-            lblPoder.setVisible(true);
-            lblImagem.setIcon(icon);
+            somPlayer2(jog2);
             lblPlayer.setText("Jogador 2 (computador):");
-            lblNome.setText(jog2.getNome());
-            lblVelocidade.setText("Velocidade: "+jog2.getVelocidade());
-            lblManobrabilidade.setText("Manobrabilidade: "+jog2.getManobrabilidade());
-            lblPoder.setText("Poder: "+jog2.getPoder());
+            visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
             JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
-            btnSelectP1.setEnabled(false);
-            btnSelectP2.setEnabled(false);
-            btnSelectP3.setEnabled(false);
-            btnSelectP4.setEnabled(false);
-            btnSelectP5.setEnabled(false);
-            btnSelectP6.setEnabled(false);
-            btnSelectP7.setEnabled(false);
-            btnSelectP8.setEnabled(false);
-            btnSelectP9.setEnabled(false);
-            btnP1.setEnabled(false);
-            btnP2.setEnabled(false);
-            btnP3.setEnabled(false);
-            btnP4.setEnabled(false);
-            btnP5.setEnabled(false);
-            btnP6.setEnabled(false);
-            btnP7.setEnabled(false);
-            btnP8.setEnabled(false);
-            btnP9.setEnabled(false);
-            btnIniciar.setVisible(true);
-            btnIniciar.setEnabled(true);
+            desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
             JOptionPane.showMessageDialog(null,"Escolha novamente.");
@@ -746,67 +495,11 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
-            try{
-                AudioInputStream audio;
-                if("Mario".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
-                else if("Bowser".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                else if("Toad".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
-                else if("Luigi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
-                else if("Peach".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
-                else if("Yoshi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
-                else if("Donkey Kong".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
-                else if("Samuel".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                else
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
-                Clip player2 = AudioSystem.getClip();
-                player2.open(audio);
-                player2.start();
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-            }
-            ImageIcon icon = new ImageIcon(jog2.getImagem());
-            lblPlayer.setVisible(true);
-            lblNome.setVisible(true);
-            lblImagem.setVisible(true);
-            lblVelocidade.setVisible(true);
-            lblManobrabilidade.setVisible(true);
-            lblPoder.setVisible(true);
-            lblImagem.setIcon(icon);
+            somPlayer2(jog2);
             lblPlayer.setText("Jogador 2 (computador):");
-            lblNome.setText(jog2.getNome());
-            lblVelocidade.setText("Velocidade: "+jog2.getVelocidade());
-            lblManobrabilidade.setText("Manobrabilidade: "+jog2.getManobrabilidade());
-            lblPoder.setText("Poder: "+jog2.getPoder());
+            visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
             JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
-            btnSelectP1.setEnabled(false);
-            btnSelectP2.setEnabled(false);
-            btnSelectP3.setEnabled(false);
-            btnSelectP4.setEnabled(false);
-            btnSelectP5.setEnabled(false);
-            btnSelectP6.setEnabled(false);
-            btnSelectP7.setEnabled(false);
-            btnSelectP8.setEnabled(false);
-            btnSelectP9.setEnabled(false);
-            btnP1.setEnabled(false);
-            btnP2.setEnabled(false);
-            btnP3.setEnabled(false);
-            btnP4.setEnabled(false);
-            btnP5.setEnabled(false);
-            btnP6.setEnabled(false);
-            btnP7.setEnabled(false);
-            btnP8.setEnabled(false);
-            btnP9.setEnabled(false);
-            btnIniciar.setVisible(true);
-            btnIniciar.setEnabled(true);
+            desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
             JOptionPane.showMessageDialog(null,"Escolha novamente.");
@@ -827,67 +520,11 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
-            try{
-                AudioInputStream audio;
-                if("Mario".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
-                else if("Bowser".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                else if("Toad".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
-                else if("Luigi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
-                else if("Peach".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
-                else if("Yoshi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
-                else if("Donkey Kong".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
-                else if("Samuel".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                else
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
-                Clip player2 = AudioSystem.getClip();
-                player2.open(audio);
-                player2.start();
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-            }
-            ImageIcon icon = new ImageIcon(jog2.getImagem());
-            lblPlayer.setVisible(true);
-            lblNome.setVisible(true);
-            lblImagem.setVisible(true);
-            lblVelocidade.setVisible(true);
-            lblManobrabilidade.setVisible(true);
-            lblPoder.setVisible(true);
-            lblImagem.setIcon(icon);
+            somPlayer2(jog2);
             lblPlayer.setText("Jogador 2 (computador):");
-            lblNome.setText(jog2.getNome());
-            lblVelocidade.setText("Velocidade: "+jog2.getVelocidade());
-            lblManobrabilidade.setText("Manobrabilidade: "+jog2.getManobrabilidade());
-            lblPoder.setText("Poder: "+jog2.getPoder());
+            visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
             JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
-            btnSelectP1.setEnabled(false);
-            btnSelectP2.setEnabled(false);
-            btnSelectP3.setEnabled(false);
-            btnSelectP4.setEnabled(false);
-            btnSelectP5.setEnabled(false);
-            btnSelectP6.setEnabled(false);
-            btnSelectP7.setEnabled(false);
-            btnSelectP8.setEnabled(false);
-            btnSelectP9.setEnabled(false);
-            btnP1.setEnabled(false);
-            btnP2.setEnabled(false);
-            btnP3.setEnabled(false);
-            btnP4.setEnabled(false);
-            btnP5.setEnabled(false);
-            btnP6.setEnabled(false);
-            btnP7.setEnabled(false);
-            btnP8.setEnabled(false);
-            btnP9.setEnabled(false);
-            btnIniciar.setVisible(true);
-            btnIniciar.setEnabled(true);
+            desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
             JOptionPane.showMessageDialog(null,"Escolha novamente.");
@@ -908,67 +545,11 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
-            try{
-                AudioInputStream audio;
-                if("Mario".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
-                else if("Bowser".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                else if("Toad".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
-                else if("Luigi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
-                else if("Peach".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
-                else if("Yoshi".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
-                else if("Donkey Kong".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
-                else if("Samuel".equals(jog2.getNome()))
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                else
-                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
-                Clip player2 = AudioSystem.getClip();
-                player2.open(audio);
-                player2.start();
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-            }
-            ImageIcon icon = new ImageIcon(jog2.getImagem());
-            lblPlayer.setVisible(true);
-            lblNome.setVisible(true);
-            lblImagem.setVisible(true);
-            lblVelocidade.setVisible(true);
-            lblManobrabilidade.setVisible(true);
-            lblPoder.setVisible(true);
-            lblImagem.setIcon(icon);
+            somPlayer2(jog2);
             lblPlayer.setText("Jogador 2 (computador):");
-            lblNome.setText(jog2.getNome());
-            lblVelocidade.setText("Velocidade: "+jog2.getVelocidade());
-            lblManobrabilidade.setText("Manobrabilidade: "+jog2.getManobrabilidade());
-            lblPoder.setText("Poder: "+jog2.getPoder());
+            visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
             JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
-            btnSelectP1.setEnabled(false);
-            btnSelectP2.setEnabled(false);
-            btnSelectP3.setEnabled(false);
-            btnSelectP4.setEnabled(false);
-            btnSelectP5.setEnabled(false);
-            btnSelectP6.setEnabled(false);
-            btnSelectP7.setEnabled(false);
-            btnSelectP8.setEnabled(false);
-            btnSelectP9.setEnabled(false);
-            btnP1.setEnabled(false);
-            btnP2.setEnabled(false);
-            btnP3.setEnabled(false);
-            btnP4.setEnabled(false);
-            btnP5.setEnabled(false);
-            btnP6.setEnabled(false);
-            btnP7.setEnabled(false);
-            btnP8.setEnabled(false);
-            btnP9.setEnabled(false);
-            btnIniciar.setVisible(true);
-            btnIniciar.setEnabled(true);
+            desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
             JOptionPane.showMessageDialog(null,"Escolha novamente.");
@@ -985,18 +566,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
         }
-        lblImagem.setVisible(true);
-        ImageIcon icon = new ImageIcon(personagemList.get(6).getImagem());
-        lblImagem.setIcon(icon);
-        lblPlayer.setVisible(true);
-        lblNome.setVisible(true);
-        lblVelocidade.setVisible(true);
-        lblManobrabilidade.setVisible(true);
-        lblPoder.setVisible(true);
-        lblNome.setText(personagemList.get(6).getNome());
-        lblVelocidade.setText("Velocidade: "+personagemList.get(6).getVelocidade());
-        lblManobrabilidade.setText("Manobrabilidade: "+personagemList.get(6).getManobrabilidade());
-        lblPoder.setText("Poder: "+personagemList.get(6).getPoder());
+        visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 6);
     }//GEN-LAST:event_btnP7ActionPerformed
 
     private void btnP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP6ActionPerformed
@@ -1009,18 +579,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
         }
-        lblImagem.setVisible(true);
-        ImageIcon icon = new ImageIcon(personagemList.get(5).getImagem());
-        lblImagem.setIcon(icon);
-        lblPlayer.setVisible(true);
-        lblNome.setVisible(true);
-        lblVelocidade.setVisible(true);
-        lblManobrabilidade.setVisible(true);
-        lblPoder.setVisible(true);
-        lblNome.setText(personagemList.get(5).getNome());
-        lblVelocidade.setText("Velocidade: "+personagemList.get(5).getVelocidade());
-        lblManobrabilidade.setText("Manobrabilidade: "+personagemList.get(5).getManobrabilidade());
-        lblPoder.setText("Poder: "+personagemList.get(5).getPoder());
+        visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 5);
     }//GEN-LAST:event_btnP6ActionPerformed
 
     private void btnP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP1ActionPerformed
@@ -1033,18 +592,8 @@ public class FrmJogadores extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
         }
-        lblImagem.setVisible(true);
-        ImageIcon icon = new ImageIcon(personagemList.get(0).getImagem());
-        lblImagem.setIcon(icon);
-        lblPlayer.setVisible(true);
-        lblNome.setVisible(true);
-        lblVelocidade.setVisible(true);
-        lblManobrabilidade.setVisible(true);
-        lblPoder.setVisible(true);
-        lblNome.setText(personagemList.get(0).getNome());
-        lblVelocidade.setText("Velocidade: "+personagemList.get(0).getVelocidade());
-        lblManobrabilidade.setText("Manobrabilidade: "+personagemList.get(0).getManobrabilidade());
-        lblPoder.setText("Poder: "+personagemList.get(0).getPoder());
+        visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 0);
+        
     }//GEN-LAST:event_btnP1ActionPerformed
 
     private void btnP4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP4ActionPerformed
@@ -1057,18 +606,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
         }
-        lblImagem.setVisible(true);
-        ImageIcon icon = new ImageIcon(personagemList.get(3).getImagem());
-        lblImagem.setIcon(icon);
-        lblPlayer.setVisible(true);
-        lblNome.setVisible(true);
-        lblVelocidade.setVisible(true);
-        lblManobrabilidade.setVisible(true);
-        lblPoder.setVisible(true);
-        lblNome.setText(personagemList.get(3).getNome());
-        lblVelocidade.setText("Velocidade: "+personagemList.get(3).getVelocidade());
-        lblManobrabilidade.setText("Manobrabilidade: "+personagemList.get(3).getManobrabilidade());
-        lblPoder.setText("Poder: "+personagemList.get(3).getPoder());
+        visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 3);
     }//GEN-LAST:event_btnP4ActionPerformed
 
     private void btnP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP2ActionPerformed
@@ -1081,18 +619,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
         }
-        lblImagem.setVisible(true);
-        ImageIcon icon = new ImageIcon(personagemList.get(1).getImagem());
-        lblImagem.setIcon(icon);
-        lblPlayer.setVisible(true);
-        lblNome.setVisible(true);
-        lblVelocidade.setVisible(true);
-        lblManobrabilidade.setVisible(true);
-        lblPoder.setVisible(true);
-        lblNome.setText(personagemList.get(1).getNome());
-        lblVelocidade.setText("Velocidade: "+personagemList.get(1).getVelocidade());
-        lblManobrabilidade.setText("Manobrabilidade: "+personagemList.get(1).getManobrabilidade());
-        lblPoder.setText("Poder: "+personagemList.get(1).getPoder());
+        visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 1);
     }//GEN-LAST:event_btnP2ActionPerformed
 
     private void btnP5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP5ActionPerformed
@@ -1105,18 +632,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
         }
-        lblImagem.setVisible(true);
-        ImageIcon icon = new ImageIcon(personagemList.get(4).getImagem());
-        lblImagem.setIcon(icon);
-        lblPlayer.setVisible(true);
-        lblNome.setVisible(true);
-        lblVelocidade.setVisible(true);
-        lblManobrabilidade.setVisible(true);
-        lblPoder.setVisible(true);
-        lblNome.setText(personagemList.get(4).getNome());
-        lblVelocidade.setText("Velocidade: "+personagemList.get(4).getVelocidade());
-        lblManobrabilidade.setText("Manobrabilidade: "+personagemList.get(4).getManobrabilidade());
-        lblPoder.setText("Poder: "+personagemList.get(4).getPoder());
+        visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 4);
     }//GEN-LAST:event_btnP5ActionPerformed
 
     private void btnSelectP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP8ActionPerformed
@@ -1139,67 +655,11 @@ public class FrmJogadores extends javax.swing.JFrame {
                     jog2 = sorteiaJogBotC(personagemList, jog1);
                 else
                     jog2 = sorteiaJogBotB(personagemList, jog1);
-                try{
-                    AudioInputStream audio;
-                    if("Mario".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
-                    else if("Bowser".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                    else if("Toad".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
-                    else if("Luigi".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
-                    else if("Peach".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
-                    else if("Yoshi".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
-                    else if("Donkey Kong".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
-                    else if("Samuel".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                    else
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
-                    Clip player2 = AudioSystem.getClip();
-                    player2.open(audio);
-                    player2.start();
-                }
-                catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-                }
-                ImageIcon icon = new ImageIcon(jog2.getImagem());
-                lblPlayer.setVisible(true);
-                lblNome.setVisible(true);
-                lblImagem.setVisible(true);
-                lblVelocidade.setVisible(true);
-                lblManobrabilidade.setVisible(true);
-                lblPoder.setVisible(true);
-                lblImagem.setIcon(icon);
+                somPlayer2(jog2);
                 lblPlayer.setText("Jogador 2 (computador):");
-                lblNome.setText(jog2.getNome());
-                lblVelocidade.setText("Velocidade: "+jog2.getVelocidade());
-                lblManobrabilidade.setText("Manobrabilidade: "+jog2.getManobrabilidade());
-                lblPoder.setText("Poder: "+jog2.getPoder());
+                visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
                 JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
-                btnSelectP1.setEnabled(false);
-                btnSelectP2.setEnabled(false);
-                btnSelectP3.setEnabled(false);
-                btnSelectP4.setEnabled(false);
-                btnSelectP5.setEnabled(false);
-                btnSelectP6.setEnabled(false);
-                btnSelectP7.setEnabled(false);
-                btnSelectP8.setEnabled(false);
-                btnSelectP9.setEnabled(false);
-                btnP1.setEnabled(false);
-                btnP2.setEnabled(false);
-                btnP3.setEnabled(false);
-                btnP4.setEnabled(false);
-                btnP5.setEnabled(false);
-                btnP6.setEnabled(false);
-                btnP7.setEnabled(false);
-                btnP8.setEnabled(false);
-                btnP9.setEnabled(false);
-                btnIniciar.setVisible(true);
-                btnIniciar.setEnabled(true);
+                desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
             }
             else if(resposta == JOptionPane.NO_OPTION){
                 JOptionPane.showMessageDialog(null,"Escolha novamente.");
@@ -1226,67 +686,11 @@ public class FrmJogadores extends javax.swing.JFrame {
                 jog1 = personagemList.get(8);
                 JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
                 jog2 = sorteiaJogBotC(personagemList, jog1);
-                try{
-                    AudioInputStream audio;
-                    if("Mario".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
-                    else if("Bowser".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
-                    else if("Toad".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
-                    else if("Luigi".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
-                    else if("Peach".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
-                    else if("Yoshi".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
-                    else if("Donkey Kong".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
-                    else if("Samuel".equals(jog2.getNome()))
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
-                    else
-                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
-                    Clip player2 = AudioSystem.getClip();
-                    player2.open(audio);
-                    player2.start();
-                }
-                catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
-                }
-                ImageIcon icon = new ImageIcon(jog2.getImagem());
-                lblPlayer.setVisible(true);
-                lblNome.setVisible(true);
-                lblImagem.setVisible(true);
-                lblVelocidade.setVisible(true);
-                lblManobrabilidade.setVisible(true);
-                lblPoder.setVisible(true);
-                lblImagem.setIcon(icon);
+                somPlayer2(jog2);
                 lblPlayer.setText("Jogador 2 (computador):");
-                lblNome.setText(jog2.getNome());
-                lblVelocidade.setText("Velocidade: "+jog2.getVelocidade());
-                lblManobrabilidade.setText("Manobrabilidade: "+jog2.getManobrabilidade());
-                lblPoder.setText("Poder: "+jog2.getPoder());
+                visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
                 JOptionPane.showMessageDialog(null,"O computador irá jogar como "+jog2.getNome()+"!");
-                btnSelectP1.setEnabled(false);
-                btnSelectP2.setEnabled(false);
-                btnSelectP3.setEnabled(false);
-                btnSelectP4.setEnabled(false);
-                btnSelectP5.setEnabled(false);
-                btnSelectP6.setEnabled(false);
-                btnSelectP7.setEnabled(false);
-                btnSelectP8.setEnabled(false);
-                btnSelectP9.setEnabled(false);
-                btnP1.setEnabled(false);
-                btnP2.setEnabled(false);
-                btnP3.setEnabled(false);
-                btnP4.setEnabled(false);
-                btnP5.setEnabled(false);
-                btnP6.setEnabled(false);
-                btnP7.setEnabled(false);
-                btnP8.setEnabled(false);
-                btnP9.setEnabled(false);
-                btnIniciar.setVisible(true);
-                btnIniciar.setEnabled(true);
+                desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
             }
             else if(resposta == JOptionPane.NO_OPTION){
                 JOptionPane.showMessageDialog(null,"Escolha novamente.");
@@ -1311,12 +715,7 @@ public class FrmJogadores extends javax.swing.JFrame {
             catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
             }
-            ImageIcon icon = new ImageIcon("src/main/resources/characters/samuelM.gif");
-            lblImagem.setIcon(icon);
-            lblNome.setText(personagemList.get(7).getNome());
-            lblVelocidade.setText("Velocidade: "+personagemList.get(7).getVelocidade());
-            lblManobrabilidade.setText("Manobrabilidade: "+personagemList.get(7).getManobrabilidade());
-            lblPoder.setText("Poder: "+personagemList.get(7).getPoder());
+            visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 7);
         }
         else{
             ImageIcon icon = new ImageIcon("src/main/resources/characters/bloqueado.png");
@@ -1345,12 +744,7 @@ public class FrmJogadores extends javax.swing.JFrame {
             catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
             }
-            ImageIcon icon = new ImageIcon("src/main/resources/characters/didiM.gif"); //Ainda não temos
-            lblImagem.setIcon(icon);
-            lblNome.setText(personagemList.get(8).getNome());
-            lblVelocidade.setText("Velocidade: "+personagemList.get(8).getVelocidade());
-            lblManobrabilidade.setText("Manobrabilidade: "+personagemList.get(8).getManobrabilidade());
-            lblPoder.setText("Poder: "+personagemList.get(8).getPoder());
+            visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 8);
         }
         else{
             ImageIcon icon = new ImageIcon("src/main/resources/characters/bloqueado.png");
@@ -1377,18 +771,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
         }
-        lblImagem.setVisible(true);
-        ImageIcon icon = new ImageIcon(personagemList.get(2).getImagem());
-        lblImagem.setIcon(icon);
-        lblPlayer.setVisible(true);
-        lblNome.setVisible(true);
-        lblVelocidade.setVisible(true);
-        lblManobrabilidade.setVisible(true);
-        lblPoder.setVisible(true);
-        lblNome.setText(personagemList.get(2).getNome());
-        lblVelocidade.setText("Velocidade: "+personagemList.get(2).getVelocidade());
-        lblManobrabilidade.setText("Manobrabilidade: "+personagemList.get(2).getManobrabilidade());
-        lblPoder.setText("Poder: "+personagemList.get(2).getPoder());
+        visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, 2);
     }//GEN-LAST:event_btnP3ActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
@@ -1404,6 +787,71 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             
         });
+    }
+    private static void somPlayer2(Personagem jog2){
+        try{
+            AudioInputStream audio;
+            if("Mario".equals(jog2.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
+            else if("Bowser".equals(jog2.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+            else if("Toad".equals(jog2.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
+            else if("Luigi".equals(jog2.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
+            else if("Peach".equals(jog2.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
+            else if("Yoshi".equals(jog2.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
+            else if("Donkey Kong".equals(jog2.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
+            else if("Samuel".equals(jog2.getNome()))
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+            else
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+            Clip player2 = AudioSystem.getClip();
+            player2.open(audio);
+            player2.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
+    }
+    private static void visualizarPlayer(javax.swing.JLabel lblPlayer, javax.swing.JLabel lblImagem, javax.swing.JLabel lblNome, javax.swing.JLabel lblVelocidade, javax.swing.JLabel lblManobrabilidade, javax.swing.JLabel lblPoder, int id){
+        ImageIcon icon = new ImageIcon(personagemList.get(id).getImagem());
+        lblImagem.setIcon(icon);
+        lblImagem.setVisible(true);
+        lblPlayer.setVisible(true);
+        lblNome.setVisible(true);
+        lblVelocidade.setVisible(true);
+        lblManobrabilidade.setVisible(true);
+        lblPoder.setVisible(true);
+        lblNome.setText(personagemList.get(id).getNome());
+        lblVelocidade.setText("Velocidade: "+personagemList.get(id).getVelocidade());
+        lblManobrabilidade.setText("Manobrabilidade: "+personagemList.get(id).getManobrabilidade());
+        lblPoder.setText("Poder: "+personagemList.get(id).getPoder());
+    }
+    private static void desabilitaBotoes(javax.swing.JButton btnIniciar, javax.swing.JButton btnP1, javax.swing.JButton btnP2, javax.swing.JButton btnP3, javax.swing.JButton btnP4, javax.swing.JButton btnP5, javax.swing.JButton btnP6, javax.swing.JButton btnP7, javax.swing.JButton btnP8, javax.swing.JButton btnP9, javax.swing.JButton btnSelectP1, javax.swing.JButton btnSelectP2, javax.swing.JButton btnSelectP3, javax.swing.JButton btnSelectP4, javax.swing.JButton btnSelectP5, javax.swing.JButton btnSelectP6, javax.swing.JButton btnSelectP7, javax.swing.JButton btnSelectP8, javax.swing.JButton btnSelectP9){
+        btnSelectP1.setEnabled(false);
+        btnSelectP2.setEnabled(false);
+        btnSelectP3.setEnabled(false);
+        btnSelectP4.setEnabled(false);
+        btnSelectP5.setEnabled(false);
+        btnSelectP6.setEnabled(false);
+        btnSelectP7.setEnabled(false);
+        btnSelectP8.setEnabled(false);
+        btnSelectP9.setEnabled(false);
+        btnP1.setEnabled(false);
+        btnP2.setEnabled(false);
+        btnP3.setEnabled(false);
+        btnP4.setEnabled(false);
+        btnP5.setEnabled(false);
+        btnP6.setEnabled(false);
+        btnP7.setEnabled(false);
+        btnP8.setEnabled(false);
+        btnP9.setEnabled(false);
+        btnIniciar.setVisible(true);
+        btnIniciar.setEnabled(true);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1435,5 +883,4 @@ public class FrmJogadores extends javax.swing.JFrame {
     private javax.swing.JPanel pnlJogadores;
     private javax.swing.JPanel pnlSelecionado;
     // End of variables declaration//GEN-END:variables
-
 }
