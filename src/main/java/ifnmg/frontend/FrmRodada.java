@@ -1,5 +1,5 @@
 /*
-Frame da tela de execução de rodada
+Frame da tela de execução de rodada (português)
 @author arthurpereira
 @author athossilvano
 @author samuelmiranda

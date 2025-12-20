@@ -1,5 +1,5 @@
 /*
-Frame da tela de seleção de idioma
+Frame da tela de seleção de idioma (padrão para inglês, português e espanhol)
 @author arthurpereira
 @author athossilvano
 @author samuelmiranda

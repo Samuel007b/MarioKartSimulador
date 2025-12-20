@@ -1,5 +1,5 @@
 /*
-Frame da tela final do jogo
+Frame da tela final do jogo (português)
 @author arthurpereira
 @author athossilvano
 @author samuelmiranda

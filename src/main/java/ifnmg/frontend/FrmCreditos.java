@@ -1,5 +1,5 @@
 /*
-Frame da tela especial de créditos
+Frame da tela especial de créditos (português)
 @author arthurpereira
 @author athossilvano
 @author samuelmiranda

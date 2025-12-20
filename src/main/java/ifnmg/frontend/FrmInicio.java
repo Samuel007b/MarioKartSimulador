@@ -1,5 +1,5 @@
 /*
-Frame da tela inicial do jogo
+Frame da tela inicial do jogo (padrão para inglês, português e espanhol)
 @author arthurpereira
 @author athossilvano
 @author samuelmiranda
