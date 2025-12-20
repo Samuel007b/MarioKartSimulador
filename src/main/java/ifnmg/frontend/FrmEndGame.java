@@ -11,7 +11,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import static ifnmg.backend.Api.vencedor;
-import ifnmg.backend.Partida;
+import ifnmg.backend.Match;
 import ifnmg.backend.Personagem;
 import ifnmg.backend.Rodada;
 import static ifnmg.frontend.FrmPlayers.jog1;
@@ -26,7 +26,7 @@ public class FrmEndGame extends javax.swing.JFrame {
     private static int idPartida;
     private static int pts;
     private static List<Rodada> rodadaList = new ArrayList<>();
-    private static List<Partida> partidaList = new ArrayList<>();
+    private static List<Match> partidaList = new ArrayList<>();
     private static final ImageIcon empate = new ImageIcon("src/main/resources/characters/empate.png");
     private static final ImageIcon mario = new ImageIcon("src/main/resources/characters/marioM.gif");
     private static final ImageIcon bowser = new ImageIcon("src/main/resources/characters/bowserM.gif");
@@ -114,8 +114,8 @@ public class FrmEndGame extends javax.swing.JFrame {
                 btnPlayAgain.setVisible(false);
             }
         }
-        Partida p = new Partida(idPartida, jog1.getNome(), jog2.getNome(), jog1.getPontos(), jog2.getPontos());
-        partidaList.add(p);
+        Match m = new Match(idPartida, jog1.getNome(), jog2.getNome(), jog1.getPontos(), jog2.getPontos());
+        partidaList.add(m);
     }
 
     @SuppressWarnings("unchecked")

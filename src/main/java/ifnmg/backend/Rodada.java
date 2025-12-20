@@ -95,27 +95,27 @@ public class Rodada {
         }
         else if("STRAIGHT".equals(tipo)){
             if(upgradeJog1>upgradeJog2)
-                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog1.getNome()+" won with a speed of "+upgradeJog1+", while "+jog2.getNome()+" was left with a speed of"+upgradeJog2;
+                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog1.getNome()+" won with a speed of "+upgradeJog1+", while "+jog2.getNome()+" was left with a speed of "+upgradeJog2;
             else if(upgradeJog2>upgradeJog1)
-                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog2.getNome()+" won with a speed of "+upgradeJog2+", while "+jog1.getNome()+" was left with a speed of"+upgradeJog1;
+                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog2.getNome()+" won with a speed of "+upgradeJog2+", while "+jog1.getNome()+" was left with a speed of "+upgradeJog1;
             else
-                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog1.getNome()+" and "+jog2.getNome()+" tied with a speed of"+upgradeJog1;
+                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog1.getNome()+" and "+jog2.getNome()+" tied with a speed of "+upgradeJog1;
         }
         else if("CURVE".equals(tipo)){
             if(upgradeJog1>upgradeJog2)
-                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog1.getNome()+" won with a maneuverability of "+upgradeJog1+", while "+jog2.getNome()+" was left with a maneuverability of"+upgradeJog2;
+                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog1.getNome()+" won with a maneuverability of "+upgradeJog1+", while "+jog2.getNome()+" was left with a maneuverability of "+upgradeJog2;
             else if(upgradeJog2>upgradeJog1)
-                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog2.getNome()+" won with a maneuverability of "+upgradeJog2+", while "+jog1.getNome()+" was left with a maneuverability of"+upgradeJog1;
+                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog2.getNome()+" won with a maneuverability of "+upgradeJog2+", while "+jog1.getNome()+" was left with a maneuverability of "+upgradeJog1;
             else
-                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog1.getNome()+" and "+jog2.getNome()+" tied with a maneuverability of"+upgradeJog1;
+                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog1.getNome()+" and "+jog2.getNome()+" tied with a maneuverability of "+upgradeJog1;
         }
         else if("CONFRONTATION".equals(tipo)){
             if(upgradeJog1>upgradeJog2)
-                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog1.getNome()+" won with a power of "+upgradeJog1+", while "+jog2.getNome()+" was left with a power of"+upgradeJog2;
+                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog1.getNome()+" won with a power of "+upgradeJog1+", while "+jog2.getNome()+" was left with a power of "+upgradeJog2;
             else if(upgradeJog2>upgradeJog1)
-                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog2.getNome()+" won with a power of "+upgradeJog2+", while "+jog1.getNome()+" was left with a power of"+upgradeJog1;
+                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog2.getNome()+" won with a power of "+upgradeJog2+", while "+jog1.getNome()+" was left with a power of "+upgradeJog1;
             else
-                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog1.getNome()+" and "+jog2.getNome()+" tied with a power of"+upgradeJog1;
+                return "\n----- Round "+id+" -----\nThe track drawn was "+tipo+"\n"+jog1.getNome()+" and "+jog2.getNome()+" tied with a power of "+upgradeJog1;
         }
         else if("RECTA".equals(tipo)){
             if(upgradeJog1>upgradeJog2)

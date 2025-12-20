@@ -12,12 +12,14 @@ ifnmg\frontend\FrmFimJogo$1.class
 ifnmg\frontend\FrmPlayers$19.class
 ifnmg\frontend\FrmJogadores$16.class
 ifnmg\frontend\FrmRound$1.class
+ifnmg\backend\Match.class
 ifnmg\frontend\FrmJogadores$10.class
 ifnmg\frontend\FrmFimJogo$2.class
 ifnmg\frontend\FrmRound$2.class
 ifnmg\frontend\FrmInicio$1.class
 ifnmg\frontend\FrmPlayers$14.class
 ifnmg\frontend\FrmJogadores$11.class
+ifnmg\backend\Partido.class
 ifnmg\frontend\FrmJogadores$3.class
 ifnmg\frontend\FrmRodada$3.class
 ifnmg\frontend\FrmPlayers$3.class
