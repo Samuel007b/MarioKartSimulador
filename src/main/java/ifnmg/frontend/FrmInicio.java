@@ -5,11 +5,13 @@ Frame da tela inicial do jogo
 @author samuelmiranda
 */
 package ifnmg.frontend;
+
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
+
 public class FrmInicio extends javax.swing.JFrame {
     public FrmInicio(){
         initComponents();
