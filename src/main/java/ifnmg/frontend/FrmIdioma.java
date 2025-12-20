@@ -98,7 +98,7 @@ public class FrmIdioma extends javax.swing.JFrame {
             catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
             }
-            new FrmJogadores(0, 0, null, null).setVisible(true);
+            new FrmJogadores(0, 0, 0, null, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnPortuguesActionPerformed
@@ -115,7 +115,7 @@ public class FrmIdioma extends javax.swing.JFrame {
             catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
             }
-            new FrmJogadores(0, 0, null, null).setVisible(true);
+            new FrmJogadores(0, 0, 0, null, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnEspañolActionPerformed
@@ -132,7 +132,7 @@ public class FrmIdioma extends javax.swing.JFrame {
             catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
             }
-            new FrmJogadores(0, 0, null, null).setVisible(true);
+            new FrmJogadores(0, 0, 0, null, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnEnglishActionPerformed

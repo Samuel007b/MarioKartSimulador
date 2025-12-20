@@ -24,19 +24,21 @@ import javax.swing.SwingConstants;
 public class FrmJogadores extends javax.swing.JFrame {
     private static int quantVitorias;
     private static int idPartida;
+    private static int pts;
     private static final ImageIcon samuel = new ImageIcon("src/main/resources/samuel.gif");
     private static final ImageIcon didi = new ImageIcon("src/main/resources/didi.gif");
     public static Personagem jog1, jog2;
     private static List<Personagem> personagemList = new ArrayList<>();
-    public FrmJogadores(int quantVitorias, int idPartida, Personagem jog1, Personagem jog2) {
+    public FrmJogadores(int quantVitorias, int idPartida, int pts, Personagem jog1, Personagem jog2) {
         FrmJogadores.idPartida=idPartida+1;
         FrmJogadores.quantVitorias=quantVitorias;
+        FrmJogadores.pts=pts;
         try{
             personagemList = csvToList("data/tabela-personagens.csv");
             initComponents();
-            if(FrmJogadores.quantVitorias>=3){
+            if(FrmJogadores.pts>=3){
                 btnP8.setIcon(samuel);
-                if(FrmJogadores.quantVitorias>=4)
+                if(FrmJogadores.pts>=4)
                     btnP9.setIcon(didi);
             }
             this.setLocationRelativeTo(null);
@@ -50,7 +52,7 @@ public class FrmJogadores extends javax.swing.JFrame {
             lblPoder.setVisible(false);
             btnIniciar.setVisible(false);
             btnIniciar.setEnabled(false);
-            if(FrmJogadores.quantVitorias==3 && vencedor(jog1, jog2)==jog1){
+            if(FrmJogadores.pts==3 && vencedor(jog1, jog2)==jog1){
                 JOptionPane.showMessageDialog(null, "Você desbloqueou o personagem SAMUEL !!!");
                 try{
                     AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-siu.wav"));
@@ -64,7 +66,7 @@ public class FrmJogadores extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
                 }
             }
-            else if(FrmJogadores.quantVitorias==4 && vencedor(jog1, jog2)==jog1){
+            else if(FrmJogadores.pts==4 && vencedor(jog1, jog2)==jog1){
                 JOptionPane.showMessageDialog(null, "Você desbloqueou o personagem DIDI SHOW !!!");
                 try{
                     AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
@@ -386,9 +388,9 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP1ActionPerformed(evt);
             jog1 = personagemList.get(0);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.quantVitorias>=3){
+            if(FrmJogadores.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.quantVitorias>=4)
+                if(FrmJogadores.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
@@ -494,9 +496,9 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP2ActionPerformed(evt);
             jog1 = personagemList.get(1);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.quantVitorias>=3){
+            if(FrmJogadores.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.quantVitorias>=4)
+                if(FrmJogadores.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
@@ -575,9 +577,9 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP3ActionPerformed(evt);
             jog1 = personagemList.get(2);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.quantVitorias>=3){
+            if(FrmJogadores.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.quantVitorias>=4)
+                if(FrmJogadores.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
@@ -656,9 +658,9 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP4ActionPerformed(evt);
             jog1 = personagemList.get(3);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.quantVitorias>=3){
+            if(FrmJogadores.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.quantVitorias>=4)
+                if(FrmJogadores.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
@@ -737,9 +739,9 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP5ActionPerformed(evt);
             jog1 = personagemList.get(4);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.quantVitorias>=3){
+            if(FrmJogadores.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.quantVitorias>=4)
+                if(FrmJogadores.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
@@ -818,9 +820,9 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP6ActionPerformed(evt);
             jog1 = personagemList.get(5);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.quantVitorias>=3){
+            if(FrmJogadores.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.quantVitorias>=4)
+                if(FrmJogadores.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
@@ -899,9 +901,9 @@ public class FrmJogadores extends javax.swing.JFrame {
             btnP7ActionPerformed(evt);
             jog1 = personagemList.get(6);
             JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-            if(FrmJogadores.quantVitorias>=3){
+            if(FrmJogadores.pts>=3){
                 jog2 = sorteiaJogBotB(personagemList, jog1);
-                if(FrmJogadores.quantVitorias>=4)
+                if(FrmJogadores.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
             }
             else
@@ -1119,7 +1121,7 @@ public class FrmJogadores extends javax.swing.JFrame {
 
     private void btnSelectP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP8ActionPerformed
         btnP8ActionPerformed(evt);
-        if(FrmJogadores.quantVitorias>=3){
+        if(FrmJogadores.pts>=3){
             int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(7).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(resposta == JOptionPane.YES_OPTION){
                 try{
@@ -1133,7 +1135,7 @@ public class FrmJogadores extends javax.swing.JFrame {
                 }
                 jog1 = personagemList.get(7);
                 JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
-                if(FrmJogadores.quantVitorias>=4)
+                if(FrmJogadores.pts>=4)
                     jog2 = sorteiaJogBotC(personagemList, jog1);
                 else
                     jog2 = sorteiaJogBotB(personagemList, jog1);
@@ -1209,7 +1211,7 @@ public class FrmJogadores extends javax.swing.JFrame {
 
     private void btnSelectP9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectP9ActionPerformed
         btnP9ActionPerformed(evt);
-        if(FrmJogadores.quantVitorias>=4){
+        if(FrmJogadores.pts>=4){
             int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(8).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(resposta == JOptionPane.YES_OPTION){
                 try{
@@ -1290,7 +1292,7 @@ public class FrmJogadores extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Escolha novamente.");
             }
         }
-        else if(FrmJogadores.quantVitorias==3){
+        else if(FrmJogadores.pts==3){
             JOptionPane.showMessageDialog(null,"Personagem bloqueado, ganhe uma partida com Samuel para desbloqueá-lo!");
         }
         else
@@ -1299,7 +1301,7 @@ public class FrmJogadores extends javax.swing.JFrame {
 
     private void btnP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP8ActionPerformed
         lblImagem.setVisible(true);
-        if(FrmJogadores.quantVitorias>=3){
+        if(FrmJogadores.pts>=3){
             try{
                 AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/melhor.wav"));
                 Clip melhor = AudioSystem.getClip();
@@ -1333,7 +1335,7 @@ public class FrmJogadores extends javax.swing.JFrame {
 
     private void btnP9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP9ActionPerformed
         lblImagem.setVisible(true);
-        if(FrmJogadores.quantVitorias>=4){
+        if(FrmJogadores.pts>=4){
             try{
                 AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
                 Clip didiins = AudioSystem.getClip();
@@ -1390,14 +1392,14 @@ public class FrmJogadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnP3ActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        new FrmRodada(FrmJogadores.quantVitorias, FrmJogadores.idPartida).setVisible(true);
+        new FrmRodada(FrmJogadores.quantVitorias, FrmJogadores.idPartida, FrmJogadores.pts).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnIniciarActionPerformed
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmJogadores(FrmJogadores.quantVitorias, FrmJogadores.idPartida, jog1, jog2).setVisible(true);
+                new FrmJogadores(FrmJogadores.quantVitorias, FrmJogadores.idPartida, FrmJogadores.pts, jog1, jog2).setVisible(true);
                 
             }
             

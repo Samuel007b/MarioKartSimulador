@@ -136,6 +136,7 @@ public class FrmCreditos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSairActionPerformed
+        JOptionPane.showMessageDialog(null, "Obrigado por ter jogado Mario Kart Simulador, volte sempre!");
         this.dispose();
     }//GEN-LAST:event_lblSairActionPerformed
 
