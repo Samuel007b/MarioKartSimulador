@@ -20,8 +20,6 @@ public class FrmInicio extends javax.swing.JFrame {
             Clip clip = AudioSystem.getClip();
             clip.open(audio);
             clip.start();
-            /*Thread.sleep(5000);
-            clip.close();*/
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
