@@ -34,8 +34,8 @@ public class FrmFimJogo extends javax.swing.JFrame {
     private static final ImageIcon peach = new ImageIcon("src/main/resources/characters/peachM.gif");
     private static final ImageIcon yoshi = new ImageIcon("src/main/resources/characters/yoshiM.gif");
     private static final ImageIcon dk = new ImageIcon("src/main/resources/characters/dkM.gif");
-    private static final ImageIcon samuel = new ImageIcon("src/main/resources/characters/samuelM.gif");
-    private static final ImageIcon didi = new ImageIcon("src/main/resources/characters/didiM.gif");
+    private static final ImageIcon samuel = new ImageIcon("src/main/resources/characters/samuelVit.gif");
+    private static final ImageIcon didi = new ImageIcon("src/main/resources/characters/didiVit.gif");
     private static Personagem vencedor=null;
     public FrmFimJogo(int quantVitorias, int idPartida, List<Rodada> rodadaList) {
         this.idPartida=idPartida;
@@ -46,6 +46,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
         vencedor = vencedor(jog1, jog2);
         if(vencedor==null){
             lblImagemVencedor.setIcon(empate);
+            lblTrofeu.setVisible(false);
             lblVencedor.setText("Houve um empate entre "+jog1.getNome()+" e "+jog2.getNome()+".");
             lblPerdedor.setText("Ambos ficaram ambos com "+jog1.getPontos()+" ponto(s).");
         }
@@ -65,7 +66,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
             lblImagemVencedor.setIcon(dk);
         else if("Samuel".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(samuel);
-        else if("Didi".equals(vencedor.getNome()))
+        else if("Didi Show".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(didi);
         if(vencedor == jog1){
             try{
@@ -78,6 +79,33 @@ public class FrmFimJogo extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
             }
             lblVencedor.setText("O grande vencedor foi "+jog1.getNome()+" (você) !!!");
+            try{
+                AudioInputStream audio;
+                if("Mario".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario2.wav"));
+                else if("Bowser".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                else if("Toad".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad2.wav"));
+                else if("Luigi".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi2.wav"));
+                else if("Peach".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach2.wav"));
+                else if("Yoshi".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi2.wav"));
+                else if("Donkey Kong".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
+                else if("Samuel".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-siuuu.wav"));
+                else
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                Clip player1 = AudioSystem.getClip();
+                player1.open(audio);
+                player1.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             lblPerdedor.setText(jog2.getNome()+" (computador) ficou em 2º lugar.");
             if(FrmFimJogo.quantVitorias<3){
                 FrmFimJogo.quantVitorias++;
@@ -85,7 +113,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
             else if(quantVitorias==3 && "Samuel".equals(jog1.getNome())){
                 FrmFimJogo.quantVitorias++;
             }
-            else if(quantVitorias==4 && "Didi".equals(jog1.getNome())){
+            else if(quantVitorias==4 && "Didi Show".equals(jog1.getNome())){
                 btnPlayAgain.setEnabled(false);
                 btnPlayAgain.setVisible(false);
                 FrmFimJogo.quantVitorias++;
@@ -102,8 +130,35 @@ public class FrmFimJogo extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
             }
             lblVencedor.setText("Infelizmente o vencedor foi "+jog2.getNome()+" (computador) ...");
+            try{
+                AudioInputStream audio;
+                if("Mario".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario2.wav"));
+                else if("Bowser".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                else if("Toad".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad2.wav"));
+                else if("Luigi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi2.wav"));
+                else if("Peach".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach2.wav"));
+                else if("Yoshi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi2.wav"));
+                else if("Donkey Kong".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
+                else if("Samuel".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-siuuu.wav"));
+                else
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                Clip player2 = AudioSystem.getClip();
+                player2.open(audio);
+                player2.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             lblPerdedor.setText(jog1.getNome()+" (você) ficou em 2º lugar.");
-            if("Didi".equals(jog1.getNome())){
+            if("Didi Show".equals(jog1.getNome())){
                 btnPlayAgain.setEnabled(false);
                 btnPlayAgain.setVisible(false);
             }
@@ -211,8 +266,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer sair do jogo?", "Encerrar Jogo", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
-            if(FrmFimJogo.quantVitorias==4 && "Didi".equals(jog1.getNome())){
-                JOptionPane.showMessageDialog(null, "Você fracassou...");
+            if(FrmFimJogo.quantVitorias==4 && "Didi Show".equals(jog1.getNome())){
                 try{
                     AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/gameOver.wav"));
                     Clip gameOver = AudioSystem.getClip();
@@ -222,10 +276,10 @@ public class FrmFimJogo extends javax.swing.JFrame {
                 catch(Exception e){
                     JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
                 }
+                JOptionPane.showMessageDialog(null, "Você fracassou...");
             }
             else if(FrmFimJogo.quantVitorias==5){
                 new FrmCreditos().setVisible(true);
-                JOptionPane.showMessageDialog(null, "Você zerou o jogo!!!");
                 try{
                     AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/vitoria2.wav"));
                     Clip vitoria2 = AudioSystem.getClip();
@@ -235,6 +289,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
                 catch(Exception e){
                     JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
                 }
+                JOptionPane.showMessageDialog(null, "Você zerou o jogo!!!");
             }
             else
                 this.dispose();

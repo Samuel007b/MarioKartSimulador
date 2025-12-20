@@ -25,7 +25,7 @@ public class FrmJogadores extends javax.swing.JFrame {
     private static int quantVitorias;
     private static int idPartida;
     private static final ImageIcon samuel = new ImageIcon("src/main/resources/samuel.gif");
-    private static final ImageIcon didi = new ImageIcon("src/main/resources/all.gif");
+    private static final ImageIcon didi = new ImageIcon("src/main/resources/didi.gif");
     public static Personagem jog1, jog2;
     private static List<Personagem> personagemList = new ArrayList<>();
     public FrmJogadores(int quantVitorias, int idPartida, Personagem jog1, Personagem jog2) {
@@ -64,8 +64,20 @@ public class FrmJogadores extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
                 }
             }
-            else if(FrmJogadores.quantVitorias==4 && vencedor(jog1, jog2)==jog1)
-                JOptionPane.showMessageDialog(null, "Você desbloqueou o personagem DIDI !!!");
+            else if(FrmJogadores.quantVitorias==4 && vencedor(jog1, jog2)==jog1){
+                JOptionPane.showMessageDialog(null, "Você desbloqueou o personagem DIDI SHOW !!!");
+                try{
+                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                    Clip didimer = AudioSystem.getClip();
+                    didimer.open(audio);
+                    didimer.start();
+                    Thread.sleep(2000);
+                    didimer.close();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
+            }
             jog1=null;
             jog2=null;
             try{
@@ -381,6 +393,33 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
+            try{
+                AudioInputStream audio;
+                if("Mario".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
+                else if("Bowser".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                else if("Toad".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
+                else if("Luigi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
+                else if("Peach".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
+                else if("Yoshi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
+                else if("Donkey Kong".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
+                else if("Samuel".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                else
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                Clip player2 = AudioSystem.getClip();
+                player2.open(audio);
+                player2.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -462,6 +501,33 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
+            try{
+                AudioInputStream audio;
+                if("Mario".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
+                else if("Bowser".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                else if("Toad".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
+                else if("Luigi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
+                else if("Peach".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
+                else if("Yoshi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
+                else if("Donkey Kong".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
+                else if("Samuel".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                else
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                Clip player2 = AudioSystem.getClip();
+                player2.open(audio);
+                player2.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -516,6 +582,33 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
+            try{
+                AudioInputStream audio;
+                if("Mario".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
+                else if("Bowser".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                else if("Toad".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
+                else if("Luigi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
+                else if("Peach".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
+                else if("Yoshi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
+                else if("Donkey Kong".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
+                else if("Samuel".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                else
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                Clip player2 = AudioSystem.getClip();
+                player2.open(audio);
+                player2.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -570,6 +663,33 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
+            try{
+                AudioInputStream audio;
+                if("Mario".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
+                else if("Bowser".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                else if("Toad".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
+                else if("Luigi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
+                else if("Peach".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
+                else if("Yoshi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
+                else if("Donkey Kong".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
+                else if("Samuel".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                else
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                Clip player2 = AudioSystem.getClip();
+                player2.open(audio);
+                player2.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -624,6 +744,33 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
+            try{
+                AudioInputStream audio;
+                if("Mario".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
+                else if("Bowser".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                else if("Toad".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
+                else if("Luigi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
+                else if("Peach".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
+                else if("Yoshi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
+                else if("Donkey Kong".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
+                else if("Samuel".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                else
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                Clip player2 = AudioSystem.getClip();
+                player2.open(audio);
+                player2.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -678,6 +825,33 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
+            try{
+                AudioInputStream audio;
+                if("Mario".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
+                else if("Bowser".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                else if("Toad".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
+                else if("Luigi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
+                else if("Peach".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
+                else if("Yoshi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
+                else if("Donkey Kong".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
+                else if("Samuel".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                else
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                Clip player2 = AudioSystem.getClip();
+                player2.open(audio);
+                player2.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -732,6 +906,33 @@ public class FrmJogadores extends javax.swing.JFrame {
             }
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
+            try{
+                AudioInputStream audio;
+                if("Mario".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
+                else if("Bowser".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                else if("Toad".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
+                else if("Luigi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
+                else if("Peach".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
+                else if("Yoshi".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
+                else if("Donkey Kong".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
+                else if("Samuel".equals(jog2.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                else
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                Clip player2 = AudioSystem.getClip();
+                player2.open(audio);
+                player2.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             ImageIcon icon = new ImageIcon(jog2.getImagem());
             lblPlayer.setVisible(true);
             lblNome.setVisible(true);
@@ -936,6 +1137,33 @@ public class FrmJogadores extends javax.swing.JFrame {
                     jog2 = sorteiaJogBotC(personagemList, jog1);
                 else
                     jog2 = sorteiaJogBotB(personagemList, jog1);
+                try{
+                    AudioInputStream audio;
+                    if("Mario".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
+                    else if("Bowser".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                    else if("Toad".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
+                    else if("Luigi".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
+                    else if("Peach".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
+                    else if("Yoshi".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
+                    else if("Donkey Kong".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
+                    else if("Samuel".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                    else
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                    Clip player2 = AudioSystem.getClip();
+                    player2.open(audio);
+                    player2.start();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
                 ImageIcon icon = new ImageIcon(jog2.getImagem());
                 lblPlayer.setVisible(true);
                 lblNome.setVisible(true);
@@ -984,10 +1212,45 @@ public class FrmJogadores extends javax.swing.JFrame {
         if(FrmJogadores.quantVitorias>=4){
             int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo jogar com "+personagemList.get(8).getNome()+"?", "Confirmar Jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(resposta == JOptionPane.YES_OPTION){
-                btnP9ActionPerformed(evt);
+                try{
+                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                    Clip didiins = AudioSystem.getClip();
+                    didiins.open(audio);
+                    didiins.start();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
                 jog1 = personagemList.get(8);
                 JOptionPane.showMessageDialog(null,"Personagem "+jog1.getNome()+" escolhido!");
                 jog2 = sorteiaJogBotC(personagemList, jog1);
+                try{
+                    AudioInputStream audio;
+                    if("Mario".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
+                    else if("Bowser".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                    else if("Toad".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
+                    else if("Luigi".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
+                    else if("Peach".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
+                    else if("Yoshi".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
+                    else if("Donkey Kong".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
+                    else if("Samuel".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                    else
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                    Clip player2 = AudioSystem.getClip();
+                    player2.open(audio);
+                    player2.start();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
                 ImageIcon icon = new ImageIcon(jog2.getImagem());
                 lblPlayer.setVisible(true);
                 lblNome.setVisible(true);
@@ -1071,6 +1334,15 @@ public class FrmJogadores extends javax.swing.JFrame {
     private void btnP9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnP9ActionPerformed
         lblImagem.setVisible(true);
         if(FrmJogadores.quantVitorias>=4){
+            try{
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
+                Clip didiins = AudioSystem.getClip();
+                didiins.open(audio);
+                didiins.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             ImageIcon icon = new ImageIcon("src/main/resources/characters/didiM.gif"); //Ainda não temos
             lblImagem.setIcon(icon);
             lblNome.setText(personagemList.get(8).getNome());
