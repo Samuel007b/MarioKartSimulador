@@ -5,11 +5,11 @@ Frame da tela de seleção de personagens
 @author samuelmiranda
 */
 package ifnmg.frontend;
+
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-
 import ifnmg.backend.Personagem;
 import static ifnmg.backend.Api.csvToList;
 import static ifnmg.backend.Api.sorteiaJogBotA;
