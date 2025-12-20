@@ -6,6 +6,10 @@ Frame da tela de execução de rodada
 */
 package ifnmg.frontend;
 
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import static ifnmg.backend.Api.criaRodada;
 import static ifnmg.backend.Api.executaRodadaConfronto;
 import static ifnmg.backend.Api.executaRodadaRetaCurva;
@@ -27,6 +31,7 @@ import javax.swing.SwingConstants;
 
 public class FrmRodada extends javax.swing.JFrame {
     private static int quantVitorias;
+    private static int idPartida;
     private static int quantRodadas, dado1, dado2, dado3;
     private static List<Rodada> rodadaList = new ArrayList<>();
     private String tipoPista;
@@ -42,7 +47,9 @@ public class FrmRodada extends javax.swing.JFrame {
     private final ImageIcon reta = new ImageIcon("src/main/resources/PistaReta.png");
     private final ImageIcon curva = new ImageIcon("src/main/resources/PistaCurva.png");
     private final ImageIcon confronto = new ImageIcon("src/main/resources/PistaConfronto.png");
-    public FrmRodada(int quantVitorias) {
+    public FrmRodada(int quantVitorias, int idPartida) {
+        rodadaList.clear();
+        FrmRodada.idPartida=idPartida;
         FrmRodada.quantVitorias=quantVitorias;
         initComponents();
         this.setLocationRelativeTo(null);
@@ -117,6 +124,15 @@ public class FrmRodada extends javax.swing.JFrame {
         lblDado1.setVerticalAlignment(SwingConstants.CENTER);
         lblDado2.setHorizontalAlignment(SwingConstants.CENTER);
         lblDado2.setVerticalAlignment(SwingConstants.CENTER);
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/iniciar.wav"));
+            Clip iniciar = AudioSystem.getClip();
+            iniciar.open(audio);
+            iniciar.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         iniciaRodada();
     }
     private void iniciaRodada() {
@@ -209,13 +225,13 @@ public class FrmRodada extends javax.swing.JFrame {
         lblDado2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dado.gif"))); // NOI18N
         pnlRodada.add(lblDado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 170, 190, 160));
 
-        lblJog1Nome.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        lblJog1Nome.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblJog1Nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog1Nome.setText("Jogador 1 (você): ");
         lblJog1Nome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlRodada.add(lblJog1Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 280, -1));
 
-        lblJog2Nome.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        lblJog2Nome.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblJog2Nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog2Nome.setText("Jogador 2 (computador): ");
         pnlRodada.add(lblJog2Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 280, -1));
@@ -237,12 +253,12 @@ public class FrmRodada extends javax.swing.JFrame {
         });
         pnlRodada.add(btnDado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 190, 90));
 
-        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblJog1Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog1Atributo.setText("Atributo: ");
         pnlRodada.add(lblJog1Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 280, -1));
 
-        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 1, 14)); // NOI18N
+        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblJog2Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog2Atributo.setText("Atributo: ");
         pnlRodada.add(lblJog2Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 280, -1));
@@ -369,6 +385,15 @@ public class FrmRodada extends javax.swing.JFrame {
 
     private void btnDadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDadoActionPerformed
         btnDado.setEnabled(false);
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dado.wav"));
+            Clip dado = AudioSystem.getClip();
+            dado.open(audio);
+            dado.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         dado1 = jogaDado();
         switch(dado1){
             case 1:
@@ -407,6 +432,15 @@ public class FrmRodada extends javax.swing.JFrame {
             rod.setUpgradeJog1(jog1.getPoder()+dado1);
             JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado e obteve "+dado1+". Agora seu poder é "+rod.getUpgradeJog1()+"!");
             lblJog1Atributo.setText("Poder: "+rod.getUpgradeJog1());
+        }
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dado.wav"));
+            Clip dado = AudioSystem.getClip();
+            dado.open(audio);
+            dado.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
         }
         dado2 = jogaDado();
         switch(dado2){
@@ -451,6 +485,33 @@ public class FrmRodada extends javax.swing.JFrame {
             executaRodadaRetaCurva(rod);
             if(rod.getUpgradeJog1()>rod.getUpgradeJog2()){
                 JOptionPane.showMessageDialog(null,"A velocidade de "+jog1.getNome()+" é maior, então "+jog1.getNome()+" venceu a rodada e ganhou um ponto!");
+                try{
+                    AudioInputStream audio;
+                    if("Mario".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario2.wav"));
+                    else if("Bowser".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                    else if("Toad".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad2.wav"));
+                    else if("Luigi".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi2.wav"));
+                    else if("Peach".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach2.wav"));
+                    else if("Yoshi".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi2.wav"));
+                    else if("Donkey Kong".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
+                    else if("Samuel".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                    else
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
+                    Clip player1 = AudioSystem.getClip();
+                    player1.open(audio);
+                    player1.start();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
                 switch(jog1.getPontos()){
                     case 0:
                         lblJog1Star1.setVisible(false);
@@ -590,6 +651,33 @@ public class FrmRodada extends javax.swing.JFrame {
             }
             else if(rod.getUpgradeJog1()<rod.getUpgradeJog2()){
                 JOptionPane.showMessageDialog(null,"A velocidade de "+jog2.getNome()+" é maior, então "+jog2.getNome()+" venceu a rodada e ganhou um ponto!");
+                try{
+                    AudioInputStream audio;
+                    if("Mario".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario2.wav"));
+                    else if("Bowser".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                    else if("Toad".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad2.wav"));
+                    else if("Luigi".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi2.wav"));
+                    else if("Peach".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach2.wav"));
+                    else if("Yoshi".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi2.wav"));
+                    else if("Donkey Kong".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
+                    else if("Samuel".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                    else
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
+                    Clip player2 = AudioSystem.getClip();
+                    player2.open(audio);
+                    player2.start();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
                 switch(jog2.getPontos()){
                     case 0:
                         lblJog2Star1.setVisible(false);
@@ -736,6 +824,33 @@ public class FrmRodada extends javax.swing.JFrame {
             executaRodadaRetaCurva(rod);
             if(rod.getUpgradeJog1()>rod.getUpgradeJog2()){
                 JOptionPane.showMessageDialog(null,"A manobrabilidade de "+jog1.getNome()+" é maior, então "+jog1.getNome()+" venceu a rodada e ganhou um ponto!");
+                try{
+                    AudioInputStream audio;
+                    if("Mario".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario2.wav"));
+                    else if("Bowser".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                    else if("Toad".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad2.wav"));
+                    else if("Luigi".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi2.wav"));
+                    else if("Peach".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach2.wav"));
+                    else if("Yoshi".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi2.wav"));
+                    else if("Donkey Kong".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
+                    else if("Samuel".equals(jog1.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                    else
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
+                    Clip player1 = AudioSystem.getClip();
+                    player1.open(audio);
+                    player1.start();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
                 switch(jog1.getPontos()){
                     case 0:
                         lblJog1Star1.setVisible(false);
@@ -875,6 +990,33 @@ public class FrmRodada extends javax.swing.JFrame {
             }
             else if(rod.getUpgradeJog1()<rod.getUpgradeJog2()){
                 JOptionPane.showMessageDialog(null,"A manobrabilidade de "+jog2.getNome()+" é maior, então "+jog2.getNome()+" venceu a rodada e ganhou um ponto!");
+                try{
+                    AudioInputStream audio;
+                    if("Mario".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario2.wav"));
+                    else if("Bowser".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                    else if("Toad".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad2.wav"));
+                    else if("Luigi".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi2.wav"));
+                    else if("Peach".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach2.wav"));
+                    else if("Yoshi".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi2.wav"));
+                    else if("Donkey Kong".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
+                    else if("Samuel".equals(jog2.getNome()))
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                    else
+                        audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
+                    Clip player2 = AudioSystem.getClip();
+                    player2.open(audio);
+                    player2.start();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
                 switch(jog2.getPontos()){
                     case 0:
                         lblJog2Star1.setVisible(false);
@@ -1303,6 +1445,15 @@ public class FrmRodada extends javax.swing.JFrame {
                 }
                 lblDado2.setIcon(d0);
                 JOptionPane.showMessageDialog(null,"Como o poder de "+jog2.getNome()+" é maior, "+jog2.getNome()+" pode jogar o dado novamente para tentar ganhar um ponto.");
+                try{
+                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dado.wav"));
+                    Clip dado = AudioSystem.getClip();
+                    dado.open(audio);
+                    dado.start();
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                }
                 dado3 = jogaDado();
                 switch(dado3){
                     case 1:
@@ -1329,6 +1480,33 @@ public class FrmRodada extends javax.swing.JFrame {
                 if(dado3%2==0){
                     rod.getJog2().setPontos(rod.getJog2().getPontos()+1);
                     JOptionPane.showMessageDialog(null,jog2.getNome()+" jogou o dado novamente e obteve "+dado3+". Como "+dado3+" é par, "+jog2.getNome()+" ganhou um ponto!");
+                    try{
+                        AudioInputStream audio;
+                        if("Mario".equals(jog2.getNome()))
+                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario2.wav"));
+                        else if("Bowser".equals(jog2.getNome()))
+                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                        else if("Toad".equals(jog2.getNome()))
+                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad2.wav"));
+                        else if("Luigi".equals(jog2.getNome()))
+                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi2.wav"));
+                        else if("Peach".equals(jog2.getNome()))
+                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach2.wav"));
+                        else if("Yoshi".equals(jog2.getNome()))
+                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi2.wav"));
+                        else if("Donkey Kong".equals(jog2.getNome()))
+                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
+                        else if("Samuel".equals(jog2.getNome()))
+                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                        else
+                            audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
+                        Clip player2 = AudioSystem.getClip();
+                        player2.open(audio);
+                        player2.start();
+                    }
+                    catch(Exception e){
+                        JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                    }
                     switch(jog2.getPontos()){
                         case 0:
                             lblJog2Star1.setVisible(false);
@@ -1479,10 +1657,20 @@ public class FrmRodada extends javax.swing.JFrame {
         rod = criaRodada(numRodada, tipoPista, jog1, jog2, dado1, dado2);
         rodadaList.add(rod);
         numRodada++;
-        if(numRodada<=quantRodadas)
+        if(numRodada<=quantRodadas){
             iniciaRodada();
+            try{
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/rodada.wav"));
+                Clip rodada = AudioSystem.getClip();
+                rodada.open(audio);
+                rodada.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
+        } 
         else{
-            new FrmFimJogo(FrmRodada.quantVitorias).setVisible(true);
+            new FrmFimJogo(FrmRodada.quantVitorias, FrmRodada.idPartida, FrmRodada.rodadaList).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnProximoActionPerformed
@@ -1490,7 +1678,7 @@ public class FrmRodada extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo sair (seu progresso nesta partida será perdido, mas você poderá iniciar outra partida)?", "Voltar ao Menu Principal", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
-            new FrmJogadores(FrmRodada.quantVitorias).setVisible(true);
+            new FrmJogadores(FrmRodada.quantVitorias, FrmRodada.idPartida, null, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
@@ -1498,6 +1686,15 @@ public class FrmRodada extends javax.swing.JFrame {
     private void btnDado3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDado3ActionPerformed
         btnDado3.setEnabled(false);
         btnDado3.setVisible(false);
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dado.wav"));
+            Clip dado = AudioSystem.getClip();
+            dado.open(audio);
+            dado.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
         dado3 = jogaDado();
         switch(dado3){
             case 1:
@@ -1524,6 +1721,33 @@ public class FrmRodada extends javax.swing.JFrame {
         if(dado3%2==0){
             rod.getJog1().setPontos(rod.getJog1().getPontos()+1);
             JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado novamente e obteve "+dado3+". Como "+dado3+" é par, "+jog1.getNome()+" ganhou um ponto!");
+            try{
+                AudioInputStream audio;
+                if("Mario".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/mario1.wav"));
+                else if("Bowser".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/bowser.wav"));
+                else if("Toad".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/toad1.wav"));
+                else if("Luigi".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/luigi1.wav"));
+                else if("Peach".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/peach1.wav"));
+                else if("Yoshi".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/yoshi1.wav"));
+                else if("Donkey Kong".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk1.wav"));
+                else if("Samuel".equals(jog1.getNome()))
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                else
+                    audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/mer-por.wav"));
+                Clip player1 = AudioSystem.getClip();
+                player1.open(audio);
+                player1.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            }
             switch(jog1.getPontos()){
                 case 0:
                     lblJog1Star1.setVisible(false);
@@ -1670,7 +1894,7 @@ public class FrmRodada extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmRodada(FrmRodada.quantVitorias).setVisible(true);
+                new FrmRodada(FrmRodada.quantVitorias, FrmRodada.idPartida).setVisible(true);
             }
         });
     }
