@@ -93,7 +93,7 @@ public class FrmPlayers extends javax.swing.JFrame {
             }
         }
         catch(Exception e){
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error reading the file.");
         }
     }
 

@@ -1,6 +1,7 @@
 ifnmg\frontend\FrmFinPartido$4.class
 ifnmg\frontend\FrmPlayers$13.class
 ifnmg\frontend\FrmInicio$2.class
+ifnmg\frontend\FrmJogsJogoEstrelas$3.class
 ifnmg\frontend\FrmJogadores$15.class
 ifnmg\frontend\FrmJugadores$2.class
 ifnmg\frontend\FrmEndGame$4.class
@@ -90,6 +91,7 @@ ifnmg\frontend\FrmRodada$2.class
 ifnmg\frontend\FrmEndGame$5.class
 ifnmg\frontend\FrmPlayers$6.class
 ifnmg\frontend\FrmJogadores$6.class
+ifnmg\frontend\FrmJogsJogoEstrelas.class
 ifnmg\frontend\FrmCarregando.class
 ifnmg\frontend\FrmJugadores.class
 ifnmg\backend\Personagem.class
@@ -105,12 +107,14 @@ ifnmg\frontend\FrmJugadores$6.class
 ifnmg\frontend\FrmFinPartido$3.class
 ifnmg\frontend\FrmJugadores$3.class
 ifnmg\frontend\FrmPlayers$18.class
+ifnmg\frontend\FrmJogsJogoEstrelas$1.class
 ifnmg\frontend\FrmPlayers$8.class
 ifnmg\frontend\FrmFinPartido$2.class
 ifnmg\frontend\FrmCreditos$1.class
 ifnmg\frontend\FrmJogadores$8.class
 ifnmg\frontend\FrmJugadores$4.class
 ifnmg\frontend\FrmPlayers$17.class
+ifnmg\frontend\FrmJogsJogoEstrelas$2.class
 ifnmg\frontend\FrmFinPartido$1.class
 ifnmg\frontend\FrmRonda.class
 ifnmg\frontend\FrmJogadores$9.class

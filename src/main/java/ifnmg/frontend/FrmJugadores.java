@@ -93,7 +93,7 @@ public class FrmJugadores extends javax.swing.JFrame {
             }
         }
         catch(Exception e){
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo.");
         }
     }
 
