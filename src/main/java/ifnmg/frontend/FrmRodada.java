@@ -476,7 +476,6 @@ public class FrmRodada extends javax.swing.JFrame {
         rodadaList.add(rod);
         numRodada++;
         if(numRodada<=quantRodadas){
-            iniciaRodada();
             try{
                 AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/rodada.wav"));
                 Clip rodada = AudioSystem.getClip();
@@ -486,6 +485,7 @@ public class FrmRodada extends javax.swing.JFrame {
             catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
             }
+            iniciaRodada();
         } 
         else{
             new FrmFimJogo(FrmRodada.quantVitorias, FrmRodada.idPartida, FrmRodada.pts, FrmRodada.rodadaList).setVisible(true);

@@ -47,6 +47,15 @@ public class FrmEndGame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         vencedor = vencedor(jog1, jog2);
         if(vencedor==null){
+            try{
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/empate.wav"));
+                Clip empate = AudioSystem.getClip();
+                empate.open(audio);
+                empate.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Error reading the file.");
+            }
             lblImagemEmpate.setIcon(empate);
             lblTrofeu.setVisible(false);
             lblVencedor.setText("There was a tie between "+jog1.getNome()+" and "+jog2.getNome()+".");

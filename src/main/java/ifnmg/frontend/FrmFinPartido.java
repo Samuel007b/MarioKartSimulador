@@ -47,6 +47,15 @@ public class FrmFinPartido extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         vencedor = vencedor(jog1, jog2);
         if(vencedor==null){
+            try{
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/empate.wav"));
+                Clip empate = AudioSystem.getClip();
+                empate.open(audio);
+                empate.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo.");
+            }
             lblImagemEmpate.setIcon(empate);
             lblTrofeu.setVisible(false);
             lblVencedor.setText("Hubo un empate entre "+jog1.getNome()+" y "+jog2.getNome()+".");
