@@ -14,8 +14,8 @@ import static ifnmg.backend.Api.vencedor;
 import ifnmg.backend.Partido;
 import ifnmg.backend.Personagem;
 import ifnmg.backend.Rodada;
-import static ifnmg.frontend.FrmJogadores.jog1;
-import static ifnmg.frontend.FrmJogadores.jog2;
+import static ifnmg.frontend.FrmJugadores.jog1;
+import static ifnmg.frontend.FrmJugadores.jog2;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -173,7 +173,7 @@ public class FrmFinPartido extends javax.swing.JFrame {
                 btnHistorico1ActionPerformed(evt);
             }
         });
-        pnlFimJogo.add(btnHistorico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
+        pnlFimJogo.add(btnHistorico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 517, 260, 40));
 
         btnHistorico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Historico2-esp.gif"))); // NOI18N
         btnHistorico2.setToolTipText("");
@@ -184,7 +184,7 @@ public class FrmFinPartido extends javax.swing.JFrame {
                 btnHistorico2ActionPerformed(evt);
             }
         });
-        pnlFimJogo.add(btnHistorico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 510, -1, -1));
+        pnlFimJogo.add(btnHistorico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 517, 250, 40));
 
         lblImagemVencedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pnlFimJogo.add(lblImagemVencedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 320, 290));
@@ -199,7 +199,7 @@ public class FrmFinPartido extends javax.swing.JFrame {
         pnlFimJogo.add(lblPerdedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 1020, -1));
 
         lblImagemEmpate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pnlFimJogo.add(lblImagemEmpate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 320, 290));
+        pnlFimJogo.add(lblImagemEmpate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 320, 290));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -271,9 +271,9 @@ public class FrmFinPartido extends javax.swing.JFrame {
 
     private void btnHistorico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorico1ActionPerformed
         if(vencedor == jog1)
-            JOptionPane.showMessageDialog(null, FrmFinPartido.rodadaList+"\n----- Fin del Partido -----\n"+jog1.getNome()+" ganó el partido con "+jog1.getPontos()+" puntos!\nPor otro lado "+jog2.getNome()+" perdió y terminó con "+jog2.getPontos()+" puntos.");
+            JOptionPane.showMessageDialog(null, FrmFinPartido.rodadaList+"\n----- Fin del Partido -----\n¡"+jog1.getNome()+" ganó el partido con "+jog1.getPontos()+" puntos!\nPor otro lado "+jog2.getNome()+" perdió y terminó con "+jog2.getPontos()+" puntos.");
         else if(vencedor == jog2)
-            JOptionPane.showMessageDialog(null, FrmFinPartido.rodadaList+"\n----- Fin del Partido -----\n"+jog2.getNome()+" ganó el partido con "+jog2.getPontos()+" puntos!\nPor otro lado "+jog1.getNome()+" perdió y terminó con "+jog1.getPontos()+" puntos.");
+            JOptionPane.showMessageDialog(null, FrmFinPartido.rodadaList+"\n----- Fin del Partido -----\n¡"+jog2.getNome()+" ganó el partido con "+jog2.getPontos()+" puntos!\nPor otro lado "+jog1.getNome()+" perdió y terminó con "+jog1.getPontos()+" puntos.");
         else
             JOptionPane.showMessageDialog(null, FrmFinPartido.rodadaList+"\n----- Fin del Partido -----\n"+jog1.getNome()+" y "+jog2.getNome()+" empataron con "+jog1.getPontos()+" puntos cada uno.");
     }//GEN-LAST:event_btnHistorico1ActionPerformed

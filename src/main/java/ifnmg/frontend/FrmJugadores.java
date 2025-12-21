@@ -55,7 +55,7 @@ public class FrmJugadores extends javax.swing.JFrame {
             if(FrmJugadores.pts==3 && vencedor(jog1, jog2)==jog1){
                 JOptionPane.showMessageDialog(null, "¡¡¡Has desbloqueado el personaje SAMUEL!!!");
                 try{
-                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-esp.wav"));
+                    AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-siu.wav"));
                     Clip samuelsiu = AudioSystem.getClip();
                     samuelsiu.open(audio);
                     samuelsiu.start();

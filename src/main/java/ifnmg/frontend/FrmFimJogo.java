@@ -47,7 +47,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         vencedor = vencedor(jog1, jog2);
         if(vencedor==null){
-            lblImagemVencedor.setIcon(empate);
+            lblImagemEmpate.setIcon(empate);
             lblTrofeu.setVisible(false);
             lblVencedor.setText("Houve um empate entre "+jog1.getNome()+" e "+jog2.getNome()+".");
             lblPerdedor.setText("Ambos ficaram com "+jog1.getPontos()+" ponto(s).");
@@ -131,6 +131,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
         lblImagemVencedor = new javax.swing.JLabel();
         lblTrofeu = new javax.swing.JLabel();
         lblPerdedor = new javax.swing.JLabel();
+        lblImagemEmpate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,7 +173,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
                 btnHistorico1ActionPerformed(evt);
             }
         });
-        pnlFimJogo.add(btnHistorico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
+        pnlFimJogo.add(btnHistorico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 517, 260, 40));
 
         btnHistorico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Historico2-por.gif"))); // NOI18N
         btnHistorico2.setContentAreaFilled(false);
@@ -182,7 +183,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
                 btnHistorico2ActionPerformed(evt);
             }
         });
-        pnlFimJogo.add(btnHistorico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 510, -1, -1));
+        pnlFimJogo.add(btnHistorico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(736, 517, 250, 40));
 
         lblImagemVencedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pnlFimJogo.add(lblImagemVencedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 320, 290));
@@ -195,6 +196,9 @@ public class FrmFimJogo extends javax.swing.JFrame {
         lblPerdedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPerdedor.setText("Perdedor");
         pnlFimJogo.add(lblPerdedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 1020, -1));
+
+        lblImagemEmpate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pnlFimJogo.add(lblImagemEmpate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 320, 290));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -319,6 +323,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
     private javax.swing.JButton btnHistorico2;
     private javax.swing.JButton btnPlayAgain;
     private javax.swing.JButton btnSair;
+    private javax.swing.JLabel lblImagemEmpate;
     private javax.swing.JLabel lblImagemVencedor;
     private javax.swing.JLabel lblPerdedor;
     private javax.swing.JLabel lblTrofeu;
