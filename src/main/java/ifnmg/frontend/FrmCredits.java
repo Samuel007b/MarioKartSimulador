@@ -57,7 +57,7 @@ public class FrmCredits extends javax.swing.JFrame {
         lblHoll.setFont(new java.awt.Font("Showcard Gothic", 1, 48)); // NOI18N
         lblHoll.setForeground(new java.awt.Color(255, 255, 255));
         lblHoll.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHoll.setText("Welcome to the Hall of Giants!!!");
+        lblHoll.setText("Welcome to the Hall of Legends!!!");
         lblCreditos.add(lblHoll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1200, -1));
 
         lblLeo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -105,7 +105,7 @@ public class FrmCredits extends javax.swing.JFrame {
         lblAgradecimentos.setFont(new java.awt.Font("Showcard Gothic", 2, 14)); // NOI18N
         lblAgradecimentos.setForeground(new java.awt.Color(255, 255, 255));
         lblAgradecimentos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAgradecimentos.setText("Special thanks: Leonardo Humberto, Caio Henriques, Caio da Silva, Gustavo Santos, Ryanderson Henzyo & Sara Augusta");
+        lblAgradecimentos.setText("Special thanks: Leonardo Humberto, Caio Lamas, Caio da Silva, Gustavo Santos, Ryanderson Henzyo & Sara Augusta");
         lblCreditos.add(lblAgradecimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 1190, -1));
 
         lblSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exit.png"))); // NOI18N

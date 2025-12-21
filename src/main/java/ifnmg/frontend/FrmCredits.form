@@ -53,7 +53,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Welcome to the Hall of Giants!!!"/>
+            <Property name="text" type="java.lang.String" value="Welcome to the Hall of Legends!!!"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -224,7 +224,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Special thanks: Leonardo Humberto, Caio Henriques, Caio da Silva, Gustavo Santos, Ryanderson Henzyo &amp; Sara Augusta"/>
+            <Property name="text" type="java.lang.String" value="Special thanks: Leonardo Humberto, Caio Lamas, Caio da Silva, Gustavo Santos, Ryanderson Henzyo &amp; Sara Augusta"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
