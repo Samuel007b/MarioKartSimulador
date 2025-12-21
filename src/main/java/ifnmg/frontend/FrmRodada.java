@@ -1,5 +1,5 @@
 /*
-Frame da tela de execução de rodada
+Frame da tela de execução de rodada (português)
 @author arthurpereira
 @author athossilvano
 @author samuelmiranda
@@ -208,17 +208,17 @@ public class FrmRodada extends javax.swing.JFrame {
         lblJog1Nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog1Nome.setText("Jogador 1 (você): ");
         lblJog1Nome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pnlRodada.add(lblJog1Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 280, -1));
+        pnlRodada.add(lblJog1Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 340, -1));
 
         lblJog2Nome.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblJog2Nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog2Nome.setText("Jogador 2 (computador): ");
-        pnlRodada.add(lblJog2Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 280, -1));
+        pnlRodada.add(lblJog2Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 340, -1));
 
         lblRodada.setFont(new java.awt.Font("Showcard Gothic", 2, 24)); // NOI18N
         lblRodada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRodada.setText("ª Rodada: ");
-        pnlRodada.add(lblRodada, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 460, -1));
+        pnlRodada.add(lblRodada, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 670, -1));
 
         btnDado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/playDado.gif"))); // NOI18N
         btnDado.setBorderPainted(false);
@@ -232,12 +232,12 @@ public class FrmRodada extends javax.swing.JFrame {
         });
         pnlRodada.add(btnDado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 190, 90));
 
-        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblJog1Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog1Atributo.setText("Atributo: ");
         pnlRodada.add(lblJog1Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 280, -1));
 
-        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblJog2Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog2Atributo.setText("Atributo: ");
         pnlRodada.add(lblJog2Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 280, -1));
@@ -343,7 +343,7 @@ public class FrmRodada extends javax.swing.JFrame {
         lblRaio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/raio.png"))); // NOI18N
         pnlRodada.add(lblRaio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, -1, -1));
 
-        lblPista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PistaCurva.png"))); // NOI18N
+        lblPista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PistaReta.png"))); // NOI18N
         pnlRodada.add(lblPista, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -476,7 +476,6 @@ public class FrmRodada extends javax.swing.JFrame {
         rodadaList.add(rod);
         numRodada++;
         if(numRodada<=quantRodadas){
-            iniciaRodada();
             try{
                 AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/rodada.wav"));
                 Clip rodada = AudioSystem.getClip();
@@ -486,6 +485,7 @@ public class FrmRodada extends javax.swing.JFrame {
             catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
             }
+            iniciaRodada();
         } 
         else{
             new FrmFimJogo(FrmRodada.quantVitorias, FrmRodada.idPartida, FrmRodada.pts, FrmRodada.rodadaList).setVisible(true);
@@ -711,7 +711,7 @@ public class FrmRodada extends javax.swing.JFrame {
             else if("Donkey Kong".equals(jog.getNome()))
                 audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
             else if("Samuel".equals(jog.getNome()))
-                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/melhor.wav"));
             else
                 audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
             Clip player = AudioSystem.getClip();

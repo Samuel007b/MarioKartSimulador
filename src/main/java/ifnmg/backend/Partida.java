@@ -1,5 +1,5 @@
 /*
-TAD para representar partida
+TAD para representar partida (português)
 @author arthurpereira
 @author athossilvano
 @author samuelmiranda

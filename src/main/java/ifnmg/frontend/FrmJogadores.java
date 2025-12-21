@@ -1,5 +1,5 @@
 /*
-Frame da tela de seleção de personagens
+Frame da tela de seleção de personagens (português)
 @author arthurpereira
 @author athossilvano
 @author samuelmiranda
@@ -783,9 +783,7 @@ public class FrmJogadores extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrmJogadores(FrmJogadores.quantVitorias, FrmJogadores.idPartida, FrmJogadores.pts, jog1, jog2).setVisible(true);
-                
             }
-            
         });
     }
     private static void somPlayer2(Personagem jog2){

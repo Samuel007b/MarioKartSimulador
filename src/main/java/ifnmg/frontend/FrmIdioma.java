@@ -1,5 +1,5 @@
 /*
-Frame da tela de seleção de idioma
+Frame da tela de seleção de idioma (padrão para inglês, português e espanhol)
 @author arthurpereira
 @author athossilvano
 @author samuelmiranda
@@ -114,7 +114,7 @@ public class FrmIdioma extends javax.swing.JFrame {
         }
         int resposta = JOptionPane.showConfirmDialog(null, "¿Puedes confirmar que el español es el idioma del juego (no será posible cambiarlo más adelante)?", "Confirmar Idioma", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta==JOptionPane.YES_OPTION){
-            new FrmJogadores(0, 0, 0, null, null).setVisible(true);
+            new FrmJugadores(0, 0, 0, null, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnEspañolActionPerformed
@@ -131,7 +131,7 @@ public class FrmIdioma extends javax.swing.JFrame {
         }
         int resposta = JOptionPane.showConfirmDialog(null, "Can you confirm English as the game's language (it won't be possible to change it later)?", "Confirm Language", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta==JOptionPane.YES_OPTION){
-            new FrmJogadores(0, 0, 0, null, null).setVisible(true);
+            new FrmPlayers(0, 0, 0, null, null).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnEnglishActionPerformed
