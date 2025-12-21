@@ -232,12 +232,12 @@ public class FrmRodada extends javax.swing.JFrame {
         });
         pnlRodada.add(btnDado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 190, 90));
 
-        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblJog1Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog1Atributo.setText("Atributo: ");
         pnlRodada.add(lblJog1Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 280, -1));
 
-        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblJog2Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog2Atributo.setText("Atributo: ");
         pnlRodada.add(lblJog2Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 280, -1));
@@ -343,7 +343,7 @@ public class FrmRodada extends javax.swing.JFrame {
         lblRaio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/raio.png"))); // NOI18N
         pnlRodada.add(lblRaio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, -1, -1));
 
-        lblPista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PistaCurva.png"))); // NOI18N
+        lblPista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PistaReta.png"))); // NOI18N
         pnlRodada.add(lblPista, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -711,7 +711,7 @@ public class FrmRodada extends javax.swing.JFrame {
             else if("Donkey Kong".equals(jog.getNome()))
                 audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
             else if("Samuel".equals(jog.getNome()))
-                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/estouaqui.wav"));
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-por/melhor.wav"));
             else
                 audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-por.wav"));
             Clip player = AudioSystem.getClip();

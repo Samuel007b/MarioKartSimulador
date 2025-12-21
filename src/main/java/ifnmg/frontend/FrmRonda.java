@@ -218,7 +218,7 @@ public class FrmRonda extends javax.swing.JFrame {
 
         lblJog2Nome.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblJog2Nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblJog2Nome.setText("Jugador 2 (computadora): ");
+        lblJog2Nome.setText("Jugador 2 (computadora):");
         pnlRodada.add(lblJog2Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 340, -1));
 
         lblRodada.setFont(new java.awt.Font("Showcard Gothic", 2, 24)); // NOI18N
@@ -238,12 +238,12 @@ public class FrmRonda extends javax.swing.JFrame {
         });
         pnlRodada.add(btnDado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 190, 90));
 
-        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblJog1Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog1Atributo.setText("Atributo: ");
         pnlRodada.add(lblJog1Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 280, -1));
 
-        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblJog2Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog2Atributo.setText("Atributo: ");
         pnlRodada.add(lblJog2Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 280, -1));
@@ -349,7 +349,7 @@ public class FrmRonda extends javax.swing.JFrame {
         lblRaio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/raio.png"))); // NOI18N
         pnlRodada.add(lblRaio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, -1, -1));
 
-        lblPista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PistaCurva.png"))); // NOI18N
+        lblPista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PistaConfronto.png"))); // NOI18N
         pnlRodada.add(lblPista, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -367,7 +367,7 @@ public class FrmRonda extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-// Traduzir btnDadoActionPerformed
+
     private void btnDadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDadoActionPerformed
         btnDado.setEnabled(false);
         dado1 = jogaDado();
@@ -375,17 +375,17 @@ public class FrmRonda extends javax.swing.JFrame {
         if(tipoPista=="RECTA"){
             
             rod.setUpgradeJog1(jog1.getVelocidade()+dado1);
-            JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado e obteve "+dado1+". Agora sua velocidade é "+rod.getUpgradeJog1()+"!");
-            lblJog1Atributo.setText("Velocidade: "+rod.getUpgradeJog1());
+            JOptionPane.showMessageDialog(null,jog1.getNome()+" tiró el dado y obtuvo un "+dado1+". ¡Ahora su velocidad es "+rod.getUpgradeJog1()+"!");
+            lblJog1Atributo.setText("Velocidad: "+rod.getUpgradeJog1());
         }
         else if(tipoPista=="CURVO"){
             rod.setUpgradeJog1(jog1.getManobrabilidade()+dado1);
-            JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado e obteve "+dado1+". Agora sua manobrabilidade é "+rod.getUpgradeJog1()+"!");
-            lblJog1Atributo.setText("Manobrabilidade: "+rod.getUpgradeJog1());
+            JOptionPane.showMessageDialog(null,jog1.getNome()+" tiró el dado y obtuvo un "+dado1+". ¡Ahora su maniobrabilidad es "+rod.getUpgradeJog1()+"!");
+            lblJog1Atributo.setText("Maniobrabilidad: "+rod.getUpgradeJog1());
         }
         else{
             rod.setUpgradeJog1(jog1.getPoder()+dado1);
-            JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado e obteve "+dado1+". Agora seu poder é "+rod.getUpgradeJog1()+"!");
+            JOptionPane.showMessageDialog(null,jog1.getNome()+" tiró el dado y obtuvo un "+dado1+". ¡Ahora su poder es "+rod.getUpgradeJog1()+"!");
             lblJog1Atributo.setText("Poder: "+rod.getUpgradeJog1());
         }
         dado2 = jogaDado();
@@ -393,69 +393,69 @@ public class FrmRonda extends javax.swing.JFrame {
         if(tipoPista=="RECTA"){
             
             rod.setUpgradeJog2(jog2.getVelocidade()+dado2);
-            JOptionPane.showMessageDialog(null,jog2.getNome()+" jogou o dado e obteve "+dado2+". Agora sua velocidade é "+rod.getUpgradeJog2()+"!");
-            lblJog2Atributo.setText("Velocidade: "+rod.getUpgradeJog2());
+            JOptionPane.showMessageDialog(null,jog2.getNome()+" tiró el dado y obtuvo un "+dado2+". ¡Ahora su velocidad es "+rod.getUpgradeJog2()+"!");
+            lblJog2Atributo.setText("Velocidad: "+rod.getUpgradeJog2());
         }
         else if(tipoPista=="CURVO"){
             rod.setUpgradeJog2(jog2.getManobrabilidade()+dado2);
-            JOptionPane.showMessageDialog(null,jog2.getNome()+" jogou o dado e obteve "+dado2+". Agora sua manobrabilidade é "+rod.getUpgradeJog2()+"!");
-            lblJog2Atributo.setText("Manobrabilidade: "+rod.getUpgradeJog2());
+            JOptionPane.showMessageDialog(null,jog2.getNome()+" tiró el dado y obtuvo un "+dado2+". ¡Ahora su maniobrabilidad es "+rod.getUpgradeJog2()+"!");
+            lblJog2Atributo.setText("Maniobrabilidad: "+rod.getUpgradeJog2());
         }
         else{
             rod.setUpgradeJog2(jog2.getPoder()+dado2);
-            JOptionPane.showMessageDialog(null,jog2.getNome()+" jogou o dado e obteve "+dado2+". Agora seu poder é "+rod.getUpgradeJog2()+"!");
+            JOptionPane.showMessageDialog(null,jog2.getNome()+" tiró el dado y obtuvo un "+dado2+". ¡Ahora su poder es "+rod.getUpgradeJog2()+"!");
             lblJog2Atributo.setText("Poder: "+rod.getUpgradeJog2());
         }
         if(tipoPista=="RECTA"){
             executaRodadaRetaCurva(rod);
             if(rod.getUpgradeJog1()>rod.getUpgradeJog2()){
-                JOptionPane.showMessageDialog(null,"A velocidade de "+jog1.getNome()+" é maior, então "+jog1.getNome()+" venceu a rodada e ganhou um ponto!");
+                JOptionPane.showMessageDialog(null,"La velocidad de "+jog1.getNome()+" es mayor. ¡Así que "+jog1.getNome()+" ganó la ronda y se llevó un punto!");
                 somVitoria(jog1);
                 mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
             }
             else if(rod.getUpgradeJog1()<rod.getUpgradeJog2()){
-                JOptionPane.showMessageDialog(null,"A velocidade de "+jog2.getNome()+" é maior, então "+jog2.getNome()+" venceu a rodada e ganhou um ponto!");
+                JOptionPane.showMessageDialog(null,"La velocidad de "+jog2.getNome()+" es mayor. ¡Así que "+jog2.getNome()+" ganó la ronda y se llevó un punto!");
                 somVitoria(jog2);
                 mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
             }
             else
-                JOptionPane.showMessageDialog(null,"As velocidades de "+jog1.getNome()+" e "+jog2.getNome()+" são iguais, então ninguém somou pontos.");
+                JOptionPane.showMessageDialog(null,jog1.getNome()+" y "+jog2.getNome()+" tienen la misma velocidad, por lo que ninguno obtuvo puntos.");
             btnProximo.setVisible(true);
             btnProximo.setEnabled(true);
         }
         else if(tipoPista=="CURVO"){
             executaRodadaRetaCurva(rod);
             if(rod.getUpgradeJog1()>rod.getUpgradeJog2()){
-                JOptionPane.showMessageDialog(null,"A manobrabilidade de "+jog1.getNome()+" é maior, então "+jog1.getNome()+" venceu a rodada e ganhou um ponto!");
+                JOptionPane.showMessageDialog(null,"La maniobrabilidad de "+jog1.getNome()+" es mayor. ¡Así que "+jog1.getNome()+" ganó la ronda y se llevó un punto!");
                 somVitoria(jog1);
                 mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
             }
             else if(rod.getUpgradeJog1()<rod.getUpgradeJog2()){
-                JOptionPane.showMessageDialog(null,"A manobrabilidade de "+jog2.getNome()+" é maior, então "+jog2.getNome()+" venceu a rodada e ganhou um ponto!");
+                JOptionPane.showMessageDialog(null,"La maniobrabilidad de "+jog2.getNome()+" es mayor. ¡Así que "+jog2.getNome()+" ganó la ronda y se llevó un punto!");
                 somVitoria(jog2);
                 mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
             }
             else
-                JOptionPane.showMessageDialog(null,"As manobrabilidades de "+jog1.getNome()+" e "+jog2.getNome()+" são iguais, então ninguém somou pontos.");
+                JOptionPane.showMessageDialog(null,jog1.getNome()+" y "+jog2.getNome()+" tienen la misma maniobrabilidad, por lo que ninguno obtuvo puntos.");
             btnProximo.setVisible(true);
             btnProximo.setEnabled(true);
         }
         else{
             executaRodadaConfronto(rod);
             if(rod.getUpgradeJog1()>rod.getUpgradeJog2()){
-                JOptionPane.showMessageDialog(null,"O poder de "+jog2.getNome()+" é menor, então "+jog2.getNome()+" perdeu a rodada e perdeu um ponto.");
+                JOptionPane.showMessageDialog(null,"El poder de "+jog2.getNome()+" es menor, por lo que "+jog2.getNome()+" perdió la ronda y perdió un punto.");
                 mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
                 lblDado1.setIcon(d0);
-                JOptionPane.showMessageDialog(null,"Como o poder de "+jog1.getNome()+" é maior, "+jog1.getNome()+" pode jogar o dado novamente para tentar ganhar um ponto.");
+                JOptionPane.showMessageDialog(null,"Como el poder de "+jog1.getNome()+" es mayor, "+jog1.getNome()+" puede tirar el dado nuevamente para intentar ganar un punto.");
                 btnDado.setVisible(false);
                 btnDado3.setVisible(true);
                 btnDado3.setEnabled(true);
             }
             else if(rod.getUpgradeJog1()<rod.getUpgradeJog2()){
-                JOptionPane.showMessageDialog(null,"O poder de "+jog1.getNome()+" é menor, então "+jog1.getNome()+" perdeu a rodada e perdeu um ponto.");
+                JOptionPane.showMessageDialog(null,"El poder de "+jog1.getNome()+" es menor, por lo que "+jog1.getNome()+" perdió la ronda y perdió un punto.");
                 mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
                 lblDado2.setIcon(d0);
-                JOptionPane.showMessageDialog(null,"Como o poder de "+jog2.getNome()+" é maior, "+jog2.getNome()+" pode jogar o dado novamente para tentar ganhar um ponto.");
+                JOptionPane.showMessageDialog(null,"Como el poder de "+jog2.getNome()+" es mayor, "+jog2.getNome()+" puede tirar el dado nuevamente para intentar ganar un punto.");
                 dado3 = jogaDado();
                 trocaDado(dado3, lblDado2);
                 if(dado3%2==0){
@@ -470,7 +470,7 @@ public class FrmRonda extends javax.swing.JFrame {
                 btnProximo.setEnabled(true);
             }
             else{
-                JOptionPane.showMessageDialog(null,"Os poderes de "+jog1.getNome()+" e "+jog2.getNome()+" são iguais, então ninguém perdeu pontos.");
+                JOptionPane.showMessageDialog(null,jog1.getNome()+" y "+jog2.getNome()+" tienen los mismos poderes, por lo que ninguno de ellos perdió puntos.");
                 btnProximo.setVisible(true);
                 btnProximo.setEnabled(true);
             }
@@ -717,7 +717,7 @@ public class FrmRonda extends javax.swing.JFrame {
             else if("Donkey Kong".equals(jog.getNome()))
                 audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
             else if("Samuel".equals(jog.getNome()))
-                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-esp/estouaqui.wav"));
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-esp/melhor.wav"));
             else
                 audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-esp.wav"));
             Clip player = AudioSystem.getClip();

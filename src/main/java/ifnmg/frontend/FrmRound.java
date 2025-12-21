@@ -223,7 +223,7 @@ public class FrmRound extends javax.swing.JFrame {
 
         lblRodada.setFont(new java.awt.Font("Showcard Gothic", 2, 24)); // NOI18N
         lblRodada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRodada.setText("Round:  ");
+        lblRodada.setText("Round :  ");
         pnlRodada.add(lblRodada, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 670, -1));
 
         btnDado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/playDado.gif"))); // NOI18N
@@ -238,12 +238,12 @@ public class FrmRound extends javax.swing.JFrame {
         });
         pnlRodada.add(btnDado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 190, 90));
 
-        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblJog1Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog1Atributo.setText("Attribute: ");
         pnlRodada.add(lblJog1Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 280, -1));
 
-        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
+        lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblJog2Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblJog2Atributo.setText("Attribute: ");
         pnlRodada.add(lblJog2Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 280, -1));
@@ -716,7 +716,7 @@ public class FrmRound extends javax.swing.JFrame {
             else if("Donkey Kong".equals(jog.getNome()))
                 audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/dk2.wav"));
             else if("Samuel".equals(jog.getNome()))
-                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-ing/estouaqui.wav"));
+                audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/samuel-ing/melhor.wav"));
             else
                 audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/didi/ins-ing.wav"));
             Clip player = AudioSystem.getClip();
