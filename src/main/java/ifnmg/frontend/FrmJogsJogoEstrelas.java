@@ -9,16 +9,36 @@ package ifnmg.frontend;
 import static ifnmg.backend.Api.csvToList;
 import static ifnmg.backend.Api.jogaDado;
 import ifnmg.backend.Personagem;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class FrmJogsJogoEstrelas extends javax.swing.JFrame {
+    public static Clip jogStar;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmJogsJogoEstrelas.class.getName());
+    private static int vitoriasLeo;
+    private static int vitoriasCaio;
+    private static int idPartida;
     public static Personagem jog1, jog2;
     private static List<Personagem> personagemList = new ArrayList<>();
-    public FrmJogsJogoEstrelas() {
+    public FrmJogsJogoEstrelas(int vitoriasLeo, int vitoriasCaio, int idPartida) {
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/musicaJogoEstrelas.wav"));
+            jogStar = AudioSystem.getClip();
+            jogStar.open(audio);
+            jogStar.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
+        FrmJogsJogoEstrelas.idPartida=idPartida+1;
+        FrmJogsJogoEstrelas.vitoriasLeo=vitoriasLeo;
+        FrmJogsJogoEstrelas.vitoriasCaio=vitoriasCaio;
         initComponents();
         this.setLocationRelativeTo(null);
         try{
@@ -32,7 +52,7 @@ public class FrmJogsJogoEstrelas extends javax.swing.JFrame {
         exibeSeta(0, lblSeta1, lblSeta2, lblSeta3, lblSeta4, lblSeta5, lblSeta6);
         btnDado2.setEnabled(false);
         btnIniciar.setEnabled(false);
-        JOptionPane.showMessageDialog(null, "A primeira etapa do Jogo das Estrelas é sortear os atributos dos jogadores Léo e Caio (que podem ir de 1 a 6). Comece sorteando a velocidade de Léo!");
+        JOptionPane.showMessageDialog(null, "Comece sorteando a velocidade de Léo.");
         lblSorteio.setText("Sorteie a velocidade de Léo!");
         exibeSeta(1, lblSeta1, lblSeta2, lblSeta3, lblSeta4, lblSeta5, lblSeta6);
     }
@@ -228,7 +248,8 @@ public class FrmJogsJogoEstrelas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        
+        new FrmRodJogoEstrelas(FrmJogsJogoEstrelas.vitoriasLeo, FrmJogsJogoEstrelas.vitoriasCaio, FrmJogsJogoEstrelas.idPartida).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void btnDado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDado1ActionPerformed
@@ -312,7 +333,11 @@ public class FrmJogsJogoEstrelas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDado2ActionPerformed
 
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> new FrmJogsJogoEstrelas().setVisible(true));
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FrmJogsJogoEstrelas(FrmJogsJogoEstrelas.vitoriasLeo, FrmJogsJogoEstrelas.vitoriasCaio, FrmJogsJogoEstrelas.idPartida).setVisible(true);
+            }
+        });
     }
     private static void exibeSeta(int a, javax.swing.JLabel lblSeta1, javax.swing.JLabel lblSeta2, javax.swing.JLabel lblSeta3, javax.swing.JLabel lblSeta4, javax.swing.JLabel lblSeta5, javax.swing.JLabel lblSeta6){
         lblSeta1.setVisible(false);

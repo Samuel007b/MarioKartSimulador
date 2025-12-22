@@ -96,10 +96,10 @@ public class FrmEndGame extends javax.swing.JFrame {
             if(FrmEndGame.pts<3){
                 FrmEndGame.pts++;
             }
-            else if(quantVitorias==3 && "Samuel".equals(jog1.getNome())){
+            else if(FrmEndGame.pts==3 && "Samuel".equals(jog1.getNome())){
                 FrmEndGame.pts++;
             }
-            else if(quantVitorias==4 && "Didi Show".equals(jog1.getNome())){
+            else if(FrmEndGame.pts==4 && "Didi Show".equals(jog1.getNome())){
                 btnPlayAgain.setEnabled(false);
                 btnPlayAgain.setVisible(false);
                 FrmEndGame.pts++;

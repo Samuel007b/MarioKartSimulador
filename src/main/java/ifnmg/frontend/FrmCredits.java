@@ -11,15 +11,18 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
+import static ifnmg.frontend.FrmInicio.inicio;
 
 public class FrmCredits extends javax.swing.JFrame {
+    private static Clip f1;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmCredits.class.getName());
     public FrmCredits() {
+        inicio.close();
         initComponents();
         this.setLocationRelativeTo(null);
         try{
             AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/f1Theme.wav"));
-            Clip f1 = AudioSystem.getClip();
+            f1 = AudioSystem.getClip();
             f1.open(audio);
             f1.start();
         }
@@ -62,14 +65,14 @@ public class FrmCredits extends javax.swing.JFrame {
 
         lblLeo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLeo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/leo.png"))); // NOI18N
-        lblCreditos.add(lblLeo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
+        lblCreditos.add(lblLeo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
 
         lblSamuel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/samumaquina.png"))); // NOI18N
-        lblCreditos.add(lblSamuel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, -1, -1));
+        lblCreditos.add(lblSamuel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
 
         lblCaio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCaio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/caio.png"))); // NOI18N
-        lblCreditos.add(lblCaio, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 240, -1, -1));
+        lblCreditos.add(lblCaio, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, -1, -1));
 
         lblParabens.setFont(new java.awt.Font("Showcard Gothic", 2, 14)); // NOI18N
         lblParabens.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,35 +81,35 @@ public class FrmCredits extends javax.swing.JFrame {
         lblCreditos.add(lblParabens, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1200, -1));
 
         lblMario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mario.gif"))); // NOI18N
-        lblCreditos.add(lblMario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
+        lblCreditos.add(lblMario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
 
         lblLuigi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/luigi.gif"))); // NOI18N
-        lblCreditos.add(lblLuigi, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
+        lblCreditos.add(lblLuigi, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
 
         lblPeach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/peach.gif"))); // NOI18N
-        lblCreditos.add(lblPeach, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, -1, -1));
+        lblCreditos.add(lblPeach, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, -1));
 
         lblBowser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bowser.gif"))); // NOI18N
-        lblCreditos.add(lblBowser, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, -1, -1));
+        lblCreditos.add(lblBowser, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
 
         lblToad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/toad.gif"))); // NOI18N
-        lblCreditos.add(lblToad, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, -1, -1));
+        lblCreditos.add(lblToad, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, -1, -1));
 
         lblYoshi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/yoshi.gif"))); // NOI18N
-        lblCreditos.add(lblYoshi, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, -1, -1));
+        lblCreditos.add(lblYoshi, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 120, -1, -1));
 
         lblDk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dk.gif"))); // NOI18N
-        lblCreditos.add(lblDk, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 130, -1, -1));
+        lblCreditos.add(lblDk, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 120, -1, -1));
 
         lblDidi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/didiShow.png"))); // NOI18N
-        lblCreditos.add(lblDidi, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, -1, -1));
+        lblCreditos.add(lblDidi, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, -1, -1));
 
         lblAgradecimentos.setBackground(new java.awt.Color(255, 255, 255));
         lblAgradecimentos.setFont(new java.awt.Font("Showcard Gothic", 2, 14)); // NOI18N
         lblAgradecimentos.setForeground(new java.awt.Color(255, 255, 255));
         lblAgradecimentos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAgradecimentos.setText("Special thanks: Leonardo Humberto, Caio Lamas, Caio da Silva, Gustavo Santos, Ryanderson Henzyo & Sara Augusta");
-        lblCreditos.add(lblAgradecimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 1190, -1));
+        lblCreditos.add(lblAgradecimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 1190, -1));
 
         lblSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exit.png"))); // NOI18N
         lblSair.setBorderPainted(false);
@@ -127,15 +130,19 @@ public class FrmCredits extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblCreditos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblCreditos, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSairActionPerformed
-        JOptionPane.showMessageDialog(null, "Thank you for playing Mario Kart Simulator, come back anytime!");
-        this.dispose();
+        int resposta = JOptionPane.showConfirmDialog(null, "Do you want to close the game?", "Finish Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(resposta == JOptionPane.YES_OPTION){
+            JOptionPane.showMessageDialog(null, "Thank you for playing Mario Kart Simulator, come back anytime!");
+            this.dispose();
+            JOptionPane.showMessageDialog(null, "Creativity knows no limits!");
+        }
     }//GEN-LAST:event_lblSairActionPerformed
 
     public static void main(String args[]) {

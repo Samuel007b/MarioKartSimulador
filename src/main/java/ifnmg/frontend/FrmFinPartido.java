@@ -96,10 +96,10 @@ public class FrmFinPartido extends javax.swing.JFrame {
             if(FrmFinPartido.pts<3){
                 FrmFinPartido.pts++;
             }
-            else if(quantVitorias==3 && "Samuel".equals(jog1.getNome())){
+            else if(FrmFinPartido.pts==3 && "Samuel".equals(jog1.getNome())){
                 FrmFinPartido.pts++;
             }
-            else if(quantVitorias==4 && "Didi Show".equals(jog1.getNome())){
+            else if(FrmFinPartido.pts==4 && "Didi Show".equals(jog1.getNome())){
                 btnPlayAgain.setEnabled(false);
                 btnPlayAgain.setVisible(false);
                 FrmFinPartido.pts++;

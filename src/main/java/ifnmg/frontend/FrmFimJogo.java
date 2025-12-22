@@ -14,6 +14,7 @@ import static ifnmg.backend.Api.vencedor;
 import ifnmg.backend.Partida;
 import ifnmg.backend.Personagem;
 import ifnmg.backend.Rodada;
+import static ifnmg.frontend.FrmInicio.inicio;
 import static ifnmg.frontend.FrmJogadores.jog1;
 import static ifnmg.frontend.FrmJogadores.jog2;
 import java.util.ArrayList;
@@ -96,10 +97,10 @@ public class FrmFimJogo extends javax.swing.JFrame {
             if(FrmFimJogo.pts<3){
                 FrmFimJogo.pts++;
             }
-            else if(quantVitorias==3 && "Samuel".equals(jog1.getNome())){
+            else if(FrmFimJogo.pts==3 && "Samuel".equals(jog1.getNome())){
                 FrmFimJogo.pts++;
             }
-            else if(quantVitorias==4 && "Didi Show".equals(jog1.getNome())){
+            else if(FrmFimJogo.pts==4 && "Didi Show".equals(jog1.getNome())){
                 btnPlayAgain.setEnabled(false);
                 btnPlayAgain.setVisible(false);
                 FrmFimJogo.pts++;
@@ -245,6 +246,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
         }
         int resposta = JOptionPane.showConfirmDialog(null, "Você quer sair do jogo?", "Encerrar Jogo", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
+            inicio.close();
             if(FrmFimJogo.pts==4 && "Didi Show".equals(jog1.getNome())){
                 try{
                     AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/gameOver.wav"));
@@ -259,7 +261,7 @@ public class FrmFimJogo extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Você fracassou...");
             }
             else if(FrmFimJogo.pts==5){
-                new FrmCreditos().setVisible(true);
+                new FrmCreditos(false).setVisible(true);
                 this.dispose();
                 try{
                     AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/vitoria2.wav"));
