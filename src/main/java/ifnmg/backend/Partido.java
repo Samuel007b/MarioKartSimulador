@@ -22,12 +22,22 @@ public class Partido {
     }    
     @Override
     public String toString() {
-        if(jog1Pontos>jog2Pontos)
-            return "\n----- "+id+"º Partido -----\n¡"+jog1Nome+" (tú) ganó el partido con "+jog1Pontos+" puntos! "+jog2Nome+" (computadora) perdió el partido con "+jog2Pontos+" puntos.";
-        else if(jog1Pontos<jog2Pontos)
-            return "\n----- "+id+"º Partido -----\n¡"+jog2Nome+" (computadora) ganó el partido con "+jog2Pontos+" puntos! "+jog1Nome+" (tú) perdió el partido con "+jog1Pontos+" puntos.";
-        else
-            return "\n----- "+id+"º Partido -----\n"+jog1Nome+" (tú) y "+jog2Nome+" (computadora) empataron en el partido con "+jog1Pontos+" puntos.";
+        if("Leo".equals(jog1Nome)&&"Caio".equals(jog2Nome)){
+            if(jog1Pontos>jog2Pontos)
+                return "\n----- "+id+"º Partido -----\n¡"+jog1Nome+" ganó el partido con "+jog1Pontos+" puntos! "+jog2Nome+" perdió el partido con "+jog2Pontos+" puntos.";
+            else if(jog1Pontos<jog2Pontos)
+                return "\n----- "+id+"º Partido -----\n¡"+jog2Nome+" ganó el partido con "+jog2Pontos+" puntos! "+jog1Nome+" perdió el partido con "+jog1Pontos+" puntos.";
+            else
+                return "\n----- "+id+"º Partido -----\n"+jog1Nome+" y "+jog2Nome+" empataron en el partido con "+jog1Pontos+" puntos.";
+        }
+        else{
+            if(jog1Pontos>jog2Pontos)
+                return "\n----- "+id+"º Partido -----\n¡"+jog1Nome+" (tú) ganó el partido con "+jog1Pontos+" puntos! "+jog2Nome+" (computadora) perdió el partido con "+jog2Pontos+" puntos.";
+            else if(jog1Pontos<jog2Pontos)
+                return "\n----- "+id+"º Partido -----\n¡"+jog2Nome+" (computadora) ganó el partido con "+jog2Pontos+" puntos! "+jog1Nome+" (tú) perdió el partido con "+jog1Pontos+" puntos.";
+            else
+                return "\n----- "+id+"º Partido -----\n"+jog1Nome+" (tú) y "+jog2Nome+" (computadora) empataron en el partido con "+jog1Pontos+" puntos.";
+        }
     }
     public int getId() {
         return id;

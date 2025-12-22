@@ -6,6 +6,9 @@ Frame da tela de seleção de idioma (padrão para inglês, português e espanho
 */
 package ifnmg.frontend;
 
+import ifnmg.frontend.englishVersion.FrmPlayers;
+import ifnmg.frontend.spanishVersion.FrmJugadores;
+import ifnmg.frontend.portugueseVersion.FrmJogadores;
 import javax.swing.JOptionPane;
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
@@ -13,7 +16,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 public class FrmIdioma extends javax.swing.JFrame {
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmIdioma.class.getName());
     public FrmIdioma() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -28,7 +30,7 @@ public class FrmIdioma extends javax.swing.JFrame {
         btnEnglish = new javax.swing.JButton();
         btnPortugues = new javax.swing.JButton();
         btnEspañol = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,8 +70,8 @@ public class FrmIdioma extends javax.swing.JFrame {
         });
         pnlIdioma.add(btnEspañol, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 480, 220, 70));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telaIdioma.png"))); // NOI18N
-        pnlIdioma.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        lblFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telaIdioma.png"))); // NOI18N
+        pnlIdioma.add(lblFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,7 +146,7 @@ public class FrmIdioma extends javax.swing.JFrame {
     private javax.swing.JButton btnEnglish;
     private javax.swing.JButton btnEspañol;
     private javax.swing.JButton btnPortugues;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblFundo;
     private javax.swing.JPanel pnlIdioma;
     // End of variables declaration//GEN-END:variables
 }

@@ -22,12 +22,22 @@ public class Match {
     }    
     @Override
     public String toString() {
-        if(jog1Pontos>jog2Pontos)
-            return "\n----- Match "+id+" -----\n"+jog1Nome+" (you) won the match with "+jog1Pontos+" points! "+jog2Nome+" (computer) lost the match with "+jog2Pontos+" points.";
-        else if(jog1Pontos<jog2Pontos)
-            return "\n----- Match "+id+" -----\n"+jog2Nome+" (computer) won the match with "+jog2Pontos+" points! "+jog1Nome+" (you) lost the match with "+jog1Pontos+" points.";
-        else
-            return "\n----- Match"+id+" -----\n"+jog1Nome+" (you) and "+jog2Nome+" (computer) tied in the match with "+jog1Pontos+" points.";
+        if("Leo".equals(jog1Nome)&&"Caio".equals(jog2Nome)){
+            if(jog1Pontos>jog2Pontos)
+                return "\n----- Match "+id+" -----\n"+jog1Nome+" won the match with "+jog1Pontos+" points! "+jog2Nome+" lost the match with "+jog2Pontos+" points.";
+            else if(jog1Pontos<jog2Pontos)
+                return "\n----- Match "+id+" -----\n"+jog2Nome+" won the match with "+jog2Pontos+" points! "+jog1Nome+" lost the match with "+jog1Pontos+" points.";
+            else
+                return "\n----- Match"+id+" -----\n"+jog1Nome+" and "+jog2Nome+" tied in the match with "+jog1Pontos+" points.";
+        }
+        else{
+            if(jog1Pontos>jog2Pontos)
+                return "\n----- Match "+id+" -----\n"+jog1Nome+" (you) won the match with "+jog1Pontos+" points! "+jog2Nome+" (computer) lost the match with "+jog2Pontos+" points.";
+            else if(jog1Pontos<jog2Pontos)
+                return "\n----- Match "+id+" -----\n"+jog2Nome+" (computer) won the match with "+jog2Pontos+" points! "+jog1Nome+" (you) lost the match with "+jog1Pontos+" points.";
+            else
+                return "\n----- Match"+id+" -----\n"+jog1Nome+" (you) and "+jog2Nome+" (computer) tied in the match with "+jog1Pontos+" points.";
+        }
     }
     public int getId() {
         return id;

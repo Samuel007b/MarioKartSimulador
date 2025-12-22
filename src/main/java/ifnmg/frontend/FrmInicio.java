@@ -41,7 +41,7 @@ public class FrmInicio extends javax.swing.JFrame {
         pnlInicio.setBackground(new java.awt.Color(255, 255, 255));
         pnlInicio.setLayout(null);
 
-        btnStart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/start.jpg"))); // NOI18N
+        btnStart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/startGame.jpg"))); // NOI18N
         btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStartActionPerformed(evt);
