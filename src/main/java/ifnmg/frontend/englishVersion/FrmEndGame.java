@@ -281,7 +281,7 @@ public class FrmEndGame extends javax.swing.JFrame {
 
     private void btnHistorico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorico1ActionPerformed
         if(vencedor == jog1)
-            JOptionPane.showMessageDialog(null, FrmEndGame.rodadaList.toString()+"\n----- End of the Game -----\n"+jog1.getNome()+" won the game with "+jog1.getPontos()+" point(s)!\nMeanwhile "+jog2.getNome()+" lost and was left with "+jog2.getPontos()+" point(s).");
+            JOptionPane.showMessageDialog(null, FrmEndGame.rodadaList+"\n----- End of the Game -----\n"+jog1.getNome()+" won the game with "+jog1.getPontos()+" point(s)!\nMeanwhile "+jog2.getNome()+" lost and was left with "+jog2.getPontos()+" point(s).");
         else if(vencedor == jog2)
             JOptionPane.showMessageDialog(null, FrmEndGame.rodadaList+"\n----- End of the Game -----\n"+jog2.getNome()+" won the game with "+jog2.getPontos()+" point(s)!\nMeanwhile "+jog1.getNome()+" lost and was left with "+jog1.getPontos()+" point(s).");
         else

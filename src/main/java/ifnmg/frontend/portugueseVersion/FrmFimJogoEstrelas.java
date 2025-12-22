@@ -53,7 +53,7 @@ public class FrmFimJogoEstrelas extends javax.swing.JFrame {
             lblImagemEmpate.setIcon(empate);
             lblTrofeu.setVisible(false);
             lblVencedor.setText("Houve um empate entre "+jog1.getNome()+" e "+jog2.getNome()+".");
-            lblPerdedor.setText("Ambos ficaram com "+jog1.getPontos()+" ponto(s) no Jogo das Estrelas");
+            lblPerdedor.setText("Ambos ficaram com "+jog1.getPontos()+" ponto(s) no Jogo das Estrelas.");
         }
         else if("Léo".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(leo);
@@ -214,11 +214,11 @@ public class FrmFimJogoEstrelas extends javax.swing.JFrame {
 
     private void btnHistorico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorico1ActionPerformed
         if(vencedor == jog1)
-            JOptionPane.showMessageDialog(null, FrmFimJogoEstrelas.rodadaList+"\n----- Fim de Jogo -----\n"+jog1.getNome()+" venceu o jogo com "+jog1.getPontos()+" pontos!\nJá "+jog2.getNome()+" perdeu e ficou com "+jog2.getPontos()+" pontos.");
+            JOptionPane.showMessageDialog(null, FrmFimJogoEstrelas.rodadaList+"\n----- Fim do Jogo das Estrelas -----\n"+jog1.getNome()+" venceu o jogo com "+jog1.getPontos()+" pontos!\nJá "+jog2.getNome()+" perdeu e ficou com "+jog2.getPontos()+" pontos.");
         else if(vencedor == jog2)
-            JOptionPane.showMessageDialog(null, FrmFimJogoEstrelas.rodadaList+"\n----- Fim de Jogo -----\n"+jog2.getNome()+" venceu o jogo com "+jog2.getPontos()+" pontos!\nJá "+jog1.getNome()+" perdeu e ficou com "+jog1.getPontos()+" pontos.");
+            JOptionPane.showMessageDialog(null, FrmFimJogoEstrelas.rodadaList+"\n----- Fim do Jogo das Estrelas -----\n"+jog2.getNome()+" venceu o jogo com "+jog2.getPontos()+" pontos!\nJá "+jog1.getNome()+" perdeu e ficou com "+jog1.getPontos()+" pontos.");
         else
-            JOptionPane.showMessageDialog(null, FrmFimJogoEstrelas.rodadaList+"\n----- Fim de Jogo -----\n"+jog1.getNome()+" e "+jog2.getNome()+" empataram com "+jog1.getPontos()+" pontos cada.");
+            JOptionPane.showMessageDialog(null, FrmFimJogoEstrelas.rodadaList+"\n----- Fim do Jogo das Estrelas -----\n"+jog1.getNome()+" e "+jog2.getNome()+" empataram com "+jog1.getPontos()+" pontos cada.");
     }//GEN-LAST:event_btnHistorico1ActionPerformed
 
     private void btnHistorico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorico2ActionPerformed

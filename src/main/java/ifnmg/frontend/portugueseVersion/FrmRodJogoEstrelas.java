@@ -377,7 +377,6 @@ public class FrmRodJogoEstrelas extends javax.swing.JFrame {
         dado1 = jogaDado();
         trocaDado(dado1, lblDado1);
         if(tipoPista=="RETA"){
-            
             rod.setUpgradeJog1(jog1.getVelocidade()+dado1);
             JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado e obteve "+dado1+". Agora sua velocidade é "+rod.getUpgradeJog1()+"!");
             lblJog1Atributo.setText("Velocidade: "+rod.getUpgradeJog1());

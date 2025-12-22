@@ -67,22 +67,22 @@ public class FrmRoundStarGame extends javax.swing.JFrame {
             iniciar.start();
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            JOptionPane.showMessageDialog(null, "Error reading the file.");
         }
-        String[] rodadas = {"5", "6", "7", "8", "9", "10", "Aleatório"};
+        String[] rodadas = {"5", "6", "7", "8", "9", "10", "Random"};
         JComboBox<String> comboBox = new JComboBox<>(rodadas);
         JPanel painel = new JPanel(new GridLayout(0, 1));
-        painel.add(new JLabel("Escolha a quantidade de rodadas:"));
+        painel.add(new JLabel("Choose the number of rounds:"));
         painel.add(comboBox);
         int resultado;
         do{
-            resultado = JOptionPane.showConfirmDialog(null, painel, "Quantidade de Rodadas", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            resultado = JOptionPane.showConfirmDialog(null, painel, "Number of Rounds", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(resultado != JOptionPane.OK_OPTION)
-                JOptionPane.showMessageDialog(null, "Defina a quantidade de rodadas para prosseguir!");
+                JOptionPane.showMessageDialog(null, "Set the number of rounds to proceed!");
         }while(resultado != JOptionPane.OK_OPTION);
-        if(comboBox.getSelectedItem()=="Aleatório"){
+        if(comboBox.getSelectedItem()=="Random"){
             quantRodadas = sorteiaRodadas();
-            JOptionPane.showMessageDialog(null, "Foram sorteadas " + quantRodadas + " rodadas para o Jogo das Estrelas!");
+            JOptionPane.showMessageDialog(null, quantRodadas + " rounds were drawn for the All-Star Game!");
         }
         else{
             if(comboBox.getSelectedItem()=="5")
@@ -102,12 +102,12 @@ public class FrmRoundStarGame extends javax.swing.JFrame {
         lblJog1Imagem.setIcon(icon1);
         lblJog1Imagem.setHorizontalAlignment(SwingConstants.CENTER);
         lblJog1Imagem.setVerticalAlignment(SwingConstants.CENTER);
-        lblJog1Nome.setText("Jogador 1: "+jog1.getNome());
+        lblJog1Nome.setText("Player 1: "+jog1.getNome());
         ImageIcon icon2 = new ImageIcon(jog2.getImagem());
         lblJog2Imagem.setIcon(icon2);
         lblJog2Imagem.setHorizontalAlignment(SwingConstants.CENTER);
         lblJog2Imagem.setVerticalAlignment(SwingConstants.CENTER);
-        lblJog2Nome.setText("Jogador 2: "+jog2.getNome());
+        lblJog2Nome.setText("Player 2: "+jog2.getNome());
         lblDado1.setHorizontalAlignment(SwingConstants.CENTER);
         lblDado1.setVerticalAlignment(SwingConstants.CENTER);
         lblDado2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -124,27 +124,33 @@ public class FrmRoundStarGame extends javax.swing.JFrame {
             lblDado1.setIcon(d0);
             lblDado2.setIcon(d0);
             tipoPista = sorteiaPista();
+            if(tipoPista=="RETA")
+                tipoPista="STRAIGHT";
+            else if(tipoPista=="CURVA")
+                tipoPista="CURVE";
+            else
+                tipoPista="CONFRONTATION";
             rod = new Rodada(tipoPista, numRodada, jog1, jog2);
             if(numRodada==quantRodadas)
-                lblRodada.setText(numRodada+"ª e Última Rodada: "+tipoPista+"!!!");
+                lblRodada.setText("Round "+numRodada+" and final round: "+tipoPista+"!!!");
             else
-                lblRodada.setText(numRodada+"ª Rodada: "+tipoPista+"!");
-            if(tipoPista=="RETA"){
+                lblRodada.setText("Round "+numRodada+": "+tipoPista+"!");
+            if(tipoPista=="STRAIGHT"){
                 lblPista.setIcon(reta);
-                lblJog1Atributo.setText("Velocidade: "+jog1.getVelocidade());
-                lblJog2Atributo.setText("Velocidade: "+jog2.getVelocidade());
+                lblJog1Atributo.setText("Speed: "+jog1.getVelocidade());
+                lblJog2Atributo.setText("Speed: "+jog2.getVelocidade());
             }
-            else if(tipoPista=="CURVA"){
+            else if(tipoPista=="CURVE"){
                 lblPista.setIcon(curva);
-                lblJog1Atributo.setText("Manobrabilidade: "+jog1.getManobrabilidade());
-                lblJog2Atributo.setText("Manobrabilidade: "+jog2.getManobrabilidade());
+                lblJog1Atributo.setText("Maneuverability: "+jog1.getManobrabilidade());
+                lblJog2Atributo.setText("Maneuverability: "+jog2.getManobrabilidade());
             }
             else{
                 lblPista.setIcon(confronto);
-                lblJog1Atributo.setText("Poder: "+jog1.getPoder());
-                lblJog2Atributo.setText("Poder: "+jog2.getPoder());
+                lblJog1Atributo.setText("Power: "+jog1.getPoder());
+                lblJog2Atributo.setText("Power: "+jog2.getPoder());
             }
-            JOptionPane.showMessageDialog(null,"A pista sorteada para a "+numRodada+"ª rodada foi "+tipoPista+"!");
+            JOptionPane.showMessageDialog(null,"The track drawn for round "+numRodada+" was "+tipoPista+"!");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -208,20 +214,20 @@ public class FrmRoundStarGame extends javax.swing.JFrame {
         lblJog1Nome.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblJog1Nome.setForeground(new java.awt.Color(255, 255, 255));
         lblJog1Nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblJog1Nome.setText("Jogador 1 (você): ");
+        lblJog1Nome.setText("Player 1: ");
         lblJog1Nome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlRodada.add(lblJog1Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 340, -1));
 
         lblJog2Nome.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblJog2Nome.setForeground(new java.awt.Color(255, 255, 255));
         lblJog2Nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblJog2Nome.setText("Jogador 2 (computador): ");
+        lblJog2Nome.setText("Player 2: ");
         pnlRodada.add(lblJog2Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 340, -1));
 
         lblRodada.setFont(new java.awt.Font("Showcard Gothic", 2, 24)); // NOI18N
         lblRodada.setForeground(new java.awt.Color(255, 255, 255));
         lblRodada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRodada.setText("ª Rodada: ");
+        lblRodada.setText("Round :  ");
         pnlRodada.add(lblRodada, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 670, -1));
 
         btnDado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/playDado.gif"))); // NOI18N
@@ -239,13 +245,13 @@ public class FrmRoundStarGame extends javax.swing.JFrame {
         lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblJog1Atributo.setForeground(new java.awt.Color(255, 255, 255));
         lblJog1Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblJog1Atributo.setText("Atributo: ");
+        lblJog1Atributo.setText("Attribute: ");
         pnlRodada.add(lblJog1Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 280, -1));
 
         lblJog2Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblJog2Atributo.setForeground(new java.awt.Color(255, 255, 255));
         lblJog2Atributo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblJog2Atributo.setText("Atributo: ");
+        lblJog2Atributo.setText("Attribute: ");
         pnlRodada.add(lblJog2Atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 280, -1));
 
         lblJog1Star1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/star.png"))); // NOI18N
@@ -376,100 +382,99 @@ public class FrmRoundStarGame extends javax.swing.JFrame {
         btnDado.setEnabled(false);
         dado1 = jogaDado();
         trocaDado(dado1, lblDado1);
-        if(tipoPista=="RETA"){
-            
+        if(tipoPista=="STRAIGHT"){
             rod.setUpgradeJog1(jog1.getVelocidade()+dado1);
-            JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado e obteve "+dado1+". Agora sua velocidade é "+rod.getUpgradeJog1()+"!");
-            lblJog1Atributo.setText("Velocidade: "+rod.getUpgradeJog1());
+            JOptionPane.showMessageDialog(null,jog1.getNome()+" rolled the die and got a "+dado1+". Now his speed is "+rod.getUpgradeJog1()+"!");
+            lblJog1Atributo.setText("Speed: "+rod.getUpgradeJog1());
         }
-        else if(tipoPista=="CURVA"){
+        else if(tipoPista=="CURVE"){
             rod.setUpgradeJog1(jog1.getManobrabilidade()+dado1);
-            JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado e obteve "+dado1+". Agora sua manobrabilidade é "+rod.getUpgradeJog1()+"!");
-            lblJog1Atributo.setText("Manobrabilidade: "+rod.getUpgradeJog1());
+            JOptionPane.showMessageDialog(null,jog1.getNome()+" rolled the die and got a "+dado1+". Now his maneuverability is "+rod.getUpgradeJog1()+"!");
+            lblJog1Atributo.setText("Maneuverability: "+rod.getUpgradeJog1());
         }
         else{
             rod.setUpgradeJog1(jog1.getPoder()+dado1);
-            JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado e obteve "+dado1+". Agora seu poder é "+rod.getUpgradeJog1()+"!");
-            lblJog1Atributo.setText("Poder: "+rod.getUpgradeJog1());
+            JOptionPane.showMessageDialog(null,jog1.getNome()+" rolled the die and got a "+dado1+". Now his power is "+rod.getUpgradeJog1()+"!");
+            lblJog1Atributo.setText("Power: "+rod.getUpgradeJog1());
         }
         dado2 = jogaDado();
         trocaDado(dado2, lblDado2);
-        if(tipoPista=="RETA"){
+        if(tipoPista=="STRAIGHT"){
             
             rod.setUpgradeJog2(jog2.getVelocidade()+dado2);
-            JOptionPane.showMessageDialog(null,jog2.getNome()+" jogou o dado e obteve "+dado2+". Agora sua velocidade é "+rod.getUpgradeJog2()+"!");
-            lblJog2Atributo.setText("Velocidade: "+rod.getUpgradeJog2());
+            JOptionPane.showMessageDialog(null,jog2.getNome()+" rolled the die and got a "+dado2+". Now his speed is "+rod.getUpgradeJog2()+"!");
+            lblJog2Atributo.setText("Speed: "+rod.getUpgradeJog2());
         }
-        else if(tipoPista=="CURVA"){
+        else if(tipoPista=="CURVE"){
             rod.setUpgradeJog2(jog2.getManobrabilidade()+dado2);
-            JOptionPane.showMessageDialog(null,jog2.getNome()+" jogou o dado e obteve "+dado2+". Agora sua manobrabilidade é "+rod.getUpgradeJog2()+"!");
-            lblJog2Atributo.setText("Manobrabilidade: "+rod.getUpgradeJog2());
+            JOptionPane.showMessageDialog(null,jog2.getNome()+" rolled the die and got a "+dado2+". Now his maneuverability is "+rod.getUpgradeJog2()+"!");
+            lblJog2Atributo.setText("Maneuverability: "+rod.getUpgradeJog2());
         }
         else{
             rod.setUpgradeJog2(jog2.getPoder()+dado2);
-            JOptionPane.showMessageDialog(null,jog2.getNome()+" jogou o dado e obteve "+dado2+". Agora seu poder é "+rod.getUpgradeJog2()+"!");
-            lblJog2Atributo.setText("Poder: "+rod.getUpgradeJog2());
+            JOptionPane.showMessageDialog(null,jog2.getNome()+" rolled the die and got a "+dado2+". Now his power is "+rod.getUpgradeJog2()+"!");
+            lblJog2Atributo.setText("Power: "+rod.getUpgradeJog2());
         }
-        if(tipoPista=="RETA"){
+        if(tipoPista=="STRAIGHT"){
             executaRodadaRetaCurva(rod);
             if(rod.getUpgradeJog1()>rod.getUpgradeJog2()){
-                JOptionPane.showMessageDialog(null,"A velocidade de "+jog1.getNome()+" é maior, então "+jog1.getNome()+" venceu a rodada e ganhou um ponto!");
+                JOptionPane.showMessageDialog(null,jog1.getNome()+"'s speed is greater, so "+jog1.getNome()+" won the round and earned a point!");
                 mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
             }
             else if(rod.getUpgradeJog1()<rod.getUpgradeJog2()){
-                JOptionPane.showMessageDialog(null,"A velocidade de "+jog2.getNome()+" é maior, então "+jog2.getNome()+" venceu a rodada e ganhou um ponto!");
+                JOptionPane.showMessageDialog(null,jog2.getNome()+"'s speed is greater, so "+jog2.getNome()+" won the round and earned a point!");
                 mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
             }
             else
-                JOptionPane.showMessageDialog(null,"As velocidades de "+jog1.getNome()+" e "+jog2.getNome()+" são iguais, então ninguém somou pontos.");
+                JOptionPane.showMessageDialog(null,jog1.getNome()+" and "+jog2.getNome()+" have the same speed, so neither scored any points.");
             btnProximo.setVisible(true);
             btnProximo.setEnabled(true);
         }
-        else if(tipoPista=="CURVA"){
+        else if(tipoPista=="CURVE"){
             executaRodadaRetaCurva(rod);
             if(rod.getUpgradeJog1()>rod.getUpgradeJog2()){
-                JOptionPane.showMessageDialog(null,"A manobrabilidade de "+jog1.getNome()+" é maior, então "+jog1.getNome()+" venceu a rodada e ganhou um ponto!");
+                JOptionPane.showMessageDialog(null,jog1.getNome()+"'s maneuverability is greater, so "+jog1.getNome()+" won the round and earned a point!");
                 mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
             }
             else if(rod.getUpgradeJog1()<rod.getUpgradeJog2()){
-                JOptionPane.showMessageDialog(null,"A manobrabilidade de "+jog2.getNome()+" é maior, então "+jog2.getNome()+" venceu a rodada e ganhou um ponto!");
+                JOptionPane.showMessageDialog(null,jog2.getNome()+"'s maneuverability is greater, so "+jog2.getNome()+" won the round and earned a point!");
                 mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
             }
             else
-                JOptionPane.showMessageDialog(null,"As manobrabilidades de "+jog1.getNome()+" e "+jog2.getNome()+" são iguais, então ninguém somou pontos.");
+                JOptionPane.showMessageDialog(null,jog1.getNome()+" and "+jog2.getNome()+" have the same maneuverability, so neither scored any points.");
             btnProximo.setVisible(true);
             btnProximo.setEnabled(true);
         }
         else{
             executaRodadaConfronto(rod);
             if(rod.getUpgradeJog1()>rod.getUpgradeJog2()){
-                JOptionPane.showMessageDialog(null,"O poder de "+jog2.getNome()+" é menor, então "+jog2.getNome()+" perdeu a rodada e perdeu um ponto.");
+                JOptionPane.showMessageDialog(null,jog2.getNome()+"'s power is lower, so "+jog2.getNome()+" lost the round and lost a point.");
                 mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
                 lblDado1.setIcon(d0);
-                JOptionPane.showMessageDialog(null,"Como o poder de "+jog1.getNome()+" é maior, "+jog1.getNome()+" pode jogar o dado novamente para tentar ganhar um ponto.");
+                JOptionPane.showMessageDialog(null,"Since "+jog1.getNome()+"'s power is greater, "+jog1.getNome()+" can roll the die again to try and gain a point.");
                 btnDado.setVisible(false);
                 btnDado3.setVisible(true);
                 btnDado3.setEnabled(true);
             }
             else if(rod.getUpgradeJog1()<rod.getUpgradeJog2()){
-                JOptionPane.showMessageDialog(null,"O poder de "+jog1.getNome()+" é menor, então "+jog1.getNome()+" perdeu a rodada e perdeu um ponto.");
+                JOptionPane.showMessageDialog(null,jog1.getNome()+"'s power is lower, so "+jog1.getNome()+" lost the round and lost a point.");
                 mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
                 lblDado2.setIcon(d0);
-                JOptionPane.showMessageDialog(null,"Como o poder de "+jog2.getNome()+" é maior, "+jog2.getNome()+" pode jogar o dado novamente para tentar ganhar um ponto.");
+                JOptionPane.showMessageDialog(null,"Since "+jog2.getNome()+"'s power is greater, "+jog2.getNome()+" can roll the die again to try and gain a point.");
                 dado3 = jogaDado();
                 trocaDado(dado3, lblDado2);
                 if(dado3%2==0){
                     rod.getJog2().setPontos(rod.getJog2().getPontos()+1);
-                    JOptionPane.showMessageDialog(null,jog2.getNome()+" jogou o dado novamente e obteve "+dado3+". Como "+dado3+" é par, "+jog2.getNome()+" ganhou um ponto!");
+                    JOptionPane.showMessageDialog(null,jog2.getNome()+" rolled the die again and got a "+dado3+". Since "+dado3+" is even, "+jog2.getNome()+" earned a point!");
                     mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
                 }
                 else
-                    JOptionPane.showMessageDialog(null,jog2.getNome()+" jogou o dado novamente e obteve "+dado3+". Como "+dado3+" é ímpar, "+jog2.getNome()+" não somou pontos.");
+                    JOptionPane.showMessageDialog(null,jog2.getNome()+" rolled the die again and got a "+dado3+". Since "+dado3+" is odd, "+jog2.getNome()+" didn't score any points.");
                 btnProximo.setVisible(true);
                 btnProximo.setEnabled(true);
             }
             else{
-                JOptionPane.showMessageDialog(null,"Os poderes de "+jog1.getNome()+" e "+jog2.getNome()+" são iguais, então ninguém perdeu pontos.");
+                JOptionPane.showMessageDialog(null,jog1.getNome()+" and "+jog2.getNome()+" have the same power, so neither lost points.");
                 btnProximo.setVisible(true);
                 btnProximo.setEnabled(true);
             }
@@ -488,7 +493,7 @@ public class FrmRoundStarGame extends javax.swing.JFrame {
                 rodada.start();
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                JOptionPane.showMessageDialog(null, "Error reading the file.");
             }
             iniciaRodada();
         } 
@@ -499,7 +504,7 @@ public class FrmRoundStarGame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProximoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        int resposta = JOptionPane.showConfirmDialog(null, "Você quer mesmo sair (seu progresso nesta partida será perdido, mas você poderá iniciar outra partida)?", "Voltar ao Menu Principal", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int resposta = JOptionPane.showConfirmDialog(null, "Do you really want to quit (your progress in this match will be lost, but you can start another match)?", "Return to Main Menu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             jogStar.close();
             new FrmPlayersStarGame(FrmRoundStarGame.vitoriasLeo, FrmRoundStarGame.vitoriasCaio, FrmRoundStarGame.idPartida-1).setVisible(true);
@@ -514,11 +519,11 @@ public class FrmRoundStarGame extends javax.swing.JFrame {
         trocaDado(dado3, lblDado1);
         if(dado3%2==0){
             rod.getJog1().setPontos(rod.getJog1().getPontos()+1);
-            JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado novamente e obteve "+dado3+". Como "+dado3+" é par, "+jog1.getNome()+" ganhou um ponto!");
+            JOptionPane.showMessageDialog(null,jog1.getNome()+" rolled the die again and got a "+dado3+". Since "+dado3+" is even, "+jog1.getNome()+" earned a point!");
             mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
         }
         else
-            JOptionPane.showMessageDialog(null,jog1.getNome()+" jogou o dado novamente e obteve "+dado3+". Como "+dado3+" é ímpar, "+jog1.getNome()+" não somou pontos.");
+            JOptionPane.showMessageDialog(null,jog1.getNome()+" rolled the die again and got a "+dado3+". Since "+dado3+" is odd, "+jog1.getNome()+" didn't score any points.");
         btnProximo.setVisible(true);
         btnProximo.setEnabled(true);
     }//GEN-LAST:event_btnDado3ActionPerformed

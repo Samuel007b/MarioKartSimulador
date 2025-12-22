@@ -11,7 +11,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import static ifnmg.backend.Api.vencedor;
-import ifnmg.backend.Partida;
+import ifnmg.backend.Match;
 import ifnmg.backend.Personagem;
 import ifnmg.backend.Rodada;
 import static ifnmg.frontend.englishVersion.FrmPlayersStarGame.jogStar;
@@ -27,7 +27,7 @@ public class FrmEndStarGame extends javax.swing.JFrame {
     private static int vitoriasCaio;
     private static int idPartida;
     private static List<Rodada> rodadaList = new ArrayList<>();
-    private static List<Partida> partidaList = new ArrayList<>();
+    private static List<Match> partidaList = new ArrayList<>();
     private static final ImageIcon empate = new ImageIcon("src/main/resources/characters/empate.png");
     private static final ImageIcon leo = new ImageIcon("src/main/resources/characters/leoVit.png");
     private static final ImageIcon caio = new ImageIcon("src/main/resources/characters/caioVit.png");
@@ -48,12 +48,12 @@ public class FrmEndStarGame extends javax.swing.JFrame {
                 empate.start();
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                JOptionPane.showMessageDialog(null, "Error reading the file.");
             }
             lblImagemEmpate.setIcon(empate);
             lblTrofeu.setVisible(false);
-            lblVencedor.setText("Houve um empate entre "+jog1.getNome()+" e "+jog2.getNome()+".");
-            lblPerdedor.setText("Ambos ficaram com "+jog1.getPontos()+" ponto(s) no Jogo das Estrelas");
+            lblVencedor.setText("There was a tie between "+jog1.getNome()+" and "+jog2.getNome()+".");
+            lblPerdedor.setText("They both ended up with "+jog1.getPontos()+" point(s) in the All-Star Game.");
         }
         else if("Léo".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(leo);
@@ -68,10 +68,10 @@ public class FrmEndStarGame extends javax.swing.JFrame {
                 vitoria1.start();
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                JOptionPane.showMessageDialog(null, "Error reading the file.");
             }
-            lblVencedor.setText("O grande campeão do Jogo das Estrelas foi "+jog1.getNome()+" !!!");
-            lblPerdedor.setText(jog2.getNome()+" ficou em 2º lugar .");
+            lblVencedor.setText("The great champion of the All-Star Game was "+jog1.getNome()+" !!!");
+            lblPerdedor.setText(jog2.getNome()+" came in second place.");
             
         }
         else if(vencedor == jog2){
@@ -85,11 +85,11 @@ public class FrmEndStarGame extends javax.swing.JFrame {
             catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
             }
-            lblVencedor.setText("O grande campeão do Jogo das Estrelas foi "+jog2.getNome()+" !!!");
-            lblPerdedor.setText(jog1.getNome()+" ficou em 2º lugar.");
+            lblVencedor.setText("The great champion of the All-Star Game was "+jog2.getNome()+" !!!");
+            lblPerdedor.setText(jog1.getNome()+" came in second place.");
         }
-        Partida p = new Partida(idPartida, jog1.getNome(), jog2.getNome(), jog1.getPontos(), jog2.getPontos());
-        partidaList.add(p);
+        Match m = new Match(idPartida, jog1.getNome(), jog2.getNome(), jog1.getPontos(), jog2.getPontos());
+        partidaList.add(m);
     }
 
     @SuppressWarnings("unchecked")
@@ -138,10 +138,10 @@ public class FrmEndStarGame extends javax.swing.JFrame {
         lblVencedor.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         lblVencedor.setForeground(new java.awt.Color(255, 255, 255));
         lblVencedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVencedor.setText("O vencedor foi ...");
+        lblVencedor.setText("The Winner was  ...");
         pnlFimJogo.add(lblVencedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 1020, -1));
 
-        btnHistorico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Historico1-por.gif"))); // NOI18N
+        btnHistorico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Historico1-ing.gif"))); // NOI18N
         btnHistorico1.setContentAreaFilled(false);
         btnHistorico1.setFocusPainted(false);
         btnHistorico1.addActionListener(new java.awt.event.ActionListener() {
@@ -149,9 +149,9 @@ public class FrmEndStarGame extends javax.swing.JFrame {
                 btnHistorico1ActionPerformed(evt);
             }
         });
-        pnlFimJogo.add(btnHistorico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 517, 260, 40));
+        pnlFimJogo.add(btnHistorico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 517, 230, 40));
 
-        btnHistorico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Historico2-por.gif"))); // NOI18N
+        btnHistorico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Historico2-ing.gif"))); // NOI18N
         btnHistorico2.setContentAreaFilled(false);
         btnHistorico2.setFocusPainted(false);
         btnHistorico2.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +159,7 @@ public class FrmEndStarGame extends javax.swing.JFrame {
                 btnHistorico2ActionPerformed(evt);
             }
         });
-        pnlFimJogo.add(btnHistorico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(736, 517, 250, 40));
+        pnlFimJogo.add(btnHistorico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(776, 517, 210, 40));
 
         lblImagemVencedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pnlFimJogo.add(lblImagemVencedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 320, 290));
@@ -171,7 +171,7 @@ public class FrmEndStarGame extends javax.swing.JFrame {
         lblPerdedor.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         lblPerdedor.setForeground(new java.awt.Color(255, 255, 255));
         lblPerdedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPerdedor.setText("Perdedor");
+        lblPerdedor.setText("Loser");
         pnlFimJogo.add(lblPerdedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 1020, -1));
 
         lblImagemEmpate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -195,7 +195,7 @@ public class FrmEndStarGame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPlayAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayAgainActionPerformed
-        int resposta = JOptionPane.showConfirmDialog(null, "Deseja jogar novamente?", "Voltar ao Menu Principal", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int resposta = JOptionPane.showConfirmDialog(null, "Do you want to play again?", "Return to Main Menu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             jogStar.close();
             new FrmPlayersStarGame(FrmEndStarGame.vitoriasLeo, FrmEndStarGame.vitoriasCaio, FrmEndStarGame.idPartida).setVisible(true);
@@ -204,7 +204,7 @@ public class FrmEndStarGame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPlayAgainActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        int resposta = JOptionPane.showConfirmDialog(null, "Você quer sair do Jogo das Estrelas?", "Encerrar Jogo das Estrelas", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int resposta = JOptionPane.showConfirmDialog(null, "Do you want to quit the All-Star Game?", "End the All-Star Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             jogStar.close();
             new FrmCredits(true).setVisible(true);
@@ -214,15 +214,15 @@ public class FrmEndStarGame extends javax.swing.JFrame {
 
     private void btnHistorico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorico1ActionPerformed
         if(vencedor == jog1)
-            JOptionPane.showMessageDialog(null, FrmEndStarGame.rodadaList+"\n----- Fim de Jogo -----\n"+jog1.getNome()+" venceu o jogo com "+jog1.getPontos()+" pontos!\nJá "+jog2.getNome()+" perdeu e ficou com "+jog2.getPontos()+" pontos.");
+            JOptionPane.showMessageDialog(null, FrmEndStarGame.rodadaList+"\n----- End of the All-Star Game -----\n"+jog1.getNome()+" won the game with "+jog1.getPontos()+" point(s)!\nMeanwhile "+jog2.getNome()+" lost and was left with "+jog2.getPontos()+" point(s).");
         else if(vencedor == jog2)
-            JOptionPane.showMessageDialog(null, FrmEndStarGame.rodadaList+"\n----- Fim de Jogo -----\n"+jog2.getNome()+" venceu o jogo com "+jog2.getPontos()+" pontos!\nJá "+jog1.getNome()+" perdeu e ficou com "+jog1.getPontos()+" pontos.");
+            JOptionPane.showMessageDialog(null, FrmEndStarGame.rodadaList+"\n----- End of the All-Star Game -----\n"+jog2.getNome()+" won the game with "+jog2.getPontos()+" point(s)!\nMeanwhile "+jog1.getNome()+" lost and was left with "+jog1.getPontos()+" point(s).");
         else
-            JOptionPane.showMessageDialog(null, FrmEndStarGame.rodadaList+"\n----- Fim de Jogo -----\n"+jog1.getNome()+" e "+jog2.getNome()+" empataram com "+jog1.getPontos()+" pontos cada.");
+            JOptionPane.showMessageDialog(null, FrmEndStarGame.rodadaList+"\n----- End of the All-Star Game -----\n"+jog1.getNome()+" and "+jog2.getNome()+" tied with "+jog1.getPontos()+" points each.");
     }//GEN-LAST:event_btnHistorico1ActionPerformed
 
     private void btnHistorico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorico2ActionPerformed
-        JOptionPane.showMessageDialog(null, partidaList+"\n----- Resumo ----\nEm "+FrmEndStarGame.idPartida+" partidas, Léo está com "+FrmEndStarGame.vitoriasLeo+" vitórias, Caio está com "+FrmEndStarGame.vitoriasCaio+" vitórias e houveram "+(FrmEndStarGame.idPartida-FrmEndStarGame.vitoriasLeo-FrmEndStarGame.vitoriasCaio)+" empates.");
+        JOptionPane.showMessageDialog(null, partidaList+"\n----- Summary ----\nIn "+FrmEndStarGame.idPartida+" matches, Léo has "+FrmEndStarGame.vitoriasLeo+" wins, Caio has "+FrmEndStarGame.vitoriasCaio+" wins, and there were "+(FrmEndStarGame.idPartida-FrmEndStarGame.vitoriasLeo-FrmEndStarGame.vitoriasCaio)+" draws.");
     }//GEN-LAST:event_btnHistorico2ActionPerformed
 
     public static void main(String args[]) {

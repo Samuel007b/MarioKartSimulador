@@ -28,7 +28,7 @@ public class Match {
             else if(jog1Pontos<jog2Pontos)
                 return "\n----- Match "+id+" -----\n"+jog2Nome+" won the match with "+jog2Pontos+" points! "+jog1Nome+" lost the match with "+jog1Pontos+" points.";
             else
-                return "\n----- Match"+id+" -----\n"+jog1Nome+" and "+jog2Nome+" tied in the match with "+jog1Pontos+" points.";
+                return "\n----- Match "+id+" -----\n"+jog1Nome+" and "+jog2Nome+" tied in the match with "+jog1Pontos+" points.";
         }
         else{
             if(jog1Pontos>jog2Pontos)
@@ -36,7 +36,7 @@ public class Match {
             else if(jog1Pontos<jog2Pontos)
                 return "\n----- Match "+id+" -----\n"+jog2Nome+" (computer) won the match with "+jog2Pontos+" points! "+jog1Nome+" (you) lost the match with "+jog1Pontos+" points.";
             else
-                return "\n----- Match"+id+" -----\n"+jog1Nome+" (you) and "+jog2Nome+" (computer) tied in the match with "+jog1Pontos+" points.";
+                return "\n----- Match "+id+" -----\n"+jog1Nome+" (you) and "+jog2Nome+" (computer) tied in the match with "+jog1Pontos+" points.";
         }
     }
     public int getId() {
