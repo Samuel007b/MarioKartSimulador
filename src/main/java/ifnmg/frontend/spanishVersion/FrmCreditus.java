@@ -12,8 +12,10 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 import static ifnmg.frontend.FrmInicio.inicio;
+import javax.swing.ImageIcon;
 
 public class FrmCreditus extends javax.swing.JFrame {
+    private static final ImageIcon mcqueen = new ImageIcon("src/main/resources/mcqueen.gif");
     private static Clip f1;
     private static boolean jogoEstrelas;
     public FrmCreditus(boolean jogoEstrelas) {
@@ -155,7 +157,7 @@ public class FrmCreditus extends javax.swing.JFrame {
         if(resposta == JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null, "Gracias por jugar Mario Kart Simulator, ¡vuelve cuando quieras!");
             this.dispose();
-            JOptionPane.showMessageDialog(null, "¡La creatividad no tiene límites!");
+            JOptionPane.showMessageDialog(null, null, "¡La creatividad no tiene límites!", JOptionPane.INFORMATION_MESSAGE, mcqueen);
         }
     }//GEN-LAST:event_lblSairActionPerformed
 
