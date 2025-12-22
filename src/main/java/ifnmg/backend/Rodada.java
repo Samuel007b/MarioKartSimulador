@@ -71,9 +71,9 @@ public class Rodada {
     public String toString() {
         if("RETA".equals(tipo)){
             if(upgradeJog1>upgradeJog2)
-                return "\n----- "+id+"ª Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog1.getNome()+" ganhou com "+upgradeJog1+" de velocidade, enquanto "+jog2.getNome()+ "ficou com "+upgradeJog2+" de velocidade";
+                return "\n----- "+id+"ª Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog1.getNome()+" ganhou com "+upgradeJog1+" de velocidade, enquanto "+jog2.getNome()+ " ficou com "+upgradeJog2+" de velocidade";
             else if(upgradeJog2>upgradeJog1)
-                return "\n----- "+id+"ª Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog2.getNome()+" ganhou com "+upgradeJog2+" de velocidade, enquanto "+jog1.getNome()+ "ficou com "+upgradeJog1+" de velocidade";
+                return "\n----- "+id+"ª Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog2.getNome()+" ganhou com "+upgradeJog2+" de velocidade, enquanto "+jog1.getNome()+ " ficou com "+upgradeJog1+" de velocidade";
             else
                 return "\n----- "+id+"ª Rodada -----\nA pista sorteada foi "+tipo+"\n"+jog1.getNome()+" e "+jog2.getNome()+" empataram com "+upgradeJog1+" de velocidade";
         }
