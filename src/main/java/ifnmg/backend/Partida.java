@@ -22,7 +22,7 @@ public class Partida {
     }    
     @Override
     public String toString() {
-        if("Leo".equals(jog1Nome)&&"Caio".equals(jog2Nome)){
+        if("Léo".equals(jog1Nome)&&"Caio".equals(jog2Nome)){
             if(jog1Pontos>jog2Pontos)
                 return "\n----- "+id+"ª Partida -----\n"+jog1Nome+" venceu a partida com "+jog1Pontos+" pontos! "+jog2Nome+" perdeu a partida com "+jog2Pontos+" pontos.";
             else if(jog1Pontos<jog2Pontos)

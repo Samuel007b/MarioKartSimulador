@@ -22,7 +22,7 @@ public class Match {
     }    
     @Override
     public String toString() {
-        if("Leo".equals(jog1Nome)&&"Caio".equals(jog2Nome)){
+        if("Léo".equals(jog1Nome)&&"Caio".equals(jog2Nome)){
             if(jog1Pontos>jog2Pontos)
                 return "\n----- Match "+id+" -----\n"+jog1Nome+" won the match with "+jog1Pontos+" points! "+jog2Nome+" lost the match with "+jog2Pontos+" points.";
             else if(jog1Pontos<jog2Pontos)
