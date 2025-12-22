@@ -6,7 +6,6 @@ Frame da tela final do jogo (português)
 */
 package ifnmg.frontend.spanishVersion;
 
-import ifnmg.frontend.spanishVersion.FrmCreditus;
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -15,6 +14,7 @@ import static ifnmg.backend.Api.vencedor;
 import ifnmg.backend.Partido;
 import ifnmg.backend.Personagem;
 import ifnmg.backend.Rodada;
+import static ifnmg.frontend.FrmInicio.inicio;
 import static ifnmg.frontend.spanishVersion.FrmJugadores.jog1;
 import static ifnmg.frontend.spanishVersion.FrmJugadores.jog2;
 import java.util.ArrayList;
@@ -247,6 +247,7 @@ public class FrmFinPartido extends javax.swing.JFrame {
         }
         int resposta = JOptionPane.showConfirmDialog(null, "¿Quieres salir del juego?", "Terminar el Juego", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
+            inicio.close();
             if(FrmFinPartido.pts==4 && "Didi Show".equals(jog1.getNome())){
                 try{
                     AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/gameOver.wav"));

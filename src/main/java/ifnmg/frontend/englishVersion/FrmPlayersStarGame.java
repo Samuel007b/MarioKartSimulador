@@ -33,7 +33,7 @@ public class FrmPlayersStarGame extends javax.swing.JFrame {
             jogStar.start();
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            JOptionPane.showMessageDialog(null, "Error reading the file.");
         }
         FrmPlayersStarGame.idPartida=idPartida+1;
         FrmPlayersStarGame.vitoriasLeo=vitoriasLeo;
@@ -44,15 +44,15 @@ public class FrmPlayersStarGame extends javax.swing.JFrame {
             personagemList = csvToList("data/tabela-personagens.csv");
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+            JOptionPane.showMessageDialog(null, "Error reading the file.");
         }
         jog1 = personagemList.get(9);
         jog2 = personagemList.get(10);
         exibeSeta(0, lblSeta1, lblSeta2, lblSeta3, lblSeta4, lblSeta5, lblSeta6);
         btnDado2.setEnabled(false);
         btnIniciar.setEnabled(false);
-        JOptionPane.showMessageDialog(null, "Comece sorteando a velocidade de Léo.");
-        lblSorteio.setText("Sorteie a velocidade de Léo!");
+        JOptionPane.showMessageDialog(null, "Start by drawing Léo's speed!");
+        lblSorteio.setText("Draw Léo's speed!");
         exibeSeta(1, lblSeta1, lblSeta2, lblSeta3, lblSeta4, lblSeta5, lblSeta6);
     }
 
@@ -109,23 +109,23 @@ public class FrmPlayersStarGame extends javax.swing.JFrame {
 
         lblVelocidade1.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblVelocidade1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVelocidade1.setText("Velocidade: ?");
+        lblVelocidade1.setText("SPEED: ?");
         pnlLeo.add(lblVelocidade1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 270, -1));
         pnlLeo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         lblPlayer1.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblPlayer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPlayer1.setText("Jogador 1: Léo");
+        lblPlayer1.setText("Player 1: Léo");
         pnlLeo.add(lblPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 270, -1));
 
         lblPoder1.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblPoder1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPoder1.setText("Poder: ?");
+        lblPoder1.setText("PoWer: ?");
         pnlLeo.add(lblPoder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 270, -1));
 
         lblManobrabilidade1.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblManobrabilidade1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblManobrabilidade1.setText("Manobrabilidade: ?");
+        lblManobrabilidade1.setText("Maneuverability: ?");
         pnlLeo.add(lblManobrabilidade1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 270, -1));
 
         lblLeoIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -151,22 +151,22 @@ public class FrmPlayersStarGame extends javax.swing.JFrame {
 
         lblPoder2.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblPoder2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPoder2.setText("Poder: ?");
+        lblPoder2.setText("PoWer: ?");
         pnlCaio.add(lblPoder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 270, -1));
 
         lblManobrabilidade2.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblManobrabilidade2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblManobrabilidade2.setText("Manobrabilidade: ?");
+        lblManobrabilidade2.setText("Maneuverability: ?");
         pnlCaio.add(lblManobrabilidade2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 270, -1));
 
         lblVelocidade2.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblVelocidade2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVelocidade2.setText("Velocidade: ?");
+        lblVelocidade2.setText("Speed: ?");
         pnlCaio.add(lblVelocidade2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 270, -1));
 
         lblPlayer2.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblPlayer2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPlayer2.setText("Jogador 2: Caio");
+        lblPlayer2.setText("Player 2: Caio");
         pnlCaio.add(lblPlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 270, -1));
 
         lblCaioIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -187,10 +187,10 @@ public class FrmPlayersStarGame extends javax.swing.JFrame {
 
         pnlJogsJogoEstrelas.add(pnlCaio, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 270, 590));
 
-        lblTitulo.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        lblTitulo.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 0, 0));
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("Sorteie os atributos de Léo e Caio!");
+        lblTitulo.setText("Draw lots to determine Leo and Caio's attributes!");
         pnlJogsJogoEstrelas.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 30, 500, -1));
 
         lblDado1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -226,7 +226,7 @@ public class FrmPlayersStarGame extends javax.swing.JFrame {
         lblSorteio.setFont(new java.awt.Font("Showcard Gothic", 2, 14)); // NOI18N
         lblSorteio.setForeground(new java.awt.Color(255, 255, 0));
         lblSorteio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSorteio.setText("Sorteio de Atributo");
+        lblSorteio.setText("Attribute Draw");
         pnlJogsJogoEstrelas.add(lblSorteio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 510, -1));
 
         lblFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/galaxia.jpg"))); // NOI18N
@@ -258,10 +258,10 @@ public class FrmPlayersStarGame extends javax.swing.JFrame {
             dado = jogaDado();
             trocaDado(dado, lblDado1);
             jog1.setVelocidade(dado);
-            lblVelocidade1.setText("Velocidade: "+jog1.getVelocidade());
-            lblSorteio.setText("Sorteie a manobrabilidade de Léo!");
+            lblVelocidade1.setText("Speed: "+jog1.getVelocidade());
+            lblSorteio.setText("Draw Léo's maneuverability!");
             exibeSeta(2, lblSeta1, lblSeta2, lblSeta3, lblSeta4, lblSeta5, lblSeta6);
-            JOptionPane.showMessageDialog(null, "A velocidade sorteada para Léo foi "+jog1.getVelocidade()+"! Agora sorteie sua manobrabilidade.");
+            JOptionPane.showMessageDialog(null, "The speed drawn for Léo was "+jog1.getVelocidade()+"! Now, draw his maneuverability.");
             btnDado1.setEnabled(true);
             trocaDado(0, lblDado1);
         }
@@ -270,10 +270,10 @@ public class FrmPlayersStarGame extends javax.swing.JFrame {
             dado = jogaDado();
             trocaDado(dado, lblDado1);
             jog1.setManobrabilidade(dado);
-            lblManobrabilidade1.setText("Manobrabilidade: "+jog1.getManobrabilidade());
-            lblSorteio.setText("Sorteie o poder de Léo!");
+            lblManobrabilidade1.setText("Maneuverability: "+jog1.getManobrabilidade());
+            lblSorteio.setText("Draw Léo's power!");
             exibeSeta(3, lblSeta1, lblSeta2, lblSeta3, lblSeta4, lblSeta5, lblSeta6);
-            JOptionPane.showMessageDialog(null, "A manobrabilidade sorteada para Léo foi "+jog1.getManobrabilidade()+"! Agora sorteie seu poder.");
+            JOptionPane.showMessageDialog(null, "The maneuverability drawn for Léo was "+jog1.getManobrabilidade()+"! Now, draw his power.");
             btnDado1.setEnabled(true);
             trocaDado(0, lblDado1);
         }
@@ -282,10 +282,10 @@ public class FrmPlayersStarGame extends javax.swing.JFrame {
             dado = jogaDado();
             trocaDado(dado, lblDado1);
             jog1.setPoder(dado);
-            lblPoder1.setText("Poder: "+jog1.getPoder());
-            lblSorteio.setText("Sorteie a velocidade de Caio!");
+            lblPoder1.setText("Power: "+jog1.getPoder());
+            lblSorteio.setText("Draw Caio's speed!");
             exibeSeta(4, lblSeta1, lblSeta2, lblSeta3, lblSeta4, lblSeta5, lblSeta6);
-            JOptionPane.showMessageDialog(null, "O poder sorteado para Léo foi "+jog1.getPoder()+"! Agora sorteie os atributos de Caio, começando por sua velocidade.");
+            JOptionPane.showMessageDialog(null, "The power drawn for Léo was "+jog1.getPoder()+"! Now draw Caio's attributes, starting with his speed.");
             btnDado2.setEnabled(true);
             trocaDado(0, lblDado1);
         }
@@ -298,10 +298,10 @@ public class FrmPlayersStarGame extends javax.swing.JFrame {
             dado = jogaDado();
             trocaDado(dado, lblDado2);
             jog2.setVelocidade(dado);
-            lblVelocidade2.setText("Velocidade: "+jog2.getVelocidade());
-            lblSorteio.setText("Sorteie a manobrabilidade de Caio!");
+            lblVelocidade2.setText("Speed: "+jog2.getVelocidade());
+            lblSorteio.setText("Draw Caio's maneuverability!");
             exibeSeta(5, lblSeta1, lblSeta2, lblSeta3, lblSeta4, lblSeta5, lblSeta6);
-            JOptionPane.showMessageDialog(null, "A velocidade sorteada para Caio foi "+jog2.getVelocidade()+"! Agora sorteie sua manobrabilidade.");
+            JOptionPane.showMessageDialog(null, "The speed drawn for Caio was "+jog2.getVelocidade()+"! Now, draw his maneuverability.");
             btnDado2.setEnabled(true);
             trocaDado(0, lblDado2);
         }
@@ -310,10 +310,10 @@ public class FrmPlayersStarGame extends javax.swing.JFrame {
             dado = jogaDado();
             trocaDado(dado, lblDado2);
             jog2.setManobrabilidade(dado);
-            lblSorteio.setText("Sorteie o poder de Caio!");
+            lblSorteio.setText("Draw Caio's power!");
             exibeSeta(6, lblSeta1, lblSeta2, lblSeta3, lblSeta4, lblSeta5, lblSeta6);
-            lblManobrabilidade2.setText("Manobrabilidade: "+jog2.getManobrabilidade());
-            JOptionPane.showMessageDialog(null, "A manobrabilidade sorteada para Caio foi "+jog2.getManobrabilidade()+"! Agora sorteie seu poder.");
+            lblManobrabilidade2.setText("Maneuverability: "+jog2.getManobrabilidade());
+            JOptionPane.showMessageDialog(null, "The maneuverability drawn for Caio was "+jog2.getManobrabilidade()+"! Now, draw his power.");
             btnDado2.setEnabled(true);
             trocaDado(0, lblDado2);
         }
@@ -322,10 +322,10 @@ public class FrmPlayersStarGame extends javax.swing.JFrame {
             dado = jogaDado();
             trocaDado(dado, lblDado2);
             jog2.setPoder(dado);
-            lblPoder2.setText("Poder: "+jog2.getPoder());
-            lblSorteio.setText("Sorteio concluído!");
+            lblPoder2.setText("Power: "+jog2.getPoder());
+            lblSorteio.setText("The draw has been completed!");
             exibeSeta(0, lblSeta1, lblSeta2, lblSeta3, lblSeta4, lblSeta5, lblSeta6);
-            JOptionPane.showMessageDialog(null, "O poder sorteado para Caio foi "+jog2.getPoder()+"! Clique em START para começar a Jogo das Estrelas!");
+            JOptionPane.showMessageDialog(null, "The power drawn for Caio was "+jog2.getPoder()+"! Click START to begin the All-Star Game!");
             trocaDado(0, lblDado2);
             btnIniciar.setEnabled(true);
         }

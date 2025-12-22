@@ -11,7 +11,6 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
-import static ifnmg.frontend.FrmInicio.inicio;
 import javax.swing.ImageIcon;
 
 public class FrmCreditus extends javax.swing.JFrame {
@@ -19,7 +18,6 @@ public class FrmCreditus extends javax.swing.JFrame {
     private static Clip f1;
     private static boolean jogoEstrelas;
     public FrmCreditus(boolean jogoEstrelas) {
-        inicio.close();
         initComponents();
         this.setLocationRelativeTo(null);
         try{
