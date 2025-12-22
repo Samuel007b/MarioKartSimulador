@@ -160,6 +160,15 @@ public class FrmCreditus extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSairActionPerformed
 
     private void btnJogoEstrelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJogoEstrelasActionPerformed
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/surpresa.wav"));
+            Clip surpresa = AudioSystem.getClip();
+            surpresa.open(audio);
+            surpresa.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo.");
+        }
         int resposta = JOptionPane.showConfirmDialog(null, "¿Quieres competir en el Juego de las Estrellas?", "Extra", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             this.dispose();
