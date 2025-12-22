@@ -13,14 +13,15 @@ import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
 public class FrmInicio extends javax.swing.JFrame {
+    public static Clip inicio;
     public FrmInicio(){
         initComponents();
         this.setLocationRelativeTo(null);
         try{
             AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/musicaInicial.wav"));
-            Clip clip = AudioSystem.getClip();
-            clip.open(audio);
-            clip.start();
+            inicio = AudioSystem.getClip();
+            inicio.open(audio);
+            inicio.start();
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
@@ -40,7 +41,7 @@ public class FrmInicio extends javax.swing.JFrame {
         pnlInicio.setBackground(new java.awt.Color(255, 255, 255));
         pnlInicio.setLayout(null);
 
-        btnStart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/start.jpg"))); // NOI18N
+        btnStart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/startGame.jpg"))); // NOI18N
         btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStartActionPerformed(evt);

@@ -20,15 +20,6 @@ public class Partido {
         this.jog1Pontos = jog1Pontos;
         this.jog2Pontos = jog2Pontos;
     }    
-    @Override
-    public String toString() {
-        if(jog1Pontos>jog2Pontos)
-            return "\n----- "+id+"º Partido -----\n¡"+jog1Nome+" (tú) ganó el partido con "+jog1Pontos+" puntos! "+jog2Nome+" (computadora) perdió el partido con "+jog2Pontos+" puntos.";
-        else if(jog1Pontos<jog2Pontos)
-            return "\n----- "+id+"º Partido -----\n¡"+jog2Nome+" (computadora) ganó el partido con "+jog2Pontos+" puntos! "+jog1Nome+" (tú) perdió el partido con "+jog1Pontos+" puntos.";
-        else
-            return "\n----- "+id+"º Partido -----\n"+jog1Nome+" (tú) y "+jog2Nome+" (computadora) empataron en el partido con "+jog1Pontos+" puntos.";
-    }
     public int getId() {
         return id;
     }
@@ -58,5 +49,24 @@ public class Partido {
     }
     public void setJog2Nome(String jog2Nome) {
         this.jog2Nome = jog2Nome;
+    }
+    @Override
+    public String toString() {
+        if("Léo".equals(jog1Nome)&&"Caio".equals(jog2Nome)){
+            if(jog1Pontos>jog2Pontos)
+                return "\n----- "+id+"º Partido -----\n¡"+jog1Nome+" ganó el partido con "+jog1Pontos+" puntos! "+jog2Nome+" perdió el partido con "+jog2Pontos+" puntos";
+            else if(jog1Pontos<jog2Pontos)
+                return "\n----- "+id+"º Partido -----\n¡"+jog2Nome+" ganó el partido con "+jog2Pontos+" puntos! "+jog1Nome+" perdió el partido con "+jog1Pontos+" puntos";
+            else
+                return "\n----- "+id+"º Partido -----\n"+jog1Nome+" y "+jog2Nome+" empataron en el partido con "+jog1Pontos+" puntos";
+        }
+        else{
+            if(jog1Pontos>jog2Pontos)
+                return "\n----- "+id+"º Partido -----\n¡"+jog1Nome+" (tú) ganó el partido con "+jog1Pontos+" puntos! "+jog2Nome+" (computadora) perdió el partido con "+jog2Pontos+" puntos";
+            else if(jog1Pontos<jog2Pontos)
+                return "\n----- "+id+"º Partido -----\n¡"+jog2Nome+" (computadora) ganó el partido con "+jog2Pontos+" puntos! "+jog1Nome+" (tú) perdió el partido con "+jog1Pontos+" puntos";
+            else
+                return "\n----- "+id+"º Partido -----\n"+jog1Nome+" (tú) y "+jog2Nome+" (computadora) empataron en el partido con "+jog1Pontos+" puntos";
+        }
     }
 }

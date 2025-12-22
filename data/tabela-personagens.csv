@@ -8,3 +8,5 @@ ID,Nome,Velocidade,Manobrabilidade,Poder,Imagem,Pontos
 7,Donkey Kong,2,2,5,src/main/resources/characters/dkM.gif,0
 8,Samuel,5,5,5,src/main/resources/characters/samuelM.gif,0
 9,Didi Show,6,6,6,src/main/resources/characters/didiM.gif,0
+10,Léo,0,0,0,src/main/resources/characters/leoM.gif,0
+11,Caio,0,0,0,src/main/resources/characters/caioM.gif,0
