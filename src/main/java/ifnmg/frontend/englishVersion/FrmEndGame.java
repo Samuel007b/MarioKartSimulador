@@ -246,8 +246,8 @@ public class FrmEndGame extends javax.swing.JFrame {
         }
         int resposta = JOptionPane.showConfirmDialog(null, "Do you want to quit the game?", "End Game", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
+            inicio.close();
             if(FrmEndGame.pts==4 && "Didi Show".equals(jog1.getNome())){
-                inicio.close();
                 try{
                     AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/gameOver.wav"));
                     Clip gameOver = AudioSystem.getClip();
