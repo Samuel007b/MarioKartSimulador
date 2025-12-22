@@ -11,7 +11,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import static ifnmg.backend.Api.vencedor;
-import ifnmg.backend.Partida;
+import ifnmg.backend.Partido;
 import ifnmg.backend.Personagem;
 import ifnmg.backend.Rodada;
 import static ifnmg.frontend.spanishVersion.FrmJugsJuegoEstrellas.jogStar;
@@ -27,7 +27,7 @@ public class FrmFinJuegoEstrellas extends javax.swing.JFrame {
     private static int vitoriasCaio;
     private static int idPartida;
     private static List<Rodada> rodadaList = new ArrayList<>();
-    private static List<Partida> partidaList = new ArrayList<>();
+    private static List<Partido> partidaList = new ArrayList<>();
     private static final ImageIcon empate = new ImageIcon("src/main/resources/characters/empate.png");
     private static final ImageIcon leo = new ImageIcon("src/main/resources/characters/leoVit.png");
     private static final ImageIcon caio = new ImageIcon("src/main/resources/characters/caioVit.png");
@@ -48,12 +48,12 @@ public class FrmFinJuegoEstrellas extends javax.swing.JFrame {
                 empate.start();
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo.");
             }
             lblImagemEmpate.setIcon(empate);
             lblTrofeu.setVisible(false);
-            lblVencedor.setText("Houve um empate entre "+jog1.getNome()+" e "+jog2.getNome()+".");
-            lblPerdedor.setText("Ambos ficaram com "+jog1.getPontos()+" ponto(s) no Jogo das Estrelas");
+            lblVencedor.setText("Hubo un empate entre "+jog1.getNome()+" y "+jog2.getNome()+".");
+            lblPerdedor.setText("Ambos terminaron con "+jog1.getPontos()+" punto(s) en el Juego de las Estrellas.");
         }
         else if("Léo".equals(vencedor.getNome()))
             lblImagemVencedor.setIcon(leo);
@@ -68,10 +68,10 @@ public class FrmFinJuegoEstrellas extends javax.swing.JFrame {
                 vitoria1.start();
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo.");
             }
-            lblVencedor.setText("O grande campeão do Jogo das Estrelas foi "+jog1.getNome()+" !!!");
-            lblPerdedor.setText(jog2.getNome()+" ficou em 2º lugar .");
+            lblVencedor.setText("¡¡¡El gran campeón del Juego de Estrellas fue "+jog1.getNome()+" !!!");
+            lblPerdedor.setText(jog2.getNome()+" quedó en 2º lugar.");
             
         }
         else if(vencedor == jog2){
@@ -83,12 +83,12 @@ public class FrmFinJuegoEstrellas extends javax.swing.JFrame {
                 vitoria1.start();
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo.");
             }
-            lblVencedor.setText("O grande campeão do Jogo das Estrelas foi "+jog2.getNome()+" !!!");
-            lblPerdedor.setText(jog1.getNome()+" ficou em 2º lugar.");
+            lblVencedor.setText("¡¡¡El gran campeón del Juego de Estrellas fue "+jog2.getNome()+" !!!");
+            lblPerdedor.setText(jog1.getNome()+" quedó en 2º lugar.");
         }
-        Partida p = new Partida(idPartida, jog1.getNome(), jog2.getNome(), jog1.getPontos(), jog2.getPontos());
+        Partido p = new Partido(idPartida, jog1.getNome(), jog2.getNome(), jog1.getPontos(), jog2.getPontos());
         partidaList.add(p);
     }
 
@@ -138,10 +138,10 @@ public class FrmFinJuegoEstrellas extends javax.swing.JFrame {
         lblVencedor.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         lblVencedor.setForeground(new java.awt.Color(255, 255, 255));
         lblVencedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVencedor.setText("O vencedor foi ...");
+        lblVencedor.setText("El ganador fue...");
         pnlFimJogo.add(lblVencedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 1020, -1));
 
-        btnHistorico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Historico1-por.gif"))); // NOI18N
+        btnHistorico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Historico1-esp.gif"))); // NOI18N
         btnHistorico1.setContentAreaFilled(false);
         btnHistorico1.setFocusPainted(false);
         btnHistorico1.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +151,7 @@ public class FrmFinJuegoEstrellas extends javax.swing.JFrame {
         });
         pnlFimJogo.add(btnHistorico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 517, 260, 40));
 
-        btnHistorico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Historico2-por.gif"))); // NOI18N
+        btnHistorico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/Historico2-esp.gif"))); // NOI18N
         btnHistorico2.setContentAreaFilled(false);
         btnHistorico2.setFocusPainted(false);
         btnHistorico2.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +195,7 @@ public class FrmFinJuegoEstrellas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPlayAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayAgainActionPerformed
-        int resposta = JOptionPane.showConfirmDialog(null, "Deseja jogar novamente?", "Voltar ao Menu Principal", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int resposta = JOptionPane.showConfirmDialog(null, "¿Quieres jugar de nuevo?", "Regresar al Menú Principal", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             jogStar.close();
             new FrmJugsJuegoEstrellas(FrmFinJuegoEstrellas.vitoriasLeo, FrmFinJuegoEstrellas.vitoriasCaio, FrmFinJuegoEstrellas.idPartida).setVisible(true);
@@ -204,7 +204,7 @@ public class FrmFinJuegoEstrellas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPlayAgainActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        int resposta = JOptionPane.showConfirmDialog(null, "Você quer sair do Jogo das Estrelas?", "Encerrar Jogo das Estrelas", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int resposta = JOptionPane.showConfirmDialog(null, "¿Quieres salir el Juego de las Estrellas?", "Terminar el Juego de las Estrellas", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(resposta == JOptionPane.YES_OPTION){
             jogStar.close();
             new FrmCreditus(true).setVisible(true);
@@ -214,15 +214,15 @@ public class FrmFinJuegoEstrellas extends javax.swing.JFrame {
 
     private void btnHistorico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorico1ActionPerformed
         if(vencedor == jog1)
-            JOptionPane.showMessageDialog(null, FrmFinJuegoEstrellas.rodadaList+"\n----- Fim de Jogo -----\n"+jog1.getNome()+" venceu o jogo com "+jog1.getPontos()+" pontos!\nJá "+jog2.getNome()+" perdeu e ficou com "+jog2.getPontos()+" pontos.");
+            JOptionPane.showMessageDialog(null, FrmFinJuegoEstrellas.rodadaList+"\n----- Fin del Juego de las Estrellas -----\n¡"+jog1.getNome()+" ganó el partido con "+jog1.getPontos()+" puntos!\nPor otro lado "+jog2.getNome()+" perdió y terminó con "+jog2.getPontos()+" puntos.");
         else if(vencedor == jog2)
-            JOptionPane.showMessageDialog(null, FrmFinJuegoEstrellas.rodadaList+"\n----- Fim de Jogo -----\n"+jog2.getNome()+" venceu o jogo com "+jog2.getPontos()+" pontos!\nJá "+jog1.getNome()+" perdeu e ficou com "+jog1.getPontos()+" pontos.");
+            JOptionPane.showMessageDialog(null, FrmFinJuegoEstrellas.rodadaList+"\n----- Fin del Juego de las Estrellas -----\n¡"+jog2.getNome()+" ganó el partido con "+jog2.getPontos()+" puntos!\nPor otro lado "+jog1.getNome()+" perdió y terminó con "+jog1.getPontos()+" puntos.");
         else
-            JOptionPane.showMessageDialog(null, FrmFinJuegoEstrellas.rodadaList+"\n----- Fim de Jogo -----\n"+jog1.getNome()+" e "+jog2.getNome()+" empataram com "+jog1.getPontos()+" pontos cada.");
+            JOptionPane.showMessageDialog(null, FrmFinJuegoEstrellas.rodadaList+"\n----- Fin del Juego de las Estrellas -----\n"+jog1.getNome()+" y "+jog2.getNome()+" empataron con "+jog1.getPontos()+" puntos cada uno.");
     }//GEN-LAST:event_btnHistorico1ActionPerformed
 
     private void btnHistorico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorico2ActionPerformed
-        JOptionPane.showMessageDialog(null, partidaList+"\n----- Resumo ----\nEm "+FrmFinJuegoEstrellas.idPartida+" partidas, Léo está com "+FrmFinJuegoEstrellas.vitoriasLeo+" vitórias, Caio está com "+FrmFinJuegoEstrellas.vitoriasCaio+" vitórias e houveram "+(FrmFinJuegoEstrellas.idPartida-FrmFinJuegoEstrellas.vitoriasLeo-FrmFinJuegoEstrellas.vitoriasCaio)+" empates.");
+        JOptionPane.showMessageDialog(null, partidaList+"\n----- Resumen ----\nEn "+FrmFinJuegoEstrellas.idPartida+" partidos, Léo tiene "+FrmFinJuegoEstrellas.vitoriasLeo+" victorias, Caio tiene "+FrmFinJuegoEstrellas.vitoriasCaio+" victorias y hubo "+(FrmFinJuegoEstrellas.idPartida-FrmFinJuegoEstrellas.vitoriasLeo-FrmFinJuegoEstrellas.vitoriasCaio)+" empates.");
     }//GEN-LAST:event_btnHistorico2ActionPerformed
 
     public static void main(String args[]) {

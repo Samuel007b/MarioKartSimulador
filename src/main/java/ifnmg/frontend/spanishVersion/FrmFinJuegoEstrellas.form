@@ -89,7 +89,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="O vencedor foi ..."/>
+            <Property name="text" type="java.lang.String" value="El ganador fue..."/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -100,7 +100,7 @@
         <Component class="javax.swing.JButton" name="btnHistorico1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/buttons/Historico1-por.gif"/>
+              <Image iconType="3" name="/buttons/Historico1-esp.gif"/>
             </Property>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="focusPainted" type="boolean" value="false"/>
@@ -117,7 +117,7 @@
         <Component class="javax.swing.JButton" name="btnHistorico2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/buttons/Historico2-por.gif"/>
+              <Image iconType="3" name="/buttons/Historico2-esp.gif"/>
             </Property>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="focusPainted" type="boolean" value="false"/>
