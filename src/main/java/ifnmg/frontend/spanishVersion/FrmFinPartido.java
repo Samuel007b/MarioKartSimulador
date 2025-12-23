@@ -93,7 +93,7 @@ public class FrmFinPartido extends javax.swing.JFrame {
             }
             lblVencedor.setText("¡El gran ganador fue "+jog1.getNome()+" (tú)¡");
             somVitoria(jog1);
-            lblPerdedor.setText(jog2.getNome()+" (computadora) quedó en 2º lugar.");
+            lblPerdedor.setText(jog2.getNome()+" (ordenador) quedó en 2º lugar.");
             if(FrmFinPartido.pts<3){
                 FrmFinPartido.pts++;
             }
@@ -116,7 +116,7 @@ public class FrmFinPartido extends javax.swing.JFrame {
             catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error al leer el archivo.");
             }
-            lblVencedor.setText("Desafortunadamente, el ganador fue "+jog2.getNome()+" (computadora) ...");
+            lblVencedor.setText("Desafortunadamente, el ganador fue "+jog2.getNome()+" (ordenador) ...");
             somVitoria(jog2);
             lblPerdedor.setText(jog1.getNome()+" (tú) quedó en 2º lugar.");
             if("Didi Show".equals(jog1.getNome())){

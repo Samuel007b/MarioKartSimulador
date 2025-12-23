@@ -396,9 +396,9 @@ public class FrmJugadores extends javax.swing.JFrame {
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jugador 2 (computadora):");
+            lblPlayer.setText("Jugador 2 (ordenador):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"¡La computadora jugará como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"¡El ordenador jugará como "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
@@ -421,9 +421,9 @@ public class FrmJugadores extends javax.swing.JFrame {
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jugador 2 (computadora):");
+            lblPlayer.setText("Jugador 2 (ordenador):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"¡La computadora jugará como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"¡El ordenador jugará como "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
@@ -446,9 +446,9 @@ public class FrmJugadores extends javax.swing.JFrame {
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jugador 2 (computadora):");
+            lblPlayer.setText("Jugador 2 (ordenador):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"¡La computadora jugará como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"¡El ordenador jugará como "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
@@ -471,9 +471,9 @@ public class FrmJugadores extends javax.swing.JFrame {
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jugador 2 (computadora):");
+            lblPlayer.setText("Jugador 2 (ordenador):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"¡La computadora jugará como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"¡El ordenador jugará como "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
@@ -496,9 +496,9 @@ public class FrmJugadores extends javax.swing.JFrame {
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jugador 2 (computadora):");
+            lblPlayer.setText("Jugador 2 (ordenador):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"¡La computadora jugará como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"¡El ordenador jugará como "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
@@ -521,9 +521,9 @@ public class FrmJugadores extends javax.swing.JFrame {
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jugador 2 (computadora):");
+            lblPlayer.setText("Jugador 2 (ordenador):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"¡La computadora jugará como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"¡El ordenador jugará como "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
@@ -546,9 +546,9 @@ public class FrmJugadores extends javax.swing.JFrame {
             else
                 jog2 = sorteiaJogBotA(personagemList, jog1);
             somPlayer2(jog2);
-            lblPlayer.setText("Jugador 2 (computadora):");
+            lblPlayer.setText("Jugador 2 (ordenador):");
             visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-            JOptionPane.showMessageDialog(null,"¡La computadora jugará como "+jog2.getNome()+"!");
+            JOptionPane.showMessageDialog(null,"¡El ordenador jugará como "+jog2.getNome()+"!");
             desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
         }
         else if(resposta == JOptionPane.NO_OPTION){
@@ -656,9 +656,9 @@ public class FrmJugadores extends javax.swing.JFrame {
                 else
                     jog2 = sorteiaJogBotB(personagemList, jog1);
                 somPlayer2(jog2);
-                lblPlayer.setText("Jugador 2 (computadora):");
+                lblPlayer.setText("Jugador 2 (ordenador):");
                 visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-                JOptionPane.showMessageDialog(null,"¡La computadora jugará como "+jog2.getNome()+"!");
+                JOptionPane.showMessageDialog(null,"¡El ordenador jugará como "+jog2.getNome()+"!");
                 desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
             }
             else if(resposta == JOptionPane.NO_OPTION){
@@ -687,9 +687,9 @@ public class FrmJugadores extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"¡El personaje "+jog1.getNome()+" ha sido elegido!");
                 jog2 = sorteiaJogBotC(personagemList, jog1);
                 somPlayer2(jog2);
-                lblPlayer.setText("Jugador 2 (computadora):");
+                lblPlayer.setText("Jugador 2 (ordenador):");
                 visualizarPlayer(lblPlayer, lblImagem, lblNome, lblVelocidade, lblManobrabilidade, lblPoder, jog2.getId()-1);
-                JOptionPane.showMessageDialog(null,"¡La computadora jugará como "+jog2.getNome()+"!");
+                JOptionPane.showMessageDialog(null,"¡El ordenador jugará como "+jog2.getNome()+"!");
                 desabilitaBotoes(btnIniciar, btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7, btnP8, btnP9, btnSelectP1, btnSelectP2, btnSelectP3, btnSelectP4, btnSelectP5, btnSelectP6, btnSelectP7, btnSelectP8, btnSelectP9);
             }
             else if(resposta == JOptionPane.NO_OPTION){

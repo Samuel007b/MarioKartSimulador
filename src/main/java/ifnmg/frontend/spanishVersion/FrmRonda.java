@@ -6,8 +6,6 @@ Frame da tela de execução de rodada (português)
 */
 package ifnmg.frontend.spanishVersion;
 
-import ifnmg.frontend.spanishVersion.FrmJugadores;
-import ifnmg.frontend.spanishVersion.FrmFinPartido;
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -109,7 +107,7 @@ public class FrmRonda extends javax.swing.JFrame {
         lblJog2Imagem.setIcon(icon2);
         lblJog2Imagem.setHorizontalAlignment(SwingConstants.CENTER);
         lblJog2Imagem.setVerticalAlignment(SwingConstants.CENTER);
-        lblJog2Nome.setText("Jugador 2 (computadora): "+jog2.getNome());
+        lblJog2Nome.setText("Jugador 2 (ordenador): "+jog2.getNome());
         lblDado1.setHorizontalAlignment(SwingConstants.CENTER);
         lblDado1.setVerticalAlignment(SwingConstants.CENTER);
         lblDado2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -220,7 +218,7 @@ public class FrmRonda extends javax.swing.JFrame {
 
         lblJog2Nome.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblJog2Nome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblJog2Nome.setText("Jugador 2 (computadora):");
+        lblJog2Nome.setText("Jugador 2 (ordenador):");
         pnlRodada.add(lblJog2Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 340, -1));
 
         lblRodada.setFont(new java.awt.Font("Showcard Gothic", 2, 24)); // NOI18N
