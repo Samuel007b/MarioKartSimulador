@@ -1,5 +1,5 @@
 /*
-Frame da tela de seleção de personagens (português)
+Frame da tela de seleção de personagens (espanhol)
 @author arthurpereira
 @author athossilvano
 @author samuelmiranda

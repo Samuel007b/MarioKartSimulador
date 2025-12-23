@@ -325,7 +325,7 @@ public class FrmJugsJuegoEstrellas extends javax.swing.JFrame {
             lblPoder2.setText("Poder: "+jog2.getPoder());
             lblSorteio.setText("¡El sorteo ha finalizado!");
             exibeSeta(0, lblSeta1, lblSeta2, lblSeta3, lblSeta4, lblSeta5, lblSeta6);
-            JOptionPane.showMessageDialog(null, "¡El poder asignado a Caio fue "+jog2.getPoder()+"! ¡Haga clic en INICIAR para comenzar el Juego de las Estrellas!");
+            JOptionPane.showMessageDialog(null, "¡El poder asignado a Caio fue "+jog2.getPoder()+"! ¡Haga clic en START para comenzar el Juego de las Estrellas!");
             trocaDado(0, lblDado2);
             btnIniciar.setEnabled(true);
         }

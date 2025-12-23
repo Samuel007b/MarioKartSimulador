@@ -1,5 +1,5 @@
 /*
-Programa principal para execução do simulador de Mario Kart
+Programa principal para teste de execução do simulador de Mario Kart
 @author arthurpereira
 @author athossilvano
 @author samuelmiranda
