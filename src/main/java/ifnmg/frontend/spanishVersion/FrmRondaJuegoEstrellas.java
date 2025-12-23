@@ -52,12 +52,19 @@ public class FrmRondaJuegoEstrellas extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         mostraEstrelas(0, lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
         mostraEstrelas(0, lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
-        btnDado.setHorizontalAlignment(SwingConstants.CENTER);
-        btnDado.setVerticalAlignment(SwingConstants.CENTER);
-        btnDado3.setVisible(false);
-        btnDado3.setEnabled(false);
+        btnDado1.setHorizontalAlignment(SwingConstants.CENTER);
+        btnDado1.setVerticalAlignment(SwingConstants.CENTER);
+        btnDado2.setHorizontalAlignment(SwingConstants.CENTER);
+        btnDado2.setVerticalAlignment(SwingConstants.CENTER);
         btnDado3.setHorizontalAlignment(SwingConstants.CENTER);
         btnDado3.setVerticalAlignment(SwingConstants.CENTER);
+        btnDado4.setHorizontalAlignment(SwingConstants.CENTER);
+        btnDado4.setVerticalAlignment(SwingConstants.CENTER);
+        btnDado2.setEnabled(false);
+        btnDado3.setVisible(false);
+        btnDado3.setEnabled(false);
+        btnDado4.setVisible(false);
+        btnDado4.setEnabled(false);
         btnProximo.setVisible(false);
         btnProximo.setEnabled(false);
         try{
@@ -115,10 +122,14 @@ public class FrmRondaJuegoEstrellas extends javax.swing.JFrame {
         iniciaRodada();
     }
     private void iniciaRodada() {
-            btnDado.setVisible(true);
-            btnDado.setEnabled(true);
+            btnDado1.setVisible(true);
+            btnDado1.setEnabled(true);
+            btnDado2.setVisible(true);
+            btnDado2.setEnabled(false);
             btnDado3.setVisible(false);
             btnDado3.setEnabled(false);
+            btnDado4.setVisible(false);
+            btnDado4.setEnabled(false);
             btnProximo.setVisible(false);
             btnProximo.setEnabled(false);
             lblDado1.setIcon(d0);
@@ -164,7 +175,7 @@ public class FrmRondaJuegoEstrellas extends javax.swing.JFrame {
         lblJog1Nome = new javax.swing.JLabel();
         lblJog2Nome = new javax.swing.JLabel();
         lblRodada = new javax.swing.JLabel();
-        btnDado = new javax.swing.JButton();
+        btnDado1 = new javax.swing.JButton();
         lblJog1Atributo = new javax.swing.JLabel();
         lblJog2Atributo = new javax.swing.JLabel();
         lblJog1Star1 = new javax.swing.JLabel();
@@ -194,7 +205,9 @@ public class FrmRondaJuegoEstrellas extends javax.swing.JFrame {
         lblRaio1 = new javax.swing.JLabel();
         lblRaio2 = new javax.swing.JLabel();
         lblPista = new javax.swing.JLabel();
-        lblFundo = new javax.swing.JLabel();
+        btnDado2 = new javax.swing.JButton();
+        btnDado4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -230,17 +243,17 @@ public class FrmRondaJuegoEstrellas extends javax.swing.JFrame {
         lblRodada.setText("ª Ronda: ");
         pnlRodada.add(lblRodada, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 670, -1));
 
-        btnDado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/playDado.gif"))); // NOI18N
-        btnDado.setBorderPainted(false);
-        btnDado.setContentAreaFilled(false);
-        btnDado.setFocusPainted(false);
-        btnDado.setFocusTraversalPolicyProvider(true);
-        btnDado.addActionListener(new java.awt.event.ActionListener() {
+        btnDado1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/playDado.gif"))); // NOI18N
+        btnDado1.setBorderPainted(false);
+        btnDado1.setContentAreaFilled(false);
+        btnDado1.setFocusPainted(false);
+        btnDado1.setFocusTraversalPolicyProvider(true);
+        btnDado1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDadoActionPerformed(evt);
+                btnDado1ActionPerformed(evt);
             }
         });
-        pnlRodada.add(btnDado, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 300, 190, 90));
+        pnlRodada.add(btnDado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 300, 190, 90));
 
         lblJog1Atributo.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         lblJog1Atributo.setForeground(new java.awt.Color(255, 255, 255));
@@ -285,34 +298,34 @@ public class FrmRondaJuegoEstrellas extends javax.swing.JFrame {
         pnlRodada.add(lblJog1Star10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 510, -1, -1));
 
         lblJog2Star1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/star.png"))); // NOI18N
-        pnlRodada.add(lblJog2Star1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 410, -1, -1));
+        pnlRodada.add(lblJog2Star1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 410, -1, -1));
 
         lblJog2Star2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/star.png"))); // NOI18N
-        pnlRodada.add(lblJog2Star2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 410, -1, -1));
+        pnlRodada.add(lblJog2Star2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 410, -1, -1));
 
         lblJog2Star3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/star.png"))); // NOI18N
-        pnlRodada.add(lblJog2Star3, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 410, -1, -1));
+        pnlRodada.add(lblJog2Star3, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 410, -1, -1));
 
         lblJog2Star4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/star.png"))); // NOI18N
-        pnlRodada.add(lblJog2Star4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 460, -1, -1));
+        pnlRodada.add(lblJog2Star4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 460, -1, -1));
 
         lblJog2Star5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/star.png"))); // NOI18N
-        pnlRodada.add(lblJog2Star5, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 460, -1, -1));
+        pnlRodada.add(lblJog2Star5, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 460, -1, -1));
 
         lblJog2Star6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/star.png"))); // NOI18N
-        pnlRodada.add(lblJog2Star6, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 460, -1, -1));
+        pnlRodada.add(lblJog2Star6, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 460, -1, -1));
 
         lblJog2Star7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/star.png"))); // NOI18N
-        pnlRodada.add(lblJog2Star7, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 510, -1, -1));
+        pnlRodada.add(lblJog2Star7, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 510, -1, -1));
 
         lblJog2Star8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/star.png"))); // NOI18N
-        pnlRodada.add(lblJog2Star8, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 510, -1, -1));
+        pnlRodada.add(lblJog2Star8, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 510, -1, -1));
 
         lblJog2Star9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/star.png"))); // NOI18N
-        pnlRodada.add(lblJog2Star9, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 510, -1, -1));
+        pnlRodada.add(lblJog2Star9, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 510, -1, -1));
 
         lblJog2Star10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/star.png"))); // NOI18N
-        pnlRodada.add(lblJog2Star10, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 510, -1, -1));
+        pnlRodada.add(lblJog2Star10, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 510, -1, -1));
 
         btnProximo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/next.png"))); // NOI18N
         btnProximo.setBorderPainted(false);
@@ -359,8 +372,33 @@ public class FrmRondaJuegoEstrellas extends javax.swing.JFrame {
         lblPista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PistaRetaNoturna.png"))); // NOI18N
         pnlRodada.add(lblPista, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
 
-        lblFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/estrelas.jpg"))); // NOI18N
-        pnlRodada.add(lblFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        btnDado2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/playDado.gif"))); // NOI18N
+        btnDado2.setBorderPainted(false);
+        btnDado2.setContentAreaFilled(false);
+        btnDado2.setFocusPainted(false);
+        btnDado2.setFocusTraversalPolicyProvider(true);
+        btnDado2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDado2ActionPerformed(evt);
+            }
+        });
+        pnlRodada.add(btnDado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 300, 190, 90));
+
+        btnDado4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/playDado.gif"))); // NOI18N
+        btnDado4.setBorderPainted(false);
+        btnDado4.setContentAreaFilled(false);
+        btnDado4.setFocusPainted(false);
+        btnDado4.setFocusTraversalPolicyProvider(true);
+        btnDado4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDado4ActionPerformed(evt);
+            }
+        });
+        pnlRodada.add(btnDado4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 300, 190, 90));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/estrelas.jpg"))); // NOI18N
+        pnlRodada.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -378,8 +416,8 @@ public class FrmRondaJuegoEstrellas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDadoActionPerformed
-        btnDado.setEnabled(false);
+    private void btnDado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDado1ActionPerformed
+        btnDado1.setEnabled(false);
         dado1 = jogaDado();
         trocaDado(dado1, lblDado1);
         if(tipoPista=="RECTA"){
@@ -398,10 +436,60 @@ public class FrmRondaJuegoEstrellas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,jog1.getNome()+" tiró el dado y obtuvo un "+dado1+". ¡Ahora su poder es "+rod.getUpgradeJog1()+"!");
             lblJog1Atributo.setText("Poder: "+rod.getUpgradeJog1());
         }
+        btnDado2.setEnabled(true);
+    }//GEN-LAST:event_btnDado1ActionPerformed
+
+    private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
+        rod = criaRodada(numRodada, tipoPista, jog1, jog2, dado1, dado2);
+        rodadaList.add(rod);
+        numRodada++;
+        if(numRodada<=quantRodadas){
+            try{
+                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/rodada.wav"));
+                Clip rodada = AudioSystem.getClip();
+                rodada.open(audio);
+                rodada.start();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo.");
+            }
+            iniciaRodada();
+        } 
+        else{
+            new FrmFinJuegoEstrellas(FrmRondaJuegoEstrellas.vitoriasLeo, FrmRondaJuegoEstrellas.vitoriasCaio, FrmRondaJuegoEstrellas.idPartida, FrmRondaJuegoEstrellas.rodadaList).setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnProximoActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        int resposta = JOptionPane.showConfirmDialog(null, "¿Realmente quieres salir (tu progreso en esta partida se perderá, pero podrás comenzar otra)?", "Regresar al Menú Principal", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(resposta == JOptionPane.YES_OPTION){
+            jogStar.close();
+            new FrmJugsJuegoEstrellas(FrmRondaJuegoEstrellas.vitoriasLeo, FrmRondaJuegoEstrellas.vitoriasCaio, FrmRondaJuegoEstrellas.idPartida-1).setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnDado3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDado3ActionPerformed
+        btnDado3.setEnabled(false);
+        dado3 = jogaDado();
+        trocaDado(dado3, lblDado1);
+        if(dado3%2==0){
+            rod.getJog1().setPontos(rod.getJog1().getPontos()+1);
+            JOptionPane.showMessageDialog(null,jog1.getNome()+" volvió a tirar el dado y obtuvo un "+dado3+". Como "+dado3+" es par, ¡"+jog1.getNome()+" ganó un punto!");
+            mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
+        }
+        else
+            JOptionPane.showMessageDialog(null,jog1.getNome()+" volvió a tirar el dado y obtuvo un "+dado3+". Como "+dado3+" es impar, "+jog1.getNome()+" no obtuvo ningún punto.");
+        btnProximo.setVisible(true);
+        btnProximo.setEnabled(true);
+    }//GEN-LAST:event_btnDado3ActionPerformed
+
+    private void btnDado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDado2ActionPerformed
+        btnDado2.setEnabled(false);
         dado2 = jogaDado();
         trocaDado(dado2, lblDado2);
         if(tipoPista=="RECTA"){
-            
             rod.setUpgradeJog2(jog2.getVelocidade()+dado2);
             JOptionPane.showMessageDialog(null,jog2.getNome()+" tiró el dado y obtuvo un "+dado2+". ¡Ahora su velocidad es "+rod.getUpgradeJog2()+"!");
             lblJog2Atributo.setText("Velocidad: "+rod.getUpgradeJog2());
@@ -453,7 +541,7 @@ public class FrmRondaJuegoEstrellas extends javax.swing.JFrame {
                 mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
                 lblDado1.setIcon(d0);
                 JOptionPane.showMessageDialog(null,"Como el poder de "+jog1.getNome()+" es mayor, "+jog1.getNome()+" puede tirar el dado nuevamente para intentar ganar un punto.");
-                btnDado.setVisible(false);
+                btnDado1.setVisible(false);
                 btnDado3.setVisible(true);
                 btnDado3.setEnabled(true);
             }
@@ -462,17 +550,9 @@ public class FrmRondaJuegoEstrellas extends javax.swing.JFrame {
                 mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
                 lblDado2.setIcon(d0);
                 JOptionPane.showMessageDialog(null,"Como el poder de "+jog2.getNome()+" es mayor, "+jog2.getNome()+" puede tirar el dado nuevamente para intentar ganar un punto.");
-                dado3 = jogaDado();
-                trocaDado(dado3, lblDado2);
-                if(dado3%2==0){
-                    rod.getJog2().setPontos(rod.getJog2().getPontos()+1);
-                    JOptionPane.showMessageDialog(null,jog2.getNome()+" volvió a tirar el dado y obtuvo un "+dado3+". Como "+dado3+" es par, ¡"+jog2.getNome()+" ganó un punto!");
-                    mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
-                }
-                else
-                    JOptionPane.showMessageDialog(null,jog2.getNome()+" volvió a tirar el dado y obtuvo un "+dado3+". Como "+dado3+" es impar, "+jog2.getNome()+" no obtuvo ningún punto.");
-                btnProximo.setVisible(true);
-                btnProximo.setEnabled(true);
+                btnDado2.setVisible(false);
+                btnDado4.setVisible(true);
+                btnDado4.setEnabled(true);
             }
             else{
                 JOptionPane.showMessageDialog(null,jog1.getNome()+" y "+jog2.getNome()+" tienen los mismos poderes, por lo que ninguno de ellos perdió puntos.");
@@ -480,54 +560,22 @@ public class FrmRondaJuegoEstrellas extends javax.swing.JFrame {
                 btnProximo.setEnabled(true);
             }
         }
-    }//GEN-LAST:event_btnDadoActionPerformed
+    }//GEN-LAST:event_btnDado2ActionPerformed
 
-    private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
-        rod = criaRodada(numRodada, tipoPista, jog1, jog2, dado1, dado2);
-        rodadaList.add(rod);
-        numRodada++;
-        if(numRodada<=quantRodadas){
-            try{
-                AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/rodada.wav"));
-                Clip rodada = AudioSystem.getClip();
-                rodada.open(audio);
-                rodada.start();
-            }
-            catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Error al leer el archivo.");
-            }
-            iniciaRodada();
-        } 
-        else{
-            new FrmFinJuegoEstrellas(FrmRondaJuegoEstrellas.vitoriasLeo, FrmRondaJuegoEstrellas.vitoriasCaio, FrmRondaJuegoEstrellas.idPartida, FrmRondaJuegoEstrellas.rodadaList).setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_btnProximoActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        int resposta = JOptionPane.showConfirmDialog(null, "¿Realmente quieres salir (tu progreso en esta partida se perderá, pero podrás comenzar otra)?", "Regresar al Menú Principal", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if(resposta == JOptionPane.YES_OPTION){
-            jogStar.close();
-            new FrmJugsJuegoEstrellas(FrmRondaJuegoEstrellas.vitoriasLeo, FrmRondaJuegoEstrellas.vitoriasCaio, FrmRondaJuegoEstrellas.idPartida-1).setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnDado3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDado3ActionPerformed
-        btnDado3.setEnabled(false);
-        btnDado3.setVisible(false);
+    private void btnDado4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDado4ActionPerformed
+        btnDado4.setEnabled(false);
         dado3 = jogaDado();
-        trocaDado(dado3, lblDado1);
+        trocaDado(dado3, lblDado2);
         if(dado3%2==0){
-            rod.getJog1().setPontos(rod.getJog1().getPontos()+1);
-            JOptionPane.showMessageDialog(null,jog1.getNome()+" volvió a tirar el dado y obtuvo un "+dado3+". Como "+dado3+" es par, ¡"+jog1.getNome()+" ganó un punto!");
-            mostraEstrelas(jog1.getPontos(), lblJog1Star1, lblJog1Star2, lblJog1Star3, lblJog1Star4, lblJog1Star5, lblJog1Star6, lblJog1Star7, lblJog1Star8, lblJog1Star9, lblJog1Star10);
+            rod.getJog2().setPontos(rod.getJog2().getPontos()+1);
+            JOptionPane.showMessageDialog(null,jog2.getNome()+" volvió a tirar el dado y obtuvo un "+dado3+". Como "+dado3+" es par, ¡"+jog2.getNome()+" ganó un punto!");
+            mostraEstrelas(jog2.getPontos(), lblJog2Star1, lblJog2Star2, lblJog2Star3, lblJog2Star4, lblJog2Star5, lblJog2Star6, lblJog2Star7, lblJog2Star8, lblJog2Star9, lblJog2Star10);
         }
         else
-            JOptionPane.showMessageDialog(null,jog1.getNome()+" volvió a tirar el dado y obtuvo un "+dado3+". Como "+dado3+" es impar, "+jog1.getNome()+" no obtuvo ningún punto.");
+            JOptionPane.showMessageDialog(null,jog2.getNome()+" volvió a tirar el dado y obtuvo un "+dado3+". Como "+dado3+" es impar, "+jog2.getNome()+" no obtuvo ningún punto.");
         btnProximo.setVisible(true);
         btnProximo.setEnabled(true);
-    }//GEN-LAST:event_btnDado3ActionPerformed
+    }//GEN-LAST:event_btnDado4ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -707,12 +755,14 @@ public class FrmRondaJuegoEstrellas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnDado;
+    private javax.swing.JButton btnDado1;
+    private javax.swing.JButton btnDado2;
     private javax.swing.JButton btnDado3;
+    private javax.swing.JButton btnDado4;
     private javax.swing.JButton btnProximo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDado1;
     private javax.swing.JLabel lblDado2;
-    private javax.swing.JLabel lblFundo;
     private javax.swing.JLabel lblJog1Atributo;
     private javax.swing.JLabel lblJog1Imagem;
     private javax.swing.JLabel lblJog1Nome;
