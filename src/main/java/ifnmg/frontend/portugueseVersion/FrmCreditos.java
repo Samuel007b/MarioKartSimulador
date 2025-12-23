@@ -15,11 +15,12 @@ import javax.swing.JOptionPane;
 
 public class FrmCreditos extends javax.swing.JFrame {
     private static final ImageIcon mcqueen = new ImageIcon("src/main/resources/mcqueen.gif");
-    private static Clip f1;
+    private static Clip f1, clash;
     private static boolean jogoEstrelas;
     public FrmCreditos(boolean jogoEstrelas) {
         initComponents();
         this.setLocationRelativeTo(null);
+        btnClash.setVisible(false);
         try{
             AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/f1Theme.wav"));
             f1 = AudioSystem.getClip();
@@ -31,6 +32,7 @@ public class FrmCreditos extends javax.swing.JFrame {
         }
         if(jogoEstrelas==true){
             btnJogoEstrelas.setVisible(false);
+            btnClash.setVisible(true);
         }
     }
 
@@ -55,6 +57,7 @@ public class FrmCreditos extends javax.swing.JFrame {
         lblAgradecimentos = new javax.swing.JLabel();
         lblSair = new javax.swing.JButton();
         btnJogoEstrelas = new javax.swing.JButton();
+        btnClash = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,6 +139,17 @@ public class FrmCreditos extends javax.swing.JFrame {
         });
         lblCreditos.add(btnJogoEstrelas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 80, 80));
 
+        btnClash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/coroa.png"))); // NOI18N
+        btnClash.setBorderPainted(false);
+        btnClash.setContentAreaFilled(false);
+        btnClash.setFocusPainted(false);
+        btnClash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClashActionPerformed(evt);
+            }
+        });
+        lblCreditos.add(btnClash, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 100, 70));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,11 +201,24 @@ public class FrmCreditos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnJogoEstrelasActionPerformed
 
+    private void btnClashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClashActionPerformed
+        try{
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/main/resources/audios/clash.wav"));
+            clash = AudioSystem.getClip();
+            clash.open(audio);
+            clash.start();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo.");
+        }
+    }//GEN-LAST:event_btnClashActionPerformed
+
     public static void main(String args[]) {
         new FrmCreditos(jogoEstrelas).setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClash;
     private javax.swing.JButton btnJogoEstrelas;
     private javax.swing.JLabel lblAgradecimentos;
     private javax.swing.JLabel lblBowser;

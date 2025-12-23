@@ -1,3 +1,4 @@
+ifnmg\frontend\EnglishVersion\FrmCredits$3.class
 ifnmg\frontend\EnglishVersion\FrmPlayersStarGame.class
 ifnmg\frontend\SpanishVersion\FrmFinJuegoEstrellas$4.class
 ifnmg\frontend\PortugueseVersion\FrmRodada$2.class
@@ -24,6 +25,7 @@ ifnmg\frontend\EnglishVersion\FrmPlayers$15.class
 ifnmg\frontend\EnglishVersion\FrmPlayersStarGame$1.class
 ifnmg\frontend\SpanishVersion\FrmJugsJuegoEstrellas.class
 ifnmg\frontend\EnglishVersion\FrmEndGame$2.class
+ifnmg\frontend\EnglishVersion\FrmRoundStarGame$7.class
 ifnmg\frontend\EnglishVersion\FrmRound$4.class
 ifnmg\frontend\EnglishVersion\FrmEndStarGame$4.class
 ifnmg\frontend\PortugueseVersion\FrmFimJogoEstrelas$4.class
@@ -56,12 +58,15 @@ ifnmg\frontend\PortugueseVersion\FrmFimJogo$3.class
 ifnmg\frontend\EnglishVersion\FrmPlayers$14.class
 ifnmg\frontend\EnglishVersion\FrmPlayers.class
 ifnmg\frontend\PortugueseVersion\FrmJogadores$16.class
+ifnmg\frontend\PortugueseVersion\FrmRodJogoEstrelas$7.class
 ifnmg\frontend\SpanishVersion\FrmJugsJuegoEstrellas$2.class
 ifnmg\frontend\SpanishVersion\FrmJugadores.class
 ifnmg\frontend\PortugueseVersion\FrmJogadores$7.class
+ifnmg\frontend\PortugueseVersion\FrmCreditos$3.class
 ifnmg\frontend\EnglishVersion\FrmPlayers$11.class
 ifnmg\frontend\PortugueseVersion\FrmJogadores$13.class
 ifnmg\frontend\EnglishVersion\FrmRoundStarGame$3.class
+ifnmg\frontend\EnglishVersion\FrmRoundStarGame$6.class
 ifnmg\frontend\PortugueseVersion\FrmFimJogoEstrelas.class
 ifnmg\frontend\PortugueseVersion\FrmRodJogoEstrelas$4.class
 ifnmg\frontend\SpanishVersion\FrmRondaJuegoEstrellas$1.class
@@ -100,6 +105,7 @@ ifnmg\frontend\SpanishVersion\FrmJugadores$14.class
 ifnmg\frontend\SpanishVersion\FrmJugsJuegoEstrellas$3.class
 ifnmg\frontend\PortugueseVersion\FrmJogadores$9.class
 ifnmg\frontend\EnglishVersion\FrmEndGame$5.class
+ifnmg\frontend\PortugueseVersion\FrmRodJogoEstrelas$6.class
 ifnmg\frontend\EnglishVersion\FrmPlayers$13.class
 ifnmg\frontend\PortugueseVersion\FrmFimJogo$4.class
 ifnmg\frontend\PortugueseVersion\FrmJogadores$20.class
@@ -108,6 +114,7 @@ ifnmg\frontend\EnglishVersion\FrmRoundStarGame$5.class
 ifnmg\frontend\PortugueseVersion\FrmCreditos$2.class
 ifnmg\frontend\FrmIdioma$2.class
 ifnmg\frontend\PortugueseVersion\FrmRodJogoEstrelas$3.class
+ifnmg\frontend\SpanishVersion\FrmCreditus$3.class
 ifnmg\frontend\PortugueseVersion\FrmJogadores$6.class
 ifnmg\frontend\SpanishVersion\FrmJugadores$18.class
 ifnmg\frontend\SpanishVersion\FrmRonda$3.class
@@ -159,6 +166,7 @@ ifnmg\frontend\PortugueseVersion\FrmRodada$1.class
 ifnmg\frontend\SpanishVersion\FrmJugadores$3.class
 ifnmg\frontend\PortugueseVersion\FrmJogadores$4.class
 ifnmg\frontend\SpanishVersion\FrmRonda.class
+ifnmg\frontend\SpanishVersion\FrmRondaJuegoEstrellas$7.class
 ifnmg\frontend\PortugueseVersion\FrmRodJogoEstrelas$1.class
 ifnmg\frontend\SpanishVersion\FrmFinJuegoEstrellas$5.class
 ifnmg\frontend\SpanishVersion\FrmRondaJuegoEstrellas$4.class
@@ -168,5 +176,6 @@ ifnmg\frontend\SpanishVersion\FrmRondaJuegoEstrellas$5.class
 ifnmg\frontend\SpanishVersion\FrmFinPartido$2.class
 ifnmg\frontend\EnglishVersion\FrmPlayers$19.class
 ifnmg\frontend\PortugueseVersion\FrmJogsJogoEstrelas.class
+ifnmg\frontend\SpanishVersion\FrmRondaJuegoEstrellas$6.class
 ifnmg\frontend\SpanishVersion\FrmFinPartido$3.class
 ifnmg\frontend\EnglishVersion\FrmRound$2.class
