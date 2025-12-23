@@ -51,7 +51,7 @@ public class FrmJugsJuegoEstrellas extends javax.swing.JFrame {
         exibeSeta(0, lblSeta1, lblSeta2, lblSeta3, lblSeta4, lblSeta5, lblSeta6);
         btnDado2.setEnabled(false);
         btnIniciar.setEnabled(false);
-        JOptionPane.showMessageDialog(null, "Comience dibujando la velocidad de Léo.");
+        JOptionPane.showMessageDialog(null, "Comience sorteando la velocidad de Léo.");
         lblSorteio.setText("¡Sortea la velocidad de Léo!");
         exibeSeta(1, lblSeta1, lblSeta2, lblSeta3, lblSeta4, lblSeta5, lblSeta6);
     }

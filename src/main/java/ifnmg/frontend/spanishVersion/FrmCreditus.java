@@ -81,7 +81,7 @@ public class FrmCreditus extends javax.swing.JFrame {
         lblCaio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/caio.png"))); // NOI18N
         lblCreditos.add(lblCaio, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, -1, -1));
 
-        lblParabens.setFont(new java.awt.Font("Showcard Gothic", 2, 14)); // NOI18N
+        lblParabens.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         lblParabens.setForeground(new java.awt.Color(255, 255, 255));
         lblParabens.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblParabens.setText("--- Demostraste que merecías estar aquí ---");
@@ -115,7 +115,7 @@ public class FrmCreditus extends javax.swing.JFrame {
         lblAgradecimentos.setFont(new java.awt.Font("Showcard Gothic", 2, 14)); // NOI18N
         lblAgradecimentos.setForeground(new java.awt.Color(255, 255, 255));
         lblAgradecimentos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAgradecimentos.setText("Agradecimientos especiales: Leonardo Humberto, Caio Lamas, Caio da Silva, Gustavo Santos, Ryanderson Henzyo & Sara Augusta");
+        lblAgradecimentos.setText("Agradecimientos especiales: Leonardo Humberto, Caio Lamas, Caio da Silva, Débora Tais, Gustavo Santos, Ryanderson Henzyo & Sara Augusta");
         lblCreditos.add(lblAgradecimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 1190, -1));
 
         lblSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exit.png"))); // NOI18N

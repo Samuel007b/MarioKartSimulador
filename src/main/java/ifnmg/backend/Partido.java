@@ -62,11 +62,11 @@ public class Partido {
         }
         else{
             if(jog1Pontos>jog2Pontos)
-                return "\n----- "+id+"º Partido -----\n¡"+jog1Nome+" (tú) ganó el partido con "+jog1Pontos+" puntos! "+jog2Nome+" (computadora) perdió el partido con "+jog2Pontos+" puntos";
+                return "\n----- "+id+"º Partido -----\n¡"+jog1Nome+" (tú) ganó el partido con "+jog1Pontos+" puntos! "+jog2Nome+" (ordenador) perdió el partido con "+jog2Pontos+" puntos";
             else if(jog1Pontos<jog2Pontos)
-                return "\n----- "+id+"º Partido -----\n¡"+jog2Nome+" (computadora) ganó el partido con "+jog2Pontos+" puntos! "+jog1Nome+" (tú) perdió el partido con "+jog1Pontos+" puntos";
+                return "\n----- "+id+"º Partido -----\n¡"+jog2Nome+" (ordenador) ganó el partido con "+jog2Pontos+" puntos! "+jog1Nome+" (tú) perdió el partido con "+jog1Pontos+" puntos";
             else
-                return "\n----- "+id+"º Partido -----\n"+jog1Nome+" (tú) y "+jog2Nome+" (computadora) empataron en el partido con "+jog1Pontos+" puntos";
+                return "\n----- "+id+"º Partido -----\n"+jog1Nome+" (tú) y "+jog2Nome+" (ordenador) empataron en el partido con "+jog1Pontos+" puntos";
         }
     }
 }
