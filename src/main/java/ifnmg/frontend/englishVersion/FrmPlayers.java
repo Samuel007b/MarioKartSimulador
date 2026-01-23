@@ -256,7 +256,7 @@ public class FrmPlayers extends javax.swing.JFrame {
         lblNome.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
         pnlSelecionado.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 280, 20));
 
-        btnIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/startRoad.png"))); // NOI18N
+        btnIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/startRoad.png"))); // NOI18N
         btnIniciar.setContentAreaFilled(false);
         btnIniciar.setFocusable(false);
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
