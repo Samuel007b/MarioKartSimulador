@@ -15,6 +15,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>ifnmg.gestao.mariokart2b2025.MarioKart2B2025</exec.mainClass>
+        <exec.mainClass>ifnmg.frontend.FrmInicio</exec.mainClass>
     </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>ifnmg.frontend.FrmInicio</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
