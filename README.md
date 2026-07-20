@@ -16,7 +16,7 @@
 
 ```bash
 # 1. Entre na pasta do projeto
-cd frontend
+cd MarioKartSimulador
 
 # 2. Inicialize o jogo
 mvn exec:java
@@ -30,4 +30,4 @@ Uma janela será aberta com a tela inicial do game. Depois dela há uma tela de 
 
 ## Regras do Jogo
 
-#### Para mais informações acerca das regras e dinâmica do jogo, confira o [repositório de regras e instruções](https://github.com/ifnmgsal-inf/mariokartsimulator-java-2025), organizado pelo professor [Leonardo Humberto](https://github.com/leonardo-silva).
+#### [Cliquei aqui](./RULES.md) para visualizar as regras básicas do jogo. Para mais informações, confira o [repositório de regras e instruções](https://github.com/ifnmgsal-inf/mariokartsimulator-java-2025), organizado pelo professor [Leonardo Humberto](https://github.com/leonardo-silva).
